@@ -48,13 +48,22 @@ cv = Curve.get_curve("Ed25519")
 g = cv.generator
 p = cv.field
 q = cv.order
+halfp = p//2
+
+def toProperKey(point):
+    ybytes = point.y.to_bytes(32,'little')
+    properpublickey = bytearray(ybytes)
+    if point.x < halfp:
+          properpublickey[31] ^= 128
+    return bytes(properpublickey)
 
 # THIS HAPPENS IN THE BANK INTERNAL APP
 
 bankPrivateECKey = 8922796882388619604127911146068705796569681654940873967836428543013949233636
-
 bankPublicECKey = cv.mul_point(bankPrivateECKey, g)
 print("Bank public EC key(ED25519): ", bankPublicECKey)
+print("Compressed public key: ", toProperKey(bankPublicECKey).hex())
+
 
 # BANK  PUBLIC KEY IS SENT TO SGX, THIS HAPPENS IN SGX
 
