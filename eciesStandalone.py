@@ -11,17 +11,20 @@ import Padding
 
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
+from Crypto.IO import PEM
 
-ClientRSAkeyPair = RSA.generate(2048)
+ClientRSAkeyPair_PEM = open("client.key", "r").read()
+ClientRSAkeyPair = RSA.import_key(ClientRSAkeyPair_PEM)
+#ClientRSAkeyPair = RSA.generate(2048)
 
 ClientRSAPublicKey = ClientRSAkeyPair.publickey()
-#print(f"Client RSA Public key:  (n={hex(ClientRSAPublicKey.n)}, e={hex(ClientRSAPublicKey.e)})")
+print(f"Client RSA Public key:  (n={hex(ClientRSAPublicKey.n)}, e={hex(ClientRSAPublicKey.e)})")
 ClientRSAPublicKeyPEM = ClientRSAPublicKey.exportKey()
-#print(ClientRSAPublicKeyPEM.decode('ascii'))
+print(ClientRSAPublicKeyPEM.decode('ascii'))
 
-#print(f"Client RSA Private key: (n={hex(ClientRSAPublicKey.n)}, d={hex(ClientRSAkeyPair.d)})")
+print(f"Client RSA Private key: (n={hex(ClientRSAPublicKey.n)}, d={hex(ClientRSAkeyPair.d)})")
 ClientRSAPrivateKeyPEM = ClientRSAkeyPair.exportKey()
-#print(ClientRSAPrivateKeyPEM.decode('ascii'))
+print(ClientRSAPrivateKeyPEM.decode('ascii'))
 
 # msg = b'A message for encryption'
 # encryptor = PKCS1_OAEP.new(pubKey)
