@@ -13,7 +13,7 @@ var workerLookupResponseTest =`{
 "jsonrpc": "2.0"
 }`
 
-type WorkerLookupResponsed struct {
+type WorkerLookupResponse struct {
 	Result struct {
 		TotalCount int      `json:"totalCount"`
 		LookupTag  string   `json:"lookupTag"`
