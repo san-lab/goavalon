@@ -1,16 +1,21 @@
 {
-	"plain credential" : {
-		"Type":"Credit Scoring",
-		"Name": "Alice",
-		"DID": "12354",
-		"score": {"encrypted": false, "value": "A PLUS"},
-	},
-	"Bank public key" : {
-		"Bank Public key x" : "0x53d8775849f6eeea72adb402f64df032641ebc390e12c9fd364bbb521606e712",
-		"Bank Public key y" : "0x3152df5be7401f44ac1039cead163203ad0da687c8988c2156535430358c06c"
-	},
-	"Compressed bank public key" : "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503"
+    "Credential": {
+        "Type": "Credit scoring",
+        "Name": "Alice",
+        "DID": "42",
+        "score": {
+            "encrypted": false,
+            "value": "A Plus"
+       },
+        "lock key": {
+        "encrypted": false,
+        "value": "x"
+		}
+    },
+    "Bank public key": {
+        "Bank Public key": "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503",
+        "Bank Public key x": "53d8775849f6eeea72adb402f64df032641ebc390e12c9fd364bbb521606e712",
+        "Bank Public key y": "03152df5be7401f44ac1039cead163203ad0da687c8988c2156535430358c06c"
+    },
+    "Subjec's Public key": "RSA_PEM_Here" 
 }
-
-// Bank private key: 8922796882388619604127911146068705796569681654940873967836428543013949233636
-// Ephemeral private key: 39224536263752937319809063883144929125312957084276525785186738781563829874778 
