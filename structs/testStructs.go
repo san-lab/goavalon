@@ -5,28 +5,26 @@ import (
 	"fmt"
 )
 
-func TestWorker () {
+func TestWorker() {
 	wl := new(WorkerLookupResponse)
 	b := []byte(workerLookupResponseTest)
-	TestStruct(wl,b)
+	TestStruct(wl, b)
 }
 
-func TestRetrieveResponse () {
+func TestRetrieveResponse() {
 	wl := new(WorkerRetrieveResponse)
 	b := []byte(workerRetrieveResponseTest)
-	TestStruct(wl,b)
+	TestStruct(wl, b)
 }
 
-
-
-func TestStruct (i interface{}, testBytes []byte) {
+func TestStruct(i interface{}, testBytes []byte) {
 
 	e := json.Unmarshal(testBytes, i)
 	if e != nil {
 		fmt.Println(e)
 	}
 
-	b,e := json.MarshalIndent(i, " ", " ")
+	b, e := json.MarshalIndent(i, " ", " ")
 	if e != nil {
 		fmt.Println(e)
 	}

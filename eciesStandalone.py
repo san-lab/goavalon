@@ -53,7 +53,7 @@ halfp = p//2
 def toProperKey(point):
     ybytes = point.y.to_bytes(32,'little')
     properpublickey = bytearray(ybytes)
-    if point.x < halfp:
+    if point.x & 1:
           properpublickey[31] ^= 128
     return bytes(properpublickey)
 

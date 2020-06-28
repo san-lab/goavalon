@@ -1,0 +1,44 @@
+# Thanks to: https://peterlyons.com/problog/2017/12/openssh-ed25519-private-key-file-format/
+# ASCII magic "openssh-key-v1" plus null byte
+6f70656e7373682d6b65792d7631 00
+00000004 int length = 4
+6e6f6e65 string cipher = none
+00000004 int length = 4
+6e6f6e65 string kdfname = none
+00000000 int length = 0
+# zero-length kdfoptions placeholder here
+00000001 int number of public keys = 1
+00000033 int length first public key = 51 (4 + 11 + 4 + 32)
+0000000b int length = 11
+7373682d65643235353139 string key type = ssh-ed25519
+00000020 int length = 32
+# public key payload 32 bytes
+# probably encoding a point on the ed25519 curve
+3cfe2afb025f46582e502b97f7dfa5a0
+8dea09f87abfa8d5bfcaabf29fbb3695
+
+00000090 int length = 144 size of remaining payload
+# 8 + 4 + 11 + 4 + 32 + 4 + 64 + 4 + 10 + 3
+a2224bbaa2224bba iv/salt? (Not sure about these 8 bytes)
+
+# Here's a repeat of the public key (part of the private key pair)
+0000000b int length = 11
+7373682d656432353531 39 string key type = ssh-ed25519
+00000020  int length = 32
+# public key payload 32 bytes
+# probably encoding a point on the ed25519 curve
+3cfe2afb025f46582e502b97f7dfa5a0
+8dea09f87abfa8d5bfcaabf29fbb3695
+
+00000040 int length = 64
+# 32 bytes private key payload 1
+02a1965d1a2684d50d29f2be0efd8e2f
+ae3c5bb013d06f7818416333955271a5
+# 32 bytes is the public/point again
+3cfe2afb025f46582e502b97f7dfa5a0
+8dea09f87abfa8d5bfcaabf29fbb3695
+
+0000000a int length = 10
+706c796f6e7340617669 private key payload 2
+010203 padding 3 bytes incrementing integers
+Now let's generate one and encrypt with

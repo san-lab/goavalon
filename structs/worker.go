@@ -1,7 +1,6 @@
 package structs
 
-
-var workerLookupResponseTest =`{
+var workerLookupResponseTest = `{
 "result": {
 "totalCount": 1,
 "lookupTag": "ad8ef7abd63076b74175d49e3db3087da1c6f46ff8912a87cb354c816a6ad26b",

@@ -57,7 +57,6 @@ type WorkOrderSubmit struct {
 	} `json:"params"`
 }
 
-
 //----------------------------------------------------------
 var workOrderSubmitResponseTest = `{
     "result": {
@@ -82,7 +81,6 @@ var workOrderSubmitResponseTest = `{
     "id": 33,
     "jsonrpc": "2.0"
 }`
-
 
 type WorkOrderSubmitResponse struct {
 	Result struct {

@@ -1,14 +1,16 @@
 package toyservice
 
 import (
-	"crypto/rsa"
-	"fmt"
-	"crypto/x509"
-	"encoding/pem"
+	"bytes"
 	"crypto/rand"
-	"crypto/sha512"
-	"golang.org/x/crypto/ed25519"
+	"crypto/rsa"
+	"crypto/x509"
+	"encoding/hex"
+	"encoding/pem"
+	"fmt"
 	"github.com/agl/ed25519/edwards25519"
+	"golang.org/x/crypto/ed25519"
+	"math/big"
 )
 
 var PubRSA = `-----BEGIN RSA PUBLIC KEY-----
@@ -20,7 +22,6 @@ hYdov0IQvWLavVw5v383d8rRbnjXxB0UroX+61/9olL0KnYpgCKr+UC+1uf3FuFs
 /KJtO8CqzpzmJShaxnPlxaUr7GRs3mCnMOL0bUYTkQsqUEfx/imh8PM7eXWuBAOF
 LQIDAQAB
 -----END RSA PUBLIC KEY-----`
-
 
 var PrivRSA = `-----BEGIN RSA PRIVATE KEY-----
 MIIEogIBAAKCAQEAs+ZGv20suqeVy+LrA+trhYdov0IQvWLavVw5v383d8rRbnjX
@@ -50,10 +51,14 @@ GY0RAoGAWPDL0HdVcBA0kASACHL3x17OqW2zyycWVS2rERwg54KQ18SUxRbPG7Gk
 c8dROkdorq0/tUi5efqlNOkrEVXIhT1o/+dUb/O94HsROHFyrdw=
 -----END RSA PRIVATE KEY-----`
 
+var PrivEd25519 = `-----BEGIN Ed25519 PRIVATE KEY-----
+VJB1ydQghGGMz5aiG/nLlrEaOwW1IxN2fWpzSOQ7jZ2h3aRws5TnTOAIxoM5r1uy
+wRTpOhcsMMJ/3jvSLxOQ3w==
+-----END Ed25519 PRIVATE KEY-----`
 
-
-
-
+var PubEd25519 = `-----BEGIN Ed25519 PUBLIC KEY-----
+od2kcLOU50zgCMaDOa9bssEU6ToXLDDCf9470i8TkN8=
+-----END Ed25519 PUBLIC KEY-----`
 
 func TestRSA() {
 	pub, e := ParseRSAPublicKey(PubRSA)
@@ -63,13 +68,13 @@ func TestRSA() {
 	fmt.Println(pub.N)
 }
 
-func parseRSAPrivKeyPEM(privPEM string)(*rsa.PrivateKey, error){
+func parseRSAPrivKeyPEM(privPEM string) (*rsa.PrivateKey, error) {
 	block, _ := pem.Decode([]byte(privPEM))
 	if block == nil {
 		return nil, fmt.Errorf("Could not decode the key")
 	}
 
-	priv, err := x509.ParsePKCS1PrivateKey( block.Bytes)
+	priv, err := x509.ParsePKCS1PrivateKey(block.Bytes)
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +103,6 @@ func ParseRSAPublicKey(pubPEM string) (*rsa.PublicKey, error) {
 
 }
 
-
 func RsaKey() {
 	privkey, err := rsa.GenerateKey(rand.Reader, 2048)
 	if err != nil {
@@ -116,9 +120,8 @@ func RsaKey() {
 	fmt.Println(string(pbb))
 }
 
-
 // EncodePrivateKeyToPEM encodes Private Key from RSA to PEM format
-func EncodePrivateKeyToPEM(privateKey *rsa.PrivateKey) ([]byte) {
+func EncodePrivateKeyToPEM(privateKey *rsa.PrivateKey) []byte {
 	// Get ASN.1 DER format
 	privDER := x509.MarshalPKCS1PrivateKey(privateKey)
 
@@ -150,66 +153,98 @@ func EncodePubKeyToPEM(pubembedded *rsa.PublicKey) ([]byte, error) {
 
 //-----------------Ed25519--------------------
 
-func Priv25519() {
-	pub, prv, err := ed25519.GenerateKey(rand.Reader)
-	if err != nil {
-		fmt.Println(err)
-		return
+func ParseEd25519Priv(pemtext string) (ed25519.PrivateKey, error) {
+	block, _ := pem.Decode([]byte(pemtext))
+	if len(block.Bytes) != 64 {
+		return nil, fmt.Errorf("Wrong byte count")
 	}
+	seed := block.Bytes[:32]
+	priv := ed25519.NewKeyFromSeed(seed)
+	x := priv.Public().(ed25519.PublicKey)
+	if !bytes.Equal(x, block.Bytes[32:]) {
+		return nil, fmt.Errorf("Validation mismatch")
+	}
+	return priv, nil
+}
 
-	prv2 := ed25519.NewKeyFromSeed(prv.Seed())
+func ParseEd25519PubPEM(pemtext string) (ed25519.PublicKey, error) {
+	block, _ := pem.Decode([]byte(pemtext))
+	if len(block.Bytes) != 32 {
+		return nil, fmt.Errorf("Wrong byte count")
+	}
+	return ed25519.PublicKey(block.Bytes), nil
+}
 
+func EncodeEd25519Priv(prv ed25519.PrivateKey) string {
 	privBytes := pem.EncodeToMemory(&pem.Block{
 		Type:  "Ed25519 PRIVATE KEY",
-		Bytes: prv.Seed(),
+		Bytes: prv,
 	})
-	fmt.Println(string(privBytes))
+	return string(privBytes)
+}
 
-	privBytes = pem.EncodeToMemory(&pem.Block{
-		Type:  "Ed25519 PRIVATE KEY",
-		Bytes: prv2,
-	})
-	fmt.Println(string(privBytes))
-
-	digest := sha512.Sum512(prv2.Seed())
-	digest[0] &= 248
-	digest[31] &= 127
-	digest[31] |= 64
-
-	var A edwards25519.ExtendedGroupElement
-	var hBytes [32]byte
-	copy(hBytes[:], digest[:])
-	edwards25519.GeScalarMultBase(&A, &hBytes)
-	var publicKeyBytes [32]byte
-	A.ToBytes(&publicKeyBytes)
-	pub2 := publicKeyBytes[:]
-	//if err!= nil {
-	//	fmt.Println(err)
-	//	return
-	//}
-	fmt.Println(len(prv),prv)
-	fmt.Println(len(pub2),pub2)
-
+func EncodeEd25519Pub(pub ed25519.PublicKey) string {
 	pubBytes := pem.EncodeToMemory(&pem.Block{
 		Type:  "Ed25519 PUBLIC KEY",
 		Bytes: pub,
 	})
-	fmt.Println(string(pubBytes))
+	return string(pubBytes)
+}
 
-	pubBytes = pem.EncodeToMemory(&pem.Block{
-		Type:  "Ed25519 PUBLIC KEY",
-		Bytes: pub2,
-	})
-	fmt.Println(string(pubBytes))
+func TestPriv25519() {
 
+	prv, _ := ParseEd25519Priv(PrivEd25519)
 
-	b2, _ := pem.Decode(pubBytes)
-	fmt.Println(b2.Bytes)
+	pub, _ := ParseEd25519PubPEM(PubEd25519)
 
-	fmt.Println(prv[32:])
+	privpem := EncodeEd25519Priv(prv)
+	fmt.Println(privpem)
 
+	prv2, _ := ParseEd25519Priv(privpem)
+
+	fmt.Println(pub)
+	fmt.Println(prv2.Public())
+
+	//edwards25519.GeScalarMultBase(&A, &hBytes)
+	//var publicKeyBytes [32]byte
+	//A.ToBytes(&publicKeyBytes)
+
+}
+
+var BankPrivateKeyString = "8922796882388619604127911146068705796569681654940873967836428543013949233636"
+func D() {
+	x := new(big.Int)
+	x.SetString(BankPrivateKeyString, 10)
+	fmt.Println(x)
+	fmt.Println(x.Bytes())
+
+	hBytes := new([32]byte)
+
+	//copy(hBytes[:], x.Bytes()[:32])
+	for i := len(x.Bytes()); i > 0; i-- {
+		hBytes[32-i] = x.Bytes()[i-1]
+	}
+	fmt.Println(hBytes)
+	A := new(edwards25519.ExtendedGroupElement)
+	edwards25519.GeScalarMultBase(A, hBytes)
+
+	var publicKeyBytes [32]byte
+	A.ToBytes(&publicKeyBytes)
+
+	fmt.Println(publicKeyBytes[31] & 128)
+
+	fmt.Println(hex.EncodeToString(publicKeyBytes[:]))
+	fmt.Println(hex.EncodeToString(Reverse(publicKeyBytes)[:]))
 
 }
 
 
 
+func G() {
+	pu,pr,er:= ed25519.GenerateKey(rand.Reader)
+	fmt.Println(pu,pr,er)
+}
+
+//s[31] ^= FeIsNegative(&x) << 7
+//
+//
