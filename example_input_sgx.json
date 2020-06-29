@@ -8,14 +8,15 @@
             "value": "A Plus"
        },
         "lock key": {
-        "encrypted": false,
-        "value": "x"
+	        "encrypted": false,
+	        "value": "x"
 		}
     },
-    "Bank public key": {
-        "Bank Public key": "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503",
-        "Bank Public key x": "53d8775849f6eeea72adb402f64df032641ebc390e12c9fd364bbb521606e712",
-        "Bank Public key y": "03152df5be7401f44ac1039cead163203ad0da687c8988c2156535430358c06c"
+    "Issuer name" : "Banco Santander",
+    "Issuer public key": {
+        "Issuer Public key": "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503",
+        "Issuer Public key x": "53d8775849f6eeea72adb402f64df032641ebc390e12c9fd364bbb521606e712",
+        "Issuer Public key y": "03152df5be7401f44ac1039cead163203ad0da687c8988c2156535430358c06c"
     },
     "Subjec's Public key": "RSA_PEM_Here" 
 }
