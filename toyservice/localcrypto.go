@@ -8,7 +8,7 @@ import (
 	"crypto/rand"
 	"encoding/base64"
 	"strings"
-	"golang.org/x/crypto/ed25519"
+	"crypto/ed25519"
 	"crypto/rsa"
 	"crypto/sha256"
 	"crypto/aes"
@@ -221,8 +221,8 @@ func Reverse(edBytes [32]byte) *[32]byte {
 
 }
 //TODO Bring that in-line with the standards
-func ParseEd25519PublicKey(pk BankPubKeyType) (*[32]byte,  error) {
-	hexkey := pk.BankPublicKey
+func ParseEd25519PublicKey(pk IssuerPubKeyType) (*[32]byte,  error) {
+	hexkey := pk.IssuerPublicKey
 	pkb, err := PfromString(hexkey)
 	if err != nil {
 		return nil, err

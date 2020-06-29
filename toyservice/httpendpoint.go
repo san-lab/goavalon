@@ -138,15 +138,16 @@ func dumpRequest(wr http.ResponseWriter, req *http.Request) {
 func issueCredentials(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("issuing")
 	w.Header().Set("Content-Type", "application/json")
-	cred := CredentialWLock{}
-
+	//cred := CredentialWLock{}
+	cred := CredentialWLockVer2{}
 	cred.Credential.Name = "Alice"
 	cred.Credential.DID = "42"
 	cred.Credential.Type = "Credit scoring"
 
-	cred.BankPublicKey.BankPublicKeyX = "53d8775849f6eeea72adb402f64df032641ebc390e12c9fd364bbb521606e712"
-	cred.BankPublicKey.BankPublicKeyY = "03152df5be7401f44ac1039cead163203ad0da687c8988c2156535430358c06c"
-	cred.BankPublicKey.BankPublicKey = "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503"
+	cred.IssuerName = "DUMMY ISSUER - put your name here"
+	cred.IssuerPublicKey.IssuerPublicKeyX = "53d8775849f6eeea72adb402f64df032641ebc390e12c9fd364bbb521606e712"
+	cred.IssuerPublicKey.IssuerPublicKeyY = "03152df5be7401f44ac1039cead163203ad0da687c8988c2156535430358c06c"
+	cred.IssuerPublicKey.IssuerPublicKey = "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503"
 
 	cred.Credential.Score.Encrypted = false
 	cred.Credential.Score.Value = "A Plus"
@@ -175,7 +176,7 @@ func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 		return
 
 	}
-	cred := new(CredentialWLock)
+	cred := new(CredentialWLockVer2)
 	err = json.Unmarshal(bbuf, cred)
 	if err != nil {
 		fmt.Fprintln(wr,err)
@@ -194,7 +195,7 @@ func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 
 
 
-	becpub, err := ParseEd25519PublicKey(cred.BankPublicKey)
+	becpub, err := ParseEd25519PublicKey(cred.IssuerPublicKey)
 	fmt.Println(hex.EncodeToString(becpub[:]),err)
 
 	//TODO Use seed as Ed usually does
