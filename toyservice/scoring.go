@@ -35,6 +35,18 @@ type EncryptRequest struct {
 
 //------------from G&P------------------
 
+type ClaimRequestType struct{
+	RequestId string `json:"request id"`
+	DID string
+	Name string
+	Type string
+	//TODO
+	SignKey string `json:"signing key",omitempty`
+	Signature string `json:"signature",omitempty`
+
+}
+
+
 type PlainCredentialType struct {
 	Type  string `json:"Type"`
 	Name  string `json:"Name"`

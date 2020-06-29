@@ -67,6 +67,9 @@ const WorkerDetailsPath = "details"
 const WorkSubmit = "submit"
 const WorkRetrieve = "retrieve"
 
+const ClaimTemplate = "gettemplate"
+
+
 func TheHandler(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
@@ -81,6 +84,13 @@ func TheHandler(w http.ResponseWriter, r *http.Request) {
 	case WorkSubmit:
 		encryptCredentials(w,r)
 	case WorkRetrieve:
+
+	case ClaimTemplate:
+		ct := ClaimRequestType{}
+		b,_ := json.MarshalIndent(ct,"  ", "  ")
+		w.Header().Set("Content-type", "application/json")
+		w.Write(b)
+		w.WriteHeader(http.StatusOK)
 //---------------undocumented calls---------
 	case "issue":
 		issueCredentials(w,r)
@@ -136,13 +146,26 @@ func dumpRequest(wr http.ResponseWriter, req *http.Request) {
 //// Bank private key: 8922796882388619604127911146068705796569681654940873967836428543013949233636
 
 func issueCredentials(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("issuing")
+	bbuf, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		fmt.Fprintln(w, err)
+		return
+
+	}
+	clreq := new(ClaimRequestType)
+	err = json.Unmarshal(bbuf, clreq)
+	if err != nil {
+		fmt.Fprintln(w,err)
+		return
+	}
+
 	w.Header().Set("Content-Type", "application/json")
 	//cred := CredentialWLock{}
 	cred := CredentialWLockVer2{}
-	cred.Credential.Name = "Alice"
-	cred.Credential.DID = "42"
-	cred.Credential.Type = "Credit scoring"
+	cred.Credential.Name = clreq.Name
+	cred.Credential.DID = clreq.DID
+	//TODO validate the type
+	cred.Credential.Type = clreq.Type
 
 	cred.IssuerName = "DUMMY ISSUER - put your name here"
 	cred.IssuerPublicKey.IssuerPublicKeyX = "53d8775849f6eeea72adb402f64df032641ebc390e12c9fd364bbb521606e712"
@@ -196,7 +219,7 @@ func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 
 
 	becpub, err := ParseEd25519PublicKey(cred.IssuerPublicKey)
-	fmt.Println(hex.EncodeToString(becpub[:]),err)
+	//fmt.Println(hex.EncodeToString(becpub[:]),err)
 
 	//TODO Use seed as Ed usually does
 	ephEd25519private := make([]byte, 32)
@@ -209,7 +232,7 @@ func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 	ephPrivInternal := Tli(t)
 	ephEdpublic := EdwardsScalarMultB(ephPrivInternal)
 
-	fmt.Println(hex.EncodeToString(ephEdpublic[:]))
+	//fmt.Println(hex.EncodeToString(ephEdpublic[:]))
 
 	//Shared secret
 	Zero := Tli(big.NewInt(0))
