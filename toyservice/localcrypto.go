@@ -271,3 +271,19 @@ func EncryptAES(skey []byte, plaintext string ) ( ciphertext []byte, err error )
 	ct.Write( aesgcm.Seal(nil, nonce, []byte(plaintext), nil))
 	return ct.Bytes(),nil
 }
+
+//Sign the 'Credential' json
+//The private key is expected as a decimal string
+//TODO externalize string gathering
+func SignByEd(cred *CredentialWLockVer2, prvIssuer string) {
+	test := cred.Credential.Name+cred.Credential.DID+cred.Credential.Type
+	test += cred.Credential.Score.Value + cred.IssuerDID
+
+	x := new(big.Int)
+	x.SetString(prvIssuer, 10)
+	bankEdPriv := Tli(x)
+	//Proper private key is 32 bytes privInt + 32 bytes public point
+	mockpriv := make([]byte, 64)
+	copy(mockpriv,bankEdPriv[:])
+	cred.IssuerSignature= hex.EncodeToString(ed25519.Sign(mockpriv, []byte(test)))
+}

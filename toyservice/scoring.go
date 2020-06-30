@@ -41,8 +41,8 @@ type ClaimRequestType struct{
 	Name string
 	Type string
 	//TODO
-	SignKey string `json:"signing key",omitempty`
-	Signature string `json:"signature",omitempty`
+	SignKey *string `json:"signing key,omitempty"`
+	Signature *string `json:"signature,omitempty"`
 
 }
 
@@ -82,8 +82,8 @@ type CredentialWLock struct {
 
 type IssuerPubKeyType struct {
 		IssuerPublicKey  string `json:"Issuer Public key,omitempty"`
-		IssuerPublicKeyX string `json:"Issuer Public key x,omitempty"`
-		IssuerPublicKeyY string `json:"Issuer Public key y,omitempty"`
+		//IssuerPublicKeyX string `json:"Issuer Public key x,omitempty"`
+		//IssuerPublicKeyY string `json:"Issuer Public key y,omitempty"`
 
 }
 
@@ -124,6 +124,8 @@ type CredentialWLockVer2 struct {
 		LockKey LockKeyType `json:"lock key"`
 	} `json:"Credential"`
 	IssuerName      string `json:"Issuer name"`
-	IssuerPublicKey IssuerPubKeyType `json:"Issuer's public key"`
-	SubjecSPublicKey string `json:"Subjec's Public key"`
+	IssuerDID string `Json:"Issuer DID'"`
+	IssuerPublicKey IssuerPubKeyType `json:"Issuer public key"`
+	IssuerSignature string `ison:"Issuer signature"`
+	SubjecSPublicKey string `json:"Subject Public key"`
 }

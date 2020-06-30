@@ -168,14 +168,16 @@ func issueCredentials(w http.ResponseWriter, r *http.Request) {
 	cred.Credential.Type = clreq.Type
 
 	cred.IssuerName = "DUMMY ISSUER - put your name here"
-	cred.IssuerPublicKey.IssuerPublicKeyX = "53d8775849f6eeea72adb402f64df032641ebc390e12c9fd364bbb521606e712"
-	cred.IssuerPublicKey.IssuerPublicKeyY = "03152df5be7401f44ac1039cead163203ad0da687c8988c2156535430358c06c"
+	//cred.IssuerPublicKey.IssuerPublicKeyX = "53d8775849f6eeea72adb402f64df032641ebc390e12c9fd364bbb521606e712"
+	//cred.IssuerPublicKey.IssuerPublicKeyY = "03152df5be7401f44ac1039cead163203ad0da687c8988c2156535430358c06c"
 	cred.IssuerPublicKey.IssuerPublicKey = "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503"
 
 	cred.Credential.Score.Encrypted = false
 	cred.Credential.Score.Value = "A Plus"
 
 	cred.SubjecSPublicKey = PubRSA
+
+	SignByEd(&cred, BankEd)
 
 	bytes, err := json.Marshal(&cred)
 	if err != nil {
