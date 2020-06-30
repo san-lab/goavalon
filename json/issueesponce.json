@@ -1,0 +1,22 @@
+{
+  "Credential": {
+    "Type": "Credit scoring",
+    "Name": "Nancy",
+    "DID": "421",
+    "score": {
+      "encrypted": false,
+      "value": "A Plus"
+    },
+    "lock key": {
+      "encrypted": false,
+      "value": ""
+    }
+  },
+  "Issuer name": "DUMMY ISSUER - put your name here",
+  "IssuerDID": "",
+  "Issuer public key": {
+    "Issuer Public key": "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503"
+  },
+  "IssuerSignature": "2a9760181961fefb9dd9f6276eae32754f2d7f9f80ffb2a4b5c518c4d3fdd7eef0f68e702a0a4a05ebd9dd5c1dd1fee53233536c3254cfd72f81093ea94bf904",
+  "Subject Public key": "-----BEGIN RSA PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs+ZGv20suqeVy+LrA+tr\nhYdov0IQvWLavVw5v383d8rRbnjXxB0UroX+61/9olL0KnYpgCKr+UC+1uf3FuFs\n008DMkKSg8umWrV+8etHPZa31qSBgYWgrlygScAoPU5yQY3x/7NFFaIAs89bCw2J\n5kKcQh/NHk+dRAYuQ4qmo6OKp0TW065MEprpfWZHgc9uynk7fRG+DHyLtGxkjb2J\n6nSPSm7wK8Sb75YZV7orU1R80Brn1zbVxBKheLGfKgc7QK/6SuASlssR4pe58zIi\n/KJtO8CqzpzmJShaxnPlxaUr7GRs3mCnMOL0bUYTkQsqUEfx/imh8PM7eXWuBAOF\nLQIDAQAB\n-----END RSA PUBLIC KEY-----"
+}
