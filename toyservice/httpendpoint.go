@@ -92,6 +92,8 @@ func TheHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write(b)
 		w.WriteHeader(http.StatusOK)
 //---------------undocumented calls---------
+	case "encryptsign":
+		encryptCredentialsSignature(w,r)
 	case "issue":
 		issueCredentials(w,r)
 	case "newrsa":
@@ -283,6 +285,105 @@ func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 	wr.Header().Add("SymKey", hex.EncodeToString(ss[:]))
 	wr.Header().Add("Enclave-Ed25519-private", fmt.Sprintf("%x", t) )
 	wr.Header().Add("IV", hex.EncodeToString(scorebytes[0:12]))
+	wr.WriteHeader(http.StatusOK)
+	wr.Write(ncred)
+
+
+
+
+
+}
+
+func encryptCredentialsSignature (wr http.ResponseWriter, req *http.Request) {
+
+	bbuf, err := ioutil.ReadAll(req.Body)
+	if err != nil {
+		fmt.Fprintln(wr, err)
+		return
+
+	}
+	cred := new(CredentialWLockVer2)
+	err = json.Unmarshal(bbuf, cred)
+	if err != nil {
+		fmt.Fprintln(wr,err)
+		return
+	}
+
+
+	//Parse Customers Public Key
+	rsapub, err := ParseRSAPublicKey(cred.SubjecSPublicKey)
+	if err != nil {
+		wr.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintln(wr, err)
+		fmt.Println(err)
+		return
+	}
+
+
+
+	becpub, err := ParseEd25519PublicKey(cred.IssuerPublicKey)
+	//fmt.Println(hex.EncodeToString(becpub[:]),err)
+
+	//TODO Use seed as Ed usually does
+	ephEd25519private := make([]byte, 32)
+	rand.Reader.Read(ephEd25519private)
+	ephEd25519private[0] &=127 //This should work instead of actual MOD
+	//fmt.Println(hex.EncodeToString(ephEd25519private[:]))
+
+	t := new(big.Int)
+	t.SetBytes(ephEd25519private)
+	ephPrivInternal := Tli(t)
+	ephEdpublic := EdwardsScalarMultB(ephPrivInternal)
+
+	//fmt.Println(hex.EncodeToString(ephEdpublic[:]))
+
+	//Shared secret
+	Zero := Tli(big.NewInt(0))
+	ss := EdwardsScalarAddMult(ephPrivInternal, becpub, Zero)
+
+	plaintext := hex.EncodeToString(ephEdpublic[:])
+
+	//Verification
+	//x := new(big.Int)
+	//x.SetString(BankEd, 10)
+	//bankEdPriv := Tli(x)
+	//ss2 := EdwardsScalarAddMult(bankEdPriv, ephEdpublic, Zero)
+	//plaintext2 := hex.EncodeToString(ss2[:])
+	//fmt.Println("a",plaintext)
+	//fmt.Println("b", plaintext2)
+
+
+	ciphertext, _ := EncryptWithRSAKey(plaintext, rsapub)
+	b64ciphertext := base64.StdEncoding.EncodeToString(ciphertext)
+
+	cred.Credential.LockKey.Encrypted=true
+	cred.Credential.LockKey.Value=b64ciphertext
+
+	//TODO: Handle different block types, do not assume len(ss)==32
+	signaturebytes, err := EncryptAES(ss[:], cred.IssuerSignature)
+	if err != nil {
+		wr.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintln(wr, err)
+		fmt.Println(err)
+		return
+	}
+	sig64base := base64.StdEncoding.EncodeToString(signaturebytes)
+
+	cred.Credential.Score.Encrypted=true
+	cred.IssuerSignature = sig64base
+
+	ncred, err := json.MarshalIndent(&cred, "  ", "  " )
+	if err != nil {
+		wr.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintln(wr, err)
+		fmt.Println(err)
+		return
+	}
+	wr.Header().Set("Content-type", "application/json")
+	wr.Header().Set("SymAlg", "AES-256-GCM" )
+	wr.Header().Add("SymKey", hex.EncodeToString(ss[:]))
+	wr.Header().Add("Enclave-Ed25519-private", fmt.Sprintf("%x", t) )
+	wr.Header().Add("IV", hex.EncodeToString(signaturebytes[0:12]))
 	wr.WriteHeader(http.StatusOK)
 	wr.Write(ncred)
 
