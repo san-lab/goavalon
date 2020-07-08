@@ -102,6 +102,8 @@ func TheHandler(w http.ResponseWriter, r *http.Request) {
 		RsaKey()
 	case "killmehard":
 		os.Exit(0)
+	case "pythoncode":
+		pythonCode(w,r)
 	case "test25519":
 	case "decryptaes":
 		decryptAESreq(w,r)
@@ -112,6 +114,14 @@ func TheHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func pythonCode (wr http.ResponseWriter, req *http.Request) {
+	b, e := ioutil.ReadFile("aes-gcm-decrypt.py")
+	if e!= nil {
+		fmt.Fprintln(wr,"error reading Python file:", e)
+		return
+	}
+	wr.Write(b)
+}
 
 //Expect the ciphertext to be base64 encoded and the key to be hex encoded
 func decryptAESreq(wr http.ResponseWriter, req *http.Request) {
