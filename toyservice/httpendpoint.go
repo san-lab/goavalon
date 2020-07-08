@@ -107,6 +107,8 @@ func TheHandler(w http.ResponseWriter, r *http.Request) {
 	case "test25519":
 	case "decryptaes":
 		decryptAESreq(w,r)
+	case "love":
+		w.Write([]byte("Kuba kocha Justynkę"))
 		TestEd()
 	default:
 		dumpRequest(w,r)
