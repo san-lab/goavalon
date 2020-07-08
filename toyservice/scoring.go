@@ -145,3 +145,8 @@ type CredentialWLockVer3 struct {
 	IssuerSignatureEncrytpted bool `json:"signature encrypted"`
 	SubjecSPublicKey string `json:"Subject Public key"`
 }
+
+type DecryptRequest struct {
+	Ciphertext string `json:"ciphertext"`
+	Key        string `json:"key"`
+}

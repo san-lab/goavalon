@@ -103,10 +103,48 @@ func TheHandler(w http.ResponseWriter, r *http.Request) {
 	case "killmehard":
 		os.Exit(0)
 	case "test25519":
+	case "decryptaes":
+		decryptAESreq(w,r)
 		TestEd()
 	default:
 		dumpRequest(w,r)
 	}
+
+}
+
+
+//Expect the ciphertext to be base64 encoded and the key to be hex encoded
+func decryptAESreq(wr http.ResponseWriter, req *http.Request) {
+	bbuf, err := ioutil.ReadAll(req.Body)
+	if err != nil {
+		fmt.Fprintln(wr, err)
+		return
+
+	}
+	decAESreq := new(DecryptRequest)
+	err = json.Unmarshal(bbuf, decAESreq)
+	if err != nil {
+		fmt.Fprintln(wr,err)
+		return
+	}
+
+	ciphbytes, err := base64.StdEncoding.DecodeString( decAESreq.Ciphertext)
+	if err != nil {
+		fmt.Fprintln(wr,err)
+		return
+	}
+	key, err := hex.DecodeString(decAESreq.Key)
+	if err != nil {
+		fmt.Fprintln(wr,err)
+		return
+	}
+	plaintext, err := DecryptAES(key, ciphbytes)
+	if err != nil {
+		fmt.Fprintln(wr,err)
+		return
+	}
+	fmt.Fprintf(wr, "As string: %s\n", string(plaintext))
+	fmt.Fprintf(wr, "As hex: %s\n", hex.EncodeToString(plaintext))
 
 }
 

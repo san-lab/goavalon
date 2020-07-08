@@ -274,6 +274,29 @@ func EncryptWithRSAKey(plaintext string, key *rsa.PublicKey) ([]byte, error) {
 	return b, nil
 }
 
+
+//This is AES-256-GCM encryption
+//The returned slice contains
+//The first 12 bytes of the ciphertext are expected to carry the nonce
+func DecryptAES(skey []byte, ciphertext []byte ) ( plaintext []byte, err error ){
+	if len(skey) != 32 {
+		return nil, fmt.Errorf("wrong key length: %v", len(skey))
+	}
+	nonce := ciphertext[:12]
+	ciphertext = ciphertext[12:]
+	block, err := aes.NewCipher(skey)
+	if err != nil {
+		return nil, fmt.Errorf("cannot create new aes block: %w", err)
+	}
+	aesgcm, err := cipher.NewGCM(block)
+	if err != nil {
+		return nil, fmt.Errorf("cannot create new aes block: %w", err)
+	}
+	plaintext, err = aesgcm.Open(nil, nonce, ciphertext,nil)
+	return
+}
+
+
 //This is AES-256-GCM encryption
 //The returned slice contains
 // [:12] - nonce/iv
@@ -283,7 +306,7 @@ func EncryptAES(skey []byte, plaintext string ) ( ciphertext []byte, err error )
 	// AES encryption
 	block, err := aes.NewCipher(skey)
 	if err != nil {
-		//return nil, fmt.Errorf("cannot create new aes block: %w", err)
+		return nil, fmt.Errorf("cannot create new aes block: %w", err)
 	}
 
 	nonce := make([]byte, 12)
