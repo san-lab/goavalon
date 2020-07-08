@@ -251,9 +251,9 @@ func Reverse(edBytes [32]byte) *[32]byte {
 
 }
 //TODO Bring that in-line with the standards
-func ParseEd25519PublicKey(pk IssuerPubKeyType) (*[32]byte,  error) {
-	hexkey := pk.IssuerPublicKey
-	pkb, err := PfromString(hexkey)
+func ParseEd25519PublicKey(pk string) (*[32]byte,  error) {
+
+	pkb, err := PfromString(pk)
 	if err != nil {
 		return nil, err
 	}
@@ -308,6 +308,19 @@ func EncryptAES(skey []byte, plaintext string ) ( ciphertext []byte, err error )
 func SignByEd(cred *CredentialWLockVer2, prvIssuer string) {
 	test := cred.Credential.Name+cred.Credential.DID+cred.Credential.Type
 	test += cred.Credential.Score.Value + cred.IssuerDID
+
+	x := new(big.Int)
+	x.SetString(prvIssuer, 10)
+	bankEdPriv := Tli(x)
+	//Proper private key is 32 bytes privInt + 32 bytes public point
+	mockpriv := make([]byte, 64)
+	copy(mockpriv,bankEdPriv[:])
+	cred.IssuerSignature= hex.EncodeToString(ed25519.Sign(mockpriv, []byte(test)))
+}
+
+func SignByEd3(cred *CredentialWLockVer3, prvIssuer string) {
+	test := cred.Credential.Name+cred.Credential.DID+cred.Credential.Type
+	test += cred.Credential.Value + cred.IssuerDID
 
 	x := new(big.Int)
 	x.SetString(prvIssuer, 10)

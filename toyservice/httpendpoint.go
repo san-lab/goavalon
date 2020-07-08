@@ -92,10 +92,12 @@ func TheHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write(b)
 		w.WriteHeader(http.StatusOK)
 //---------------undocumented calls---------
-	case "encryptsign":
+	case "submit3":
 		encryptCredentialsSignature(w,r)
 	case "issue":
 		issueCredentials(w,r)
+	case "issue3":
+		issueCredentials3(w,r)
 	case "newrsa":
 		RsaKey()
 	case "killmehard":
@@ -194,6 +196,53 @@ func issueCredentials(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func issueCredentials3(w http.ResponseWriter, r *http.Request) {
+	bbuf, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		fmt.Fprintln(w, err)
+		return
+
+	}
+	clreq := new(ClaimRequestType)
+	err = json.Unmarshal(bbuf, clreq)
+	if err != nil {
+		fmt.Fprintln(w,err)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	//cred := CredentialWLock{}
+	cred := CredentialWLockVer3{}
+	cred.Credential.Name = clreq.Name
+	cred.Credential.DID = clreq.DID
+	//TODO validate the type
+	cred.Credential.Type = clreq.Type
+
+	cred.IssuerName = "DUMMY ISSUER - put your name here"
+	//cred.IssuerPublicKey.IssuerPublicKeyX = "53d8775849f6eeea72adb402f64df032641ebc390e12c9fd364bbb521606e712"
+	//cred.IssuerPublicKey.IssuerPublicKeyY = "03152df5be7401f44ac1039cead163203ad0da687c8988c2156535430358c06c"
+	cred.IssuerPublicKey = "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503"
+	cred.IssuerSignatureEncrytpted = false
+
+	cred.Credential.Value = "A Plus"
+
+	cred.SubjecSPublicKey = PubRSA
+
+	SignByEd3(&cred, BankEd)
+
+	bytes, err := json.Marshal(&cred)
+	if err != nil {
+		fmt.Println(err)
+		w.Write([]byte(fmt.Sprint(err)))
+	}
+	w.Header().Set("Content-type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(bytes)
+	fmt.Println(string(bytes))
+
+
+}
+
 
 func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 
@@ -221,8 +270,8 @@ func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 	}
 
 
-
-	becpub, err := ParseEd25519PublicKey(cred.IssuerPublicKey)
+	hexkey := cred.IssuerPublicKey.IssuerPublicKey
+	becpub, err := ParseEd25519PublicKey(hexkey)
 	//fmt.Println(hex.EncodeToString(becpub[:]),err)
 
 	//TODO Use seed as Ed usually does
@@ -285,6 +334,7 @@ func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 	wr.Header().Add("SymKey", hex.EncodeToString(ss[:]))
 	wr.Header().Add("Enclave-Ed25519-private", fmt.Sprintf("%x", t) )
 	wr.Header().Add("IV", hex.EncodeToString(scorebytes[0:12]))
+	wr.Header().Add("ScoreBytes", hex.EncodeToString([]byte(cred.Credential.Score.Value)))
 	wr.WriteHeader(http.StatusOK)
 	wr.Write(ncred)
 
@@ -302,7 +352,7 @@ func encryptCredentialsSignature (wr http.ResponseWriter, req *http.Request) {
 		return
 
 	}
-	cred := new(CredentialWLockVer2)
+	cred := new(CredentialWLockVer3)
 	err = json.Unmarshal(bbuf, cred)
 	if err != nil {
 		fmt.Fprintln(wr,err)
@@ -369,7 +419,7 @@ func encryptCredentialsSignature (wr http.ResponseWriter, req *http.Request) {
 	}
 	sig64base := base64.StdEncoding.EncodeToString(signaturebytes)
 
-	cred.Credential.Score.Encrypted=true
+	cred.IssuerSignatureEncrytpted=true
 	cred.IssuerSignature = sig64base
 
 	ncred, err := json.MarshalIndent(&cred, "  ", "  " )

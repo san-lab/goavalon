@@ -129,3 +129,19 @@ type CredentialWLockVer2 struct {
 	IssuerSignature string `ison:"Issuer signature"`
 	SubjecSPublicKey string `json:"Subject Public key"`
 }
+
+type CredentialWLockVer3 struct {
+	Credential struct {
+		Type  string `json:"Type"`
+		Name  string `json:"Name"`
+		DID   string `json:"DID"`
+		Value     string `json:"value"`
+		LockKey LockKeyType `json:"lock key"`
+	} `json:"Credential"`
+	IssuerName      string `json:"Issuer name"`
+	IssuerDID string `Json:"Issuer DID'"`
+	IssuerPublicKey string `json:"Issuer public key"`
+	IssuerSignature string `ison:"Issuer signature"`
+	IssuerSignatureEncrytpted bool `json:"signature encrypted"`
+	SubjecSPublicKey string `json:"Subject Public key"`
+}
