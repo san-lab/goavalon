@@ -493,5 +493,9 @@ func encryptCredentialsSignature (wr http.ResponseWriter, req *http.Request) {
 
 }
 
+func stripRSA(ver3 *CredentialWLockVer3) {
+	
+}
+
 
 
