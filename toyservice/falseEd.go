@@ -48,6 +48,11 @@ func sSign(privateKey *[32]byte, message []byte) []byte {
 
 
 func sVerify(pubkey *[32]byte, signature, message []byte) (bool, error) {
+	// sign = R + s
+	// Verify:
+	// R + hash(R+m)Pb == sG
+	// Or
+	// -hash(R+m) * Pb + s*G == R
 
 	if len(signature) != 64 {
 		return false, fmt.Errorf("Wrong signature length: %v", len(signature))

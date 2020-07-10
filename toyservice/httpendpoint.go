@@ -230,7 +230,10 @@ func verifySignature(wr http.ResponseWriter, req *http.Request) {
 		fmt.Fprintln(wr,e)
 		return
 	}
-	fmt.Fprintln(wr, "Signature verification:", v )
+	vr := new(VerificationResponse)
+	vr.Verified = v
+	vrb,_ := json.MarshalIndent(vr, "  ", "  ")
+	wr.Write(vrb)
 
 }
 
