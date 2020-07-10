@@ -275,6 +275,8 @@ func EncryptWithRSAKey(plaintext string, key *rsa.PublicKey) ([]byte, error) {
 }
 
 
+
+
 //This is AES-256-GCM encryption
 //The returned slice contains
 //The first 12 bytes of the ciphertext are expected to carry the nonce
@@ -325,31 +327,18 @@ func EncryptAES(skey []byte, plaintext string ) ( ciphertext []byte, err error )
 	return ct.Bytes(),nil
 }
 
-//Sign the 'Credential' json
-//The private key is expected as a decimal string
-//TODO externalize string gathering
-func SignByEd(cred *CredentialWLockVer2, prvIssuer string) {
-	test := cred.Credential.Name+cred.Credential.DID+cred.Credential.Type
-	test += cred.Credential.Score.Value + cred.IssuerDID
 
-	x := new(big.Int)
-	x.SetString(prvIssuer, 10)
-	bankEdPriv := Tli(x)
-	//Proper private key is 32 bytes privInt + 32 bytes public point
-	mockpriv := make([]byte, 64)
-	copy(mockpriv,bankEdPriv[:])
-	cred.IssuerSignature= hex.EncodeToString(ed25519.Sign(mockpriv, []byte(test)))
-}
 
 func SignByEd3(cred *CredentialWLockVer3, prvIssuer string) {
-	test := cred.Credential.Name+cred.Credential.DID+cred.Credential.Type
-	test += cred.Credential.Value + cred.IssuerDID
+	test := collectSignString(cred)
 
 	x := new(big.Int)
 	x.SetString(prvIssuer, 10)
 	bankEdPriv := Tli(x)
-	//Proper private key is 32 bytes privInt + 32 bytes public point
-	mockpriv := make([]byte, 64)
-	copy(mockpriv,bankEdPriv[:])
-	cred.IssuerSignature= hex.EncodeToString(ed25519.Sign(mockpriv, []byte(test)))
+
+	cred.IssuerSignature= hex.EncodeToString(sSign(bankEdPriv, []byte(test)))
+}
+
+func collectSignString(cred *CredentialWLockVer3) string {
+	return  cred.Credential.Name+cred.Credential.DID+cred.Credential.Type + cred.Credential.Value + cred.IssuerDID
 }

@@ -16,6 +16,8 @@ import (
 	"encoding/hex"
 	"math/big"
 	"encoding/base64"
+	"crypto/rsa"
+	"crypto/sha256"
 )
 
 func StartServer() {
@@ -107,14 +109,131 @@ func TheHandler(w http.ResponseWriter, r *http.Request) {
 	case "test25519":
 	case "decryptaes":
 		decryptAESreq(w,r)
-	case "love":
-		w.Write([]byte("Kuba kocha Justynkę"))
-		TestEd()
+	case "striprsa":
+		decryptUnlockKey(w,r)
+	case "decryptsignature":
+		decryptSignature(w,r)
+	case "verifysignature":
+		verifySignature(w,r)
 	default:
 		dumpRequest(w,r)
 	}
 
 }
+
+
+func decryptSignature(wr http.ResponseWriter, req *http.Request) {
+	cred, e := readCerd3(req)
+	if e != nil {
+		fmt.Fprintln(wr,e)
+		return
+	}
+	if cred.Credential.LockKey.Encrypted==true {
+		fmt.Fprintln(wr, "Strip RSA encryption from the lock key first")
+		return
+	}
+	x := new(big.Int)
+	x.SetString(BankEd, 10)
+	bankEdPriv := Tli(x)
+	if cred.IssuerSignatureEncrytpted {
+		//decrypt the signature
+		pbEd, e := ParseEd25519PublicKey(cred.Credential.LockKey.Value)
+		if e != nil {
+			fmt.Fprintln(wr,e)
+			return
+		}
+
+		//Proper private key is 32 bytes privInt + 32 bytes public point
+		mockpriv := make([]byte, 64)
+		copy(mockpriv,bankEdPriv[:])
+		Zero := Tli(big.NewInt(0))
+		ss := EdwardsScalarAddMult(bankEdPriv, pbEd, Zero)
+		ciflock, e := base64.StdEncoding.DecodeString(cred.IssuerSignature)
+		if e != nil {
+			fmt.Fprintln(wr,e)
+			return
+		}
+		hexplainsign, e := DecryptAES(ss[:], ciflock)
+		if e != nil {
+			fmt.Fprintln(wr,e)
+			return
+		}
+		cred.IssuerSignature = string(hexplainsign)
+		cred.IssuerSignatureEncrytpted = false
+		b, _ := json.MarshalIndent(cred, "  ","  ")
+		wr.Write(b)
+
+	} else {
+		fmt.Fprintln(wr, "Signature not encrypted")
+	}
+}
+
+func verifySignature(wr http.ResponseWriter, req *http.Request) {
+	cred, e := readCerd3(req)
+	if e != nil {
+		fmt.Fprintln(wr,e)
+		return
+	}
+	if cred.Credential.LockKey.Encrypted==true {
+		fmt.Fprintln(wr, "Strip RSA encryption from the lock key first")
+		return
+	}
+	var plainsign []byte
+	x := new(big.Int)
+	x.SetString(BankEd, 10)
+	bankEdPriv := Tli(x)
+
+	if cred.IssuerSignatureEncrytpted {
+		//decrypt the signature
+		pbEd, e := ParseEd25519PublicKey(cred.Credential.LockKey.Value)
+		if e != nil {
+			fmt.Fprintln(wr,e)
+			return
+		}
+
+		//Proper private key is 32 bytes privInt + 32 bytes public point
+		mockpriv := make([]byte, 64)
+		copy(mockpriv,bankEdPriv[:])
+		Zero := Tli(big.NewInt(0))
+		ss := EdwardsScalarAddMult(bankEdPriv, pbEd, Zero)
+		ciflock, e := base64.StdEncoding.DecodeString(cred.IssuerSignature)
+		if e != nil {
+			fmt.Fprintln(wr,e)
+			return
+		}
+		hexplainsign, e := DecryptAES(ss[:], ciflock)
+		if e != nil {
+			fmt.Fprintln(wr,e)
+			return
+		}
+		plainsign, e = hex.DecodeString(string(hexplainsign))
+		if e != nil {
+			fmt.Fprintln(wr,e)
+			return
+		}
+
+	} else {
+		plainsign, e = hex.DecodeString(cred.IssuerSignature)
+		if e != nil {
+			fmt.Fprintln(wr,e)
+			return
+		}
+	}
+
+	isPubKey, e := ParseEd25519PublicKey(cred.IssuerPublicKey)
+	if e != nil {
+		fmt.Fprintln(wr,e)
+		return
+	}
+	v, e := sVerify(isPubKey, plainsign, []byte(collectSignString(cred)))
+	if e != nil {
+		fmt.Fprintln(wr,e)
+		return
+	}
+	fmt.Fprintln(wr, "Signature verification:", v )
+
+}
+
 
 func pythonCode (wr http.ResponseWriter, req *http.Request) {
 	b, e := ioutil.ReadFile("aes-gcm-decrypt.py")
@@ -199,52 +318,7 @@ func dumpRequest(wr http.ResponseWriter, req *http.Request) {
 //
 //// Bank private key: 8922796882388619604127911146068705796569681654940873967836428543013949233636
 
-func issueCredentials(w http.ResponseWriter, r *http.Request) {
-	bbuf, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		fmt.Fprintln(w, err)
-		return
 
-	}
-	clreq := new(ClaimRequestType)
-	err = json.Unmarshal(bbuf, clreq)
-	if err != nil {
-		fmt.Fprintln(w,err)
-		return
-	}
-
-	w.Header().Set("Content-Type", "application/json")
-	//cred := CredentialWLock{}
-	cred := CredentialWLockVer2{}
-	cred.Credential.Name = clreq.Name
-	cred.Credential.DID = clreq.DID
-	//TODO validate the type
-	cred.Credential.Type = clreq.Type
-
-	cred.IssuerName = "DUMMY ISSUER - put your name here"
-	//cred.IssuerPublicKey.IssuerPublicKeyX = "53d8775849f6eeea72adb402f64df032641ebc390e12c9fd364bbb521606e712"
-	//cred.IssuerPublicKey.IssuerPublicKeyY = "03152df5be7401f44ac1039cead163203ad0da687c8988c2156535430358c06c"
-	cred.IssuerPublicKey.IssuerPublicKey = "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503"
-
-	cred.Credential.Score.Encrypted = false
-	cred.Credential.Score.Value = "A Plus"
-
-	cred.SubjecSPublicKey = PubRSA
-
-	SignByEd(&cred, BankEd)
-
-	bytes, err := json.Marshal(&cred)
-	if err != nil {
-		fmt.Println(err)
-		w.Write([]byte(fmt.Sprint(err)))
-	}
-	w.Header().Set("Content-type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	w.Write(bytes)
-	fmt.Println(string(bytes))
-
-
-}
 
 func issueCredentials3(w http.ResponseWriter, r *http.Request) {
 	bbuf, err := ioutil.ReadAll(r.Body)
@@ -267,18 +341,40 @@ func issueCredentials3(w http.ResponseWriter, r *http.Request) {
 	cred.Credential.DID = clreq.DID
 	//TODO validate the type
 	cred.Credential.Type = clreq.Type
+	if len(clreq.Value) > 0 {
+		cred.Credential.Value = clreq.Value
+	} else {
+		switch(clreq.Type) {
+		case "Good payer cert":
+			cred.Credential.Value = "Yes"
+		case "Account ownership cert":
+			cred.Credential.Value =  "Owned by "+cred.Credential.Name
+		case "Average account balance cert":
+			cred.Credential.Value = "25000 EUR"
+		}
+	}
 
-	cred.IssuerName = "DUMMY ISSUER - put your name here"
-	//cred.IssuerPublicKey.IssuerPublicKeyX = "53d8775849f6eeea72adb402f64df032641ebc390e12c9fd364bbb521606e712"
-	//cred.IssuerPublicKey.IssuerPublicKeyY = "03152df5be7401f44ac1039cead163203ad0da687c8988c2156535430358c06c"
+	if len(clreq.IssuerName) > 0 {
+		cred.IssuerName = clreq.IssuerName
+	} else {
+		cred.IssuerName = "Santander"
+	}
+
+	if len(clreq.IssuerDID) > 0 {
+		cred.IssuerDID = clreq.IssuerDID
+	} else {
+		cred.IssuerDID = "00042"
+	}
+
 	cred.IssuerPublicKey = "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503"
 	cred.IssuerSignatureEncrytpted = false
 
-	cred.Credential.Value = "A Plus"
+
 
 	cred.SubjecSPublicKey = PubRSA
 
 	SignByEd3(&cred, BankEd)
+
 
 	bytes, err := json.Marshal(&cred)
 	if err != nil {
@@ -294,116 +390,63 @@ func issueCredentials3(w http.ResponseWriter, r *http.Request) {
 }
 
 
-func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 
+
+
+func readCerd3(req *http.Request) ( *CredentialWLockVer3,  error){
 	bbuf, err := ioutil.ReadAll(req.Body)
 	if err != nil {
-		fmt.Fprintln(wr, err)
-		return
-
-	}
-	cred := new(CredentialWLockVer2)
-	err = json.Unmarshal(bbuf, cred)
-	if err != nil {
-		fmt.Fprintln(wr,err)
-		return
-	}
-
-
-	//Parse Customers Public Key
-	rsapub, err := ParseRSAPublicKey(cred.SubjecSPublicKey)
-	if err != nil {
-		wr.WriteHeader(http.StatusBadRequest)
-		fmt.Fprintln(wr, err)
-		fmt.Println(err)
-		return
-	}
-
-
-	hexkey := cred.IssuerPublicKey.IssuerPublicKey
-	becpub, err := ParseEd25519PublicKey(hexkey)
-	//fmt.Println(hex.EncodeToString(becpub[:]),err)
-
-	//TODO Use seed as Ed usually does
-	ephEd25519private := make([]byte, 32)
-	rand.Reader.Read(ephEd25519private)
-	ephEd25519private[0] &=127 //This should work instead of actual MOD
-	//fmt.Println(hex.EncodeToString(ephEd25519private[:]))
-
-	t := new(big.Int)
-	t.SetBytes(ephEd25519private)
-	ephPrivInternal := Tli(t)
-	ephEdpublic := EdwardsScalarMultB(ephPrivInternal)
-
-	//fmt.Println(hex.EncodeToString(ephEdpublic[:]))
-
-	//Shared secret
-	Zero := Tli(big.NewInt(0))
-	ss := EdwardsScalarAddMult(ephPrivInternal, becpub, Zero)
-
-	plaintext := hex.EncodeToString(ephEdpublic[:])
-
-	//Verification
-	//x := new(big.Int)
-	//x.SetString(BankEd, 10)
-	//bankEdPriv := Tli(x)
-	//ss2 := EdwardsScalarAddMult(bankEdPriv, ephEdpublic, Zero)
-	//plaintext2 := hex.EncodeToString(ss2[:])
-	//fmt.Println("a",plaintext)
-	//fmt.Println("b", plaintext2)
-
-
-	ciphertext, _ := EncryptWithRSAKey(plaintext, rsapub)
-	b64ciphertext := base64.StdEncoding.EncodeToString(ciphertext)
-
-	cred.Credential.LockKey.Encrypted=true
-	cred.Credential.LockKey.Value=b64ciphertext
-
-	//TODO: Handle different block types, do not assume len(ss)==32
-	scorebytes, err := EncryptAES(ss[:], cred.Credential.Score.Value)
-	if err != nil {
-		wr.WriteHeader(http.StatusBadRequest)
-		fmt.Fprintln(wr, err)
-		fmt.Println(err)
-		return
-	}
-	score64base := base64.StdEncoding.EncodeToString(scorebytes)
-
-	cred.Credential.Score.Encrypted=true
-	cred.Credential.Score.Value = score64base
-
-	ncred, err := json.MarshalIndent(&cred, "  ", "  " )
-	if err != nil {
-		wr.WriteHeader(http.StatusBadRequest)
-		fmt.Fprintln(wr, err)
-		fmt.Println(err)
-		return
-	}
-	wr.Header().Set("Content-type", "application/json")
-	wr.Header().Set("SymAlg", "AES-256-GCM" )
-	wr.Header().Add("SymKey", hex.EncodeToString(ss[:]))
-	wr.Header().Add("Enclave-Ed25519-private", fmt.Sprintf("%x", t) )
-	wr.Header().Add("IV", hex.EncodeToString(scorebytes[0:12]))
-	wr.Header().Add("ScoreBytes", hex.EncodeToString([]byte(cred.Credential.Score.Value)))
-	wr.WriteHeader(http.StatusOK)
-	wr.Write(ncred)
-
-
-
-
-
-}
-
-func encryptCredentialsSignature (wr http.ResponseWriter, req *http.Request) {
-
-	bbuf, err := ioutil.ReadAll(req.Body)
-	if err != nil {
-		fmt.Fprintln(wr, err)
-		return
+		return nil, err
 
 	}
 	cred := new(CredentialWLockVer3)
 	err = json.Unmarshal(bbuf, cred)
+	if err != nil {
+		return nil, err
+	}
+	return cred, nil
+}
+
+func decryptUnlockKey(w http.ResponseWriter, req *http.Request) {
+	cred , e := readCerd3(req)
+	if e != nil {
+		fmt.Fprintln(w, e)
+		return
+	}
+	privrsa, e := parseRSAPrivKeyPEM(PrivRSA)
+	if e != nil {
+		fmt.Fprintln(w,e)
+		return
+	}
+	stripRSA(cred, privrsa)
+	b, e := json.MarshalIndent(cred, "  ", "  ")
+	if e != nil {
+		fmt.Fprintln(w,e)
+		return
+	}
+	w.Write(b)
+	return
+}
+
+
+func stripRSA(cred *CredentialWLockVer3, privrsa *rsa.PrivateKey) error {
+	if !cred.Credential.LockKey.Encrypted {
+		return fmt.Errorf("Lock key not encrypted")
+	}
+	ct, e := base64.StdEncoding.DecodeString(cred.Credential.LockKey.Value)
+	if e!= nil {
+		return e
+	}
+	b, e := rsa.DecryptOAEP(sha256.New(), rand.Reader, privrsa, ct, []byte(RSA_ENCR_LABEL))
+	cred.Credential.LockKey.Encrypted=false
+	cred.Credential.LockKey.Value = string(b)
+	return nil
+}
+
+func encryptCredentialsSignature (wr http.ResponseWriter, req *http.Request) {
+
+
+	cred, err := readCerd3(req)
 	if err != nil {
 		fmt.Fprintln(wr,err)
 		return
@@ -493,9 +536,6 @@ func encryptCredentialsSignature (wr http.ResponseWriter, req *http.Request) {
 
 }
 
-func stripRSA(ver3 *CredentialWLockVer3) {
-	
-}
 
 
 
