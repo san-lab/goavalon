@@ -44,23 +44,37 @@ def generateFromSeed(seed):
     dig64 = h.digest()
 
     #clamp
+    dig64_barray = bytearray(dig64)
 
-    dig64[0] &= 248
-	dig64[31] &= 127
-	dig64[31] |= 64
+    dig64_barray[0] &= 248
+    dig64_barray[31] &= 127
+    dig64_barray[31] |= 64
 
-	dint = int.from_bytes(dig64[:32], "big")
+    bytes_d64 = bytes(dig64_barray)
 
-	pubPoint = cv.mul_point(dint,g)
-	privkey = seed + cv.encode_point(pubPoint)
+    dint = int.from_bytes(bytes_d64[:32], "little")
+
+    pubPoint = cv.mul_point(dint,g)
+    privkey = seed + cv.encode_point(pubPoint)
+
+    return privkey
 
 
 
 
-IssuerPublicKey = "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503"
-IssuerSignature = "acd34a616765820fe6c57ff1ddcbcbed55667e141b99aa2e86f723e16060407a260bc1b4e61e0d763f025550ede2f65e2f87d348adfc9da9b81ded7d33f62008"
-Message =  "Przemek"+"333"+"Average account balance cert"+"25001 EUR"+"0042"
+#IssuerPublicKey = "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503"
+#IssuerSignature = "acd34a616765820fe6c57ff1ddcbcbed55667e141b99aa2e86f723e16060407a260bc1b4e61e0d763f025550ede2f65e2f87d348adfc9da9b81ded7d33f62008"
+#Message =  "Przemek"+"333"+"Average account balance cert"+"25001 EUR"+"0042"
+#
+#v = verify(Message, IssuerPublicKey, IssuerSignature)
+#print("Signature valid:", v)
 
-v = verify(Message, IssuerPublicKey, IssuerSignature)
-print("Signature valid:", v)
+seed = bytes([0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x02])
+privkey = generateFromSeed(seed)
+privKey_bytes = bytes(privkey)
+privKey_hex = privKey_bytes.hex()
+print(privkey[:32])
+print(privkey[32:])
+print(privKey_hex)
+
 
