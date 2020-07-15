@@ -1,0 +1,498 @@
+49xMkaJuEVdkyY/Upob1CQzCH23nez0+wzWCCCIuheKh9vymjZ61qC4MjZHAWgSmvmc3A==\\\\", \\\\"ias_report_signing_certificate\\\\": \\\\"--[1150/1150$
+RTIFICATE-----\\\\\\\\nMIIEoTCCAwmgAwIBAgIJANEHdl0yo7CWMA0GCSqGSIb3DQEBCwUAMH4xCzAJBgNV\\\\\\\\nBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwLU2
+FudGEgQ2xhcmExGjAYBgNV\\\\\\\\nBAoMEUludGVsIENvcnBvcmF0aW9uMTAwLgYDVQQDDCdJbnRlbCBTR1ggQXR0ZXN0\\\\\\\\nYXRpb24gUmVwb3J0IFNpZ25pbmcgQ0EwHh
+cNMTYxMTIyMDkzNjU4WhcNMjYxMTIw\\\\\\\\nMDkzNjU4WjB7MQswCQYDVQQGEwJVUzELMAkGA1UECAwCQ0ExFDASBgNVBAcMC1Nh\\\\\\\\nbnRhIENsYXJhMRowGAYDVQQKDB
+FJbnRlbCBDb3Jwb3JhdGlvbjEtMCsGA1UEAwwk\\\\\\\\nSW50ZWwgU0dYIEF0dGVzdGF0aW9uIFJlcG9ydCBTaWduaW5nMIIBIjANBgkqhkiG\\\\\\\\n9w0BAQEFAAOCAQ8AMI
+IBCgKCAQEAqXot4OZuphR8nudFrAFiaGxxkgma/Es/BA+t\\\\\\\\nbeCTUR106AL1ENcWA4FX3K+E9BBL0/7X5rj5nIgX/R/1ubhkKWw9gfqPG3KeAtId\\\\\\\\ncv/uTO1yXv
+50vqaPvE1CRChvzdS/ZEBqQ5oVvLTPZ3VEicQjlytKgN9cLnxbwtuv\\\\\\\\nLUK7eyRPfJW/ksddOzP8VBBniolYnRCD2jrMRZ8nBM2ZWYwnXnwYeOAHV+W9tOhA\\\\\\\\nIm
+wRwKF/95yAsVwd21ryHMJBcGH70qLagZ7Ttyt++qO/6+KAXJuKwZqjRlEtSEz8\\\\\\\\ngZQeFfVYgcwSfo96oSMAzVr7V0L6HSDLRnpb6xxmbPdqNol4tQIDAQABo4GkMIGh\\\
+\\\\\nMB8GA1UdIwQYMBaAFHhDe3amfrzQr35CN+s1fDuHAVE8MA4GA1UdDwEB/wQEAwIG\\\\\\\\nwDAMBgNVHRMBAf8EAjAAMGAGA1UdHwRZMFcwVaBToFGGT2h0dHA6Ly90cnV
+zdGVk\\\\\\\\nc2VydmljZXMuaW50ZWwuY29tL2NvbnRlbnQvQ1JML1NHWC9BdHRlc3RhdGlvblJl\\\\\\\\ncG9ydFNpZ25pbmdDQS5jcmwwDQYJKoZIhvcNAQELBQADggGBAGc
+IthtcK9IVRz4r\\\\\\\\nRq+ZKE+7k50/OxUsmW8aavOzKb0iCx07YQ9rzi5nU73tME2yGRLzhSViFs/LpFa9\\\\\\\\nlpQL6JL1aQwmDR74TxYGBAIi5f4I5TJoCCEqRHz91kp
+G6Uvyn2tLmnIdJbPE4vYv\\\\\\\\nWLrtXXfFBSSPD4Afn7+3/XUggAlc7oCTizOfbbtOFlYA4g5KcYgS1J2ZAeMQqbUd\\\\\\\\nZseZCcaZZZn65tdqee8UXZlDvx0+NdO0LR+
+5pFy+juM0wWbu59MvzcmTXbjsi7HY\\\\\\\\n6zd53Yq5K244fwFHRQ8eOB0IWB+4PfM7FeAApZvlfqlKOlLcZL2uyVmzRkyR5yW7\\\\\\\\n2uo9mehX44CiPJ2fse9Y6eQtcfE
+hMPkmHXI01sN+KwPbpA39+xOsStjhP9N1Y1a2\\\\\\\\ntQAVo+yVgLgV2Hws73Fc0o3wC78qPEA+v2aRs/Be3ZFDgDyghc/1fgU+7C+P6kbq\\\\\\\\nd4poyb6IW8KCJbxfMJv
+kordNOgOUUxndPHEi/tb/U7uLjLOgPA==\\\\\\\\n-----END CERTIFICATE-----\\\\\\\\n-----BEGIN CERTIFICATE-----\\\\\\\\nMIIFSzCCA7OgAwIBAgIJANEHdl0yo7CUMA0GCSqGSIb3DQEBCwUAMH4xCzAJBgNV\\\\\\\\nBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwLU2FudGEgQ2xhcmExGjAYBgNV\\\\\\\\nBAoMEUludGVsIENvc$
+BvcmF0aW9uMTAwLgYDVQQDDCdJbnRlbCBTR1ggQXR0ZXN0\\\\\\\\nYXRpb24gUmVwb3J0IFNpZ25pbmcgQ0EwIBcNMTYxMTE0MTUzNzMxWhgPMjA0OTEy\\\\\\\\nMzEyMzU5N$
+laMH4xCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwL\\\\\\\\nU2FudGEgQ2xhcmExGjAYBgNVBAoMEUludGVsIENvcnBvcmF0aW9uMTAwLgYDVQQD\\\\\\\\nD$
+dJbnRlbCBTR1ggQXR0ZXN0YXRpb24gUmVwb3J0IFNpZ25pbmcgQ0EwggGiMA0G\\\\\\\\nCSqGSIb3DQEBAQUAA4IBjwAwggGKAoIBgQCfPGR+tXc8u1EtJzLA10Feu1Wg+p7e\\$
+\\\\\nLmSRmeaCHbkQ1TF3Nwl3RmpqXkeGzNLd69QUnWovYyVSndEMyYc3sHecGgfinEeh\\\\\\\\nrgBJSEdsSJ9FpaFdesjsxqzGRa20PYdnnfWcCTvFoulpbFR4VBuXnnVLVz$
+UvlXT\\\\\\\\nL/TAnd8nIZk0zZkFJ7P5LtePvykkar7LcSQO85wtcQe0R1Raf/sQ6wYKaKmFgCGe\\\\\\\\nNpEJUmg4ktal4qgIAxk+QHUxQE42sxViN5mqglB0QJdUot/o9a$
+V/mMeH8KvOAiQ\\\\\\\\nbyinkNndn+Bgk5sSV5DFgF0DffVqmVMblt5p3jPtImzBIH0QQrXJq39AT8cRwP5H\\\\\\\\nafuVeLHcDsRp6hol4P+ZFIhu8mmbI1u0hH3W/0C2Bu$
+XB5PC+5izFFh/nP0lc2Lf\\\\\\\\n6rELO9LZdnOhpL1ExFOq9H/B8tPQ84T3Sgb4nAifDabNt/zu6MmCGo5U8lwEFtGM\\\\\\\\nRoOaX4AS+909x00lYnmtwsDVWv9vBiJCXR$CAwEAAaOByTCBxjBgBgNVHR8EWTBX\\\\\\\\nMFWgU6BRhk9odHRwOi8vdHJ1c3RlZHNlcnZpY2VzLmludGVsLmNvbS9jb250ZW50\\\\\\\\nL0NSTC9TR1gvQXR0ZXN0YXRpb2$
+SZXBvcnRTaWduaW5nQ0EuY3JsMB0GA1UdDgQW\\\\\\\\nBBR4Q3t2pn680K9+QjfrNXw7hwFRPDAfBgNVHSMEGDAWgBR4Q3t2pn680K9+Qjfr\\\\\\\\nNXw7hwFRPDAOBgNVHQ$
+BAf8EBAMCAQYwEgYDVR0TAQH/BAgwBgEB/wIBADANBgkq\\\\\\\\nhkiG9w0BAQsFAAOCAYEAeF8tYMXICvQqeXYQITkV2oLJsp6J4JAqJabHWxYJHGir\\\\\\\\nIEqucRiJSS$
++HjIJEUVaj8E0QjEud6Y5lNmXlcjqRXaCPOqK0eGRz6hi+ripMtPZ\\\\\\\\nsFNaBwLQVV905SDjAzDzNIDnrcnXyB4gcDFCvwDFKKgLRjOB/WAqgscDUoGq5ZVi\\\\\\\\nzL$
+zTqiQPmULAQaB9c6Oti6snEFJiCQ67JLyW/E83/frzCmO5Ru6WjU4tmsmy8Ra\\\\\\\\nUd4APK0wZTGtfPXU7w+IBdG5Ez0kE1qzxGQaL4gINJ1zMyleDnbuS8UicjJijvqA\\\$
+\\\\n152Sq049ESDz+1rRGc2NVEqh1KaGXmtXvqxXcTB+Ljy5Bw2ke0v8iGngFBPqCTVB\\\\\\\\n3op5KBG3RjbF6RRSzwzuWfL7QErNC8WEy5yDVARzTA5+xmBc388v9Dm21HG$
+cC8O\\\\\\\\nDD+gT9sSpssq0ascmvH49MOgjt1yoysLtdCtJW/9FZpoOypaHx0R+mJTLwPXVMrv\\\\\\\\nDaVzWh5aiEx+idkSGMnX\\\\\\\\n-----END CERTIFICATE--$
+--\\\\\\\\n\\\\"}", "encryptionKey": "-----BEGIN RSA PUBLIC KEY-----\\\\nMIIBCgKCAQEAo8FVRyEjDjL17LSrX78QGEWQGe01Q3xElQM0lybcvVVVvw71vhRZ$\\\nSraPU/uj4vdFgLFTUnhcX5oQZ4IJTbzj7Kr4EmM3DvLD1ojlVUyu6HmfA8bLHTeo\\\\noGuO/X2CzID0vVyw71DlVvjjh+GTnqioXZ+PFA5vc1we3J0oBClfY+CramxCLUQo$
+\\\nvccLgDb4ZE9P7wmOsFSIoUZPlcDTHV2vRV6C9qMPf3EyTQjq7L6Q2TzHCpR/EFQf\\\\n2iPh1TkpC87yD+CASVFgWiuWrpiX2ubnle6rJEoSwsW1YfT9+9SajPBer5KUqFEj$
+\\\ntKLD/FSIRex6/U7ZsO2dF+EknLfMRoIJnQIDAQAB\\\\n-----END RSA PUBLIC KEY-----\\\\n", "encryptionKeySignature": "MEQCIExeREYDfzvaKHa84QWJm$
+4YlGMQ12gcep9HRG4ygGdHAiBM5j2Ff/FIZ8Ygm1jI2rgjsnR1S+lHLg1SAWyuBy7IJw=="}}, "status": 1}'                                                  
+avalon-lmdb                   | 2020-04-23 19:27:07,690 - INFO - Received a new request from the client                                   
+avalon-lmdb                   | 2020-04-23 19:27:07,690 - INFO - b'G\nwo-timestamps\n0x1731af09740d1fee'                                  
+avalon-lmdb                   | 2020-04-23 19:27:07,690 - INFO - ['G', 'wo-timestamps', '0x1731af09740d1fee']                             
+avalon-lmdb                   | 2020-04-23 19:27:07,690 - INFO - response[text/plain; charset=utf-8]: b'n'                                
+avalon-lmdb                   | 2020-04-23 19:27:07,691 - INFO - Received a new request from the client                                   
+avalon-lmdb                   | 2020-04-23 19:27:07,691 - INFO - b'S\nwo-timestamps\n0x1731af09740d1fee\n1587670027.6905565'              
+avalon-lmdb                   | 2020-04-23 19:27:07,691 - INFO - ['S', 'wo-timestamps', '0x1731af09740d1fee', '1587670027.6905565']       
+avalon-lmdb                   | 2020-04-23 19:27:07,691 - INFO - response[text/plain; charset=utf-8]: b't'                                
+avalon-lmdb                   | 2020-04-23 19:27:07,692 - INFO - Received a new request from the client
+avalon-lmdb                   | 2020-04-23 19:27:07,692 - INFO - b'S\nwo-requests\n0x1731af09740d1fee\n{"jsonrpc": "2.0", "method": "WorkO
+rderSubmit", "id": 13, "params": {"responseTimeoutMSecs": 6000, "payloadFormat": "JSON-RPC", "resultUri": "resulturi", "notifyUri": "noti$
+yuri", "workOrderId": "0x1731af09740d1fee", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236", "workloadId": 
+"6563686f2d726573756c74", "requesterId": "0x3456", "dataEncryptionAlgorithm": "AES-GCM-256", "encryptedSessionKey": "0abc69c04a2ffc05330b$
+b79ce5d8b0b98640f7518ae2e8e4a3205b1eae43b51f113382c1825736a56f954db7efc963d90b5edeb441bbc0ac212b3f17b3514c90debd9756f99b2ab841418c1b355dc$
+b4b7771f2fb1f117e9e4fdc3ad9bf568de1e20af332a10fdc76d924b7a3dbce36386fd7b0ceb393d2d43f639e617b3dce3995f64579c3c7cb8b7cea8dbb959117f787883e$
+741710a22c841a0dd3cb342107786dbbe3ff0155687bb4a944f07fc5eb755b6100455c1d7a9eeeebf776bfefcd00da11e0876e2d53a48196c80238e2d968e8c041774dce6$
+7efcd52c96e7b357c816ef03aef6ea0c415a9e0c44c15b43dbd2b363126f49aa399ca3daa52f4", "sessionKeyIv": "14beda9a08dac61373faca23", "requesterNon$
+e": "ZLxmrmAvzvMTdqMXH3s+E8suir6vhY+UTCfZzHvULHw=", "encryptedRequestHash": "1653623a32a6fe812ee0ccc0a8a154d4561530298051583f04cca8af68b3$
+a005af2fc3350390af6ca44205c643e4e5a", "requesterSignature": "MEUCIQCeLp5QQij7rA1rCWuadzi1/6OZBgtVXBKY20NnnNRS2wIgSsykybgDJduL1t6tYC26rUMP$
+vNPSdNKxrS7rrffG9I=", "inData": [{"index": 1, "data": "Q6KL975T/76SXDg7/dN7wQtSmDwroV04kLUm", "encryptedDataEncryptionKey": "", "iv": ""}$, "outData": [{"index": 0, "data": "", "encryptedDataEncryptionKey": "", "iv": ""}], "verifyingKey": "-----BEGIN PUBLIC KEY-----\\\\nMFYw$
+AYHKoZIzj0CAQYFK4EEAAoDQgAEMEFFvxIjTmfn7zD57PZVMbnHIwYW9FbQ\\\\nD+XuI15nISTlJl9i0Ews0AGxD6WpBzWkxenZB2zvtpqGvyqYjj+F9g==\\\\n-----END PUB$
+IC KEY-----\\\\n"}}'                                                                                                                      
+avalon-lmdb                   | 2020-04-23 19:27:07,692 - INFO - ['S', 'wo-requests', '0x1731af09740d1fee', '{"jsonrpc": "2.0", "method":
+"WorkOrderSubmit", "id": 13, "params": {"responseTimeoutMSecs": 6000, "payloadFormat": "JSON-RPC", "resultUri": "resulturi", "notifyUri":
+"notifyuri", "workOrderId": "0x1731af09740d1fee", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236", "workloa
+dId": "6563686f2d726573756c74", "requesterId": "0x3456", "dataEncryptionAlgorithm": "AES-GCM-256", "encryptedSessionKey": "0abc69c04a2ffc0
+5330b7b79ce5d8b0b98640f7518ae2e8e4a3205b1eae43b51f113382c1825736a56f954db7efc963d90b5edeb441bbc0ac212b3f17b3514c90debd9756f99b2ab841418c1b
+355dcdb4b7771f2fb1f117e9e4fdc3ad9bf568de1e20af332a10fdc76d924b7a3dbce36386fd7b0ceb393d2d43f639e617b3dce3995f64579c3c7cb8b7cea8dbb959117f78
+7883e0741710a22c841a0dd3cb342107786dbbe3ff0155687bb4a944f07fc5eb755b6100455c1d7a9eeeebf776bfefcd00da11e0876e2d53a48196c80238e2d968e8c04177
+4dce677efcd52c96e7b357c816ef03aef6ea0c415a9e0c44c15b43dbd2b363126f49aa399ca3daa52f4", "sessionKeyIv": "14beda9a08dac61373faca23", "request
+erNonce": "ZLxmrmAvzvMTdqMXH3s+E8suir6vhY+UTCfZzHvULHw=", "encryptedRequestHash": "1653623a32a6fe812ee0ccc0a8a154d4561530298051583f04cca8a
+f68b3ea005af2fc3350390af6ca44205c643e4e5a", "requesterSignature": "MEUCIQCeLp5QQij7rA1rCWuadzi1/6OZBgtVXBKY20NnnNRS2wIgSsykybgDJduL1t6tYC2
+6rUMP7vNPSdNKxrS7rrffG9I=", "inData": [{"index": 1, "data": "Q6KL975T/76SXDg7/dN7wQtSmDwroV04kLUm", "encryptedDataEncryptionKey": "", "iv"
+: ""}], "outData": [{"index": 0, "data": "", "encryptedDataEncryptionKey": "", "iv": ""}], "verifyingKey": "-----BEGIN PUBLIC KEY-----\\nM
+FYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEMEFFvxIjTmfn7zD57PZVMbnHIwYW9FbQ\\nD+XuI15nISTlJl9i0Ews0AGxD6WpBzWkxenZB2zvtpqGvyqYjj+F9g==\\n-----END PUBL
+IC KEY-----\\n"}}']
+avalon-lmdb                   | 2020-04-23 19:27:07,692 - INFO - response[text/plain; charset=utf-8]: b't'
+avalon-lmdb                   | 2020-04-23 19:27:07,694 - INFO - Received a new request from the client
+avalon-lmdb                   | 2020-04-23 19:27:07,694 - INFO - b'S\nwo-scheduled\n0x1731af09740d1fee\n{"jsonrpc": "2.0", "method": "Work
+OrderSubmit", "id": 13, "params": {"responseTimeoutMSecs": 6000, "payloadFormat": "JSON-RPC", "resultUri": "resulturi", "notifyUri": "noti
+fyuri", "workOrderId": "0x1731af09740d1fee", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236", "workloadId":
+ "6563686f2d726573756c74", "requesterId": "0x3456", "dataEncryptionAlgorithm": "AES-GCM-256", "encryptedSessionKey": "0abc69c04a2ffc05330b
+7b79ce5d8b0b98640f7518ae2e8e4a3205b1eae43b51f113382c1825736a56f954db7efc963d90b5edeb441bbc0ac212b3f17b3514c90debd9756f99b2ab841418c1b355dc
+db4b7771f2fb1f117e9e4fdc3ad9bf568de1e20af332a10fdc76d924b7a3dbce36386fd7b0ceb393d2d43f639e617b3dce3995f64579c3c7cb8b7cea8dbb959117f787883e
+0741710a22c841a0dd3cb342107786dbbe3ff0155687bb4a944f07fc5eb755b6100455c1d7a9eeeebf776bfefcd00da11e0876e2d53a48196c80238e2d968e8c041774dce6
+77efcd52c96e7b357c816ef03aef6ea0c415a9e0c44c15b43dbd2b363126f49aa399ca3daa52f4", "sessionKeyIv": "14beda9a08dac61373faca23", "requesterNon
+ce": "ZLxmrmAvzvMTdqMXH3s+E8suir6vhY+UTCfZzHvULHw=", "encryptedRequestHash": "1653623a32a6fe812ee0ccc0a8a154d4561530298051583f04cca8af68b3
+ea005af2fc3350390af6ca44205c643e4e5a", "requesterSignature": "MEUCIQCeLp5QQij7rA1rCWuadzi1/6OZBgtVXBKY20NnnNRS2wIgSsykybgDJduL1t6tYC26rUMP
+7vNPSdNKxrS7rrffG9I=", "inData": [{"index": 1, "data": "Q6KL975T/76SXDg7/dN7wQtSmDwroV04kLUm", "encryptedDataEncryptionKey": "", "iv": ""}
+], "outData": [{"index": 0, "data": "", "encryptedDataEncryptionKey": "", "iv": ""}], "verifyingKey": "-----BEGIN PUBLIC KEY-----\\\\nMFYw
+EAYHKoZIzj0CAQYFK4EEAAoDQgAEMEFFvxIjTmfn7zD57PZVMbnHIwYW9FbQ\\\\nD+XuI15nISTlJl9i0Ews0AGxD6WpBzWkxenZB2zvtpqGvyqYjj+F9g==\\\\n-----END PUB
+LIC KEY-----\\\\n"}}'
+
+avalon-lmdb                   | 2020-04-23 19:27:07,694 - INFO - ['S', 'wo-scheduled', '0x1731af09740d1fee', '{"jsonrpc": "2.0", "method":
+ "WorkOrderSubmit", "id": 13, "params": {"responseTimeoutMSecs": 6000, "payloadFormat": "JSON-RPC", "resultUri": "resulturi", "notifyUri":
+ "notifyuri", "workOrderId": "0x1731af09740d1fee", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236", "worklo
+adId": "6563686f2d726573756c74", "requesterId": "0x3456", "dataEncryptionAlgorithm": "AES-GCM-256", "encryptedSessionKey": "0abc69c04a2ffc
+05330b7b79ce5d8b0b98640f7518ae2e8e4a3205b1eae43b51f113382c1825736a56f954db7efc963d90b5edeb441bbc0ac212b3f17b3514c90debd9756f99b2ab841418c1
+b355dcdb4b7771f2fb1f117e9e4fdc3ad9bf568de1e20af332a10fdc76d924b7a3dbce36386fd7b0ceb393d2d43f639e617b3dce3995f64579c3c7cb8b7cea8dbb959117f7
+87883e0741710a22c841a0dd3cb342107786dbbe3ff0155687bb4a944f07fc5eb755b6100455c1d7a9eeeebf776bfefcd00da11e0876e2d53a48196c80238e2d968e8c0417
+74dce677efcd52c96e7b357c816ef03aef6ea0c415a9e0c44c15b43dbd2b363126f49aa399ca3daa52f4", "sessionKeyIv": "14beda9a08dac61373faca23", "reques
+terNonce": "ZLxmrmAvzvMTdqMXH3s+E8suir6vhY+UTCfZzHvULHw=", "encryptedRequestHash": "1653623a32a6fe812ee0ccc0a8a154d4561530298051583f04cca8
+af68b3ea005af2fc3350390af6ca44205c643e4e5a", "requesterSignature": "MEUCIQCeLp5QQij7rA1rCWuadzi1/6OZBgtVXBKY20NnnNRS2wIgSsykybgDJduL1t6tYC
+26rUMP7vNPSdNKxrS7rrffG9I=", "inData": [{"index": 1, "data": "Q6KL975T/76SXDg7/dN7wQtSmDwroV04kLUm", "encryptedDataEncryptionKey": "", "iv
+": ""}], "outData": [{"index": 0, "data": "", "encryptedDataEncryptionKey": "", "iv": ""}], "verifyingKey": "-----BEGIN PUBLIC KEY-----\\n
+MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEMEFFvxIjTmfn7zD57PZVMbnHIwYW9FbQ\\nD+XuI15nISTlJl9i0Ews0AGxD6WpBzWkxenZB2zvtpqGvyqYjj+F9g==\\n-----END PUB
+LIC KEY-----\\n"}}']
+avalon-lmdb                   | 2020-04-23 19:27:07,694 - INFO - response[text/plain; charset=utf-8]: b't'
+avalon-listener               | [19:27:07 INFO    avalon_listener.tcs_listener] response[application/json]: {"error": {"code": 5, "message
+": "Work order is computing. Please query for WorkOrderGetResult                 to view the result", "data": {"workOrderId": "0x1731af097
+40d1fee"}}, "id": 13, "jsonrpc": "2.0"}
+avalon-listener               | [19:27:07 INFO    avalon_listener.tcs_listener] Received a new request from the client
+avalon-listener               | [19:27:07 INFO    avalon_listener.tcs_listener] Received request: WorkOrderGetResult
+
+valon-lmdb                   | 2020-04-23 19:27:13,280 - INFO - b'G\nwo-requests\n0x1731af09740d1fee'                                    
+avalon-lmdb                   | 2020-04-23 19:27:13,280 - INFO - ['G', 'wo-requests', '0x1731af09740d1fee']                               
+avalon-lmdb                   | 2020-04-23 19:27:13,280 - INFO - response[text/plain; charset=utf-8]: b'v\n{"jsonrpc": "2.0", "method": "W
+orkOrderSubmit", "id": 13, "params": {"responseTimeoutMSecs": 6000, "payloadFormat": "JSON-RPC", "resultUri": "resulturi", "notifyUri": "n
+otifyuri", "workOrderId": "0x1731af09740d1fee", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236", "workloadI
+d": "6563686f2d726573756c74", "requesterId": "0x3456", "dataEncryptionAlgorithm": "AES-GCM-256", "encryptedSessionKey": "0abc69c04a2ffc05330b7b79ce5d8b0b98640f7518ae2e8e4a3205b1eae43b51f113382c1825736a56f954db7efc963d90b5edeb441bbc0ac212b3f17b3514c90debd9756f99b2ab841418c1b35
+5dcdb4b7771f2fb1f117e9e4fdc3ad9bf568de1e20af332a10fdc76d924b7a3dbce36386fd7b0ceb393d2d43f639e617b3dce3995f64579c3c7cb8b7cea8dbb959117f7878
+83e0741710a22c841a0dd3cb342107786dbbe3ff0155687bb4a944f07fc5eb755b6100455c1d7a9eeeebf776bfefcd00da11e0876e2d53a48196c80238e2d968e8c041774d
+ce677efcd52c96e7b357c816ef03aef6ea0c415a9e0c44c15b43dbd2b363126f49aa399ca3daa52f4", "sessionKeyIv": "14beda9a08dac61373faca23", "requester
+Nonce": "ZLxmrmAvzvMTdqMXH3s+E8suir6vhY+UTCfZzHvULHw=", "encryptedRequestHash": "1653623a32a6fe812ee0ccc0a8a154d4561530298051583f04cca8af6
+8b3ea005af2fc3350390af6ca44205c643e4e5a", "requesterSignature": "MEUCIQCeLp5QQij7rA1rCWuadzi1/6OZBgtVXBKY20NnnNRS2wIgSsykybgDJduL1t6tYC26r
+UMP7vNPSdNKxrS7rrffG9I=", "inData": [{"index": 1, "data": "Q6KL975T/76SXDg7/dN7wQtSmDwroV04kLUm", "encryptedDataEncryptionKey": "", "iv": 
+""}], "outData": [{"index": 0, "data": "", "encryptedDataEncryptionKey": "", "iv": ""}], "verifyingKey": "-----BEGIN PUBLIC KEY-----\\\\nM
+FYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEMEFFvxIjTmfn7zD57PZVMbnHIwYW9FbQ\\\\nD+XuI15nISTlJl9i0Ews0AGxD6WpBzWkxenZB2zvtpqGvyqYjj+F9g==\\\\n-----END 
+PUBLIC KEY-----\\\\n"}}'                                                                                                                  
+avalon-sgx-enclave-manager    | [19:27:13 INFO    avalon_enclave_manager.enclave_manager] Create workorder entry 0x1731af09740d1fee in wo-
+processing table                                                                                                                          
+avalon-lmdb                   | 2020-04-23 19:27:13,282 - INFO - Received a new request from the client
+
+avalon-lmdb                   | 2020-04-23 19:27:13,291 - INFO - Received a new request from the client
+avalon-lmdb                   | 2020-04-23 19:27:13,291 - INFO - b'S\nwo-responses\n0x1731af09740d1fee\n{\\n    "jsonrpc": "2.0",\\n    "i
+d": 13,\\n    "result": {\\n        "workOrderId": "0x1731af09740d1fee",\\n        "workloadId": "6563686f2d726573756c74",\\n        "work
+erId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236",\\n        "requesterId": "0x3456",\\n        "workerNonce": "Yt
+2bGn/k8xeAV4vQrQwRFC1PJi++UAmY2+Rlz33JkCU=",\\n        "workerSignature": "MEUCIQC+ZAxisjjNy6m0PyOEDCUiRcCw81wZZSF7vAhu+Oq3KwIgVS6t9xnqNi+
+9doy03kgkpgpnxbOxkAJETfxJT74Iz2o=",\\n        "outData": [\\n            {\\n                "index": 0,\\n                "dataHash": "E0
+113F4FAB50D8417C52C296C9999A949D5A180D6C48CCF82F4CD24844861922",\\n                "data": "WYK0zp0nsvGoVTDRCiiZOKIGH80DvaeRaG62uo0hBZ9lJN
+w=",\\n                "encryptedDataEncryptionKey": "",\\n                "iv": ""\\n            }\\n        ]\\n    }\\n}'
+avalon-lmdb                   | 2020-04-23 19:27:13,291 - INFO - ['S', 'wo-responses', '0x1731af09740d1fee', '{\n    "jsonrpc": "2.0",\n
+  "id": 13,\n    "result": {\n        "workOrderId": "0x1731af09740d1fee",\n        "workloadId": "6563686f2d726573756c74",\n        "work
+erId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236",\n        "requesterId": "0x3456",\n        "workerNonce": "Yt2b
+Gn/k8xeAV4vQrQwRFC1PJi++UAmY2+Rlz33JkCU=",\n        "workerSignature": "MEUCIQC+ZAxisjjNy6m0PyOEDCUiRcCw81wZZSF7vAhu+Oq3KwIgVS6t9xnqNi+9do
+y03kgkpgpnxbOxkAJETfxJT74Iz2o=",\n        "outData": [\n            {\n                "index": 0,\n                "dataHash": "E0113F4FA
+B50D8417C52C296C9999A949D5A180D6C48CCF82F4CD24844861922",\n                "data": "WYK0zp0nsvGoVTDRCiiZOKIGH80DvaeRaG62uo0hBZ9lJNw=",\n
+              "encryptedDataEncryptionKey": "",\n                "iv": ""\n            }\n        ]\n    }\n}']
+avalon-lmdb                   | 2020-04-23 19:27:13,291 - INFO - response[text/plain; charset=utf-8]: b't'
+avalon-sgx-enclave-manager    | [19:27:13 INFO    avalon_enclave_manager.enclave_manager] Delete workorder entry 0x1731af09740d1fee from w
+o-processing table
+avalon-lmdb                   | 2020-04-23 19:27:13,292 - INFO - Received a new request from the client
+avalon-lmdb                   | 2020-04-23 19:27:13,292 - INFO - b'R\nwo-processing\n0x1731af09740d1fee'
+avalon-lmdb                   | 2020-04-23 19:27:13,292 - INFO - ['R', 'wo-processing', '0x1731af09740d1fee']
+
+avalon-lmdb                   | 2020-04-23 19:27:13,719 - INFO - ['G', 'wo-responses', '0x1731af09740d1fee']
+avalon-lmdb                   | 2020-04-23 19:27:13,719 - INFO - response[text/plain; charset=utf-8]: b'v\n{\\n    "jsonrpc": "2.0",\\n
+ "id": 13,\\n    "result": {\\n        "workOrderId": "0x1731af09740d1fee",\\n        "workloadId": "6563686f2d726573756c74",\\n        "w
+orkerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236",\\n        "requesterId": "0x3456",\\n        "workerNonce":
+"Yt2bGn/k8xeAV4vQrQwRFC1PJi++UAmY2+Rlz33JkCU=",\\n        "workerSignature": "MEUCIQC+ZAxisjjNy6m0PyOEDCUiRcCw81wZZSF7vAhu+Oq3KwIgVS6t9xnq
+Ni+9doy03kgkpgpnxbOxkAJETfxJT74Iz2o=",\\n        "outData": [\\n            {\\n                "index": 0,\\n                "dataHash":
+"E0113F4FAB50D8417C52C296C9999A949D5A180D6C48CCF82F4CD24844861922",\\n                "data": "WYK0zp0nsvGoVTDRCiiZOKIGH80DvaeRaG62uo0hBZ9
+lJNw=",\\n                "encryptedDataEncryptionKey": "",\\n                "iv": ""\\n            }\\n        ]\\n    }\\n}'
+avalon-listener               | [19:27:13 INFO    avalon_listener.tcs_listener] response[application/json]: {"result": {"workOrderId": "0x
+1731af09740d1fee", "workloadId": "6563686f2d726573756c74", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236",
+ "requesterId": "0x3456", "workerNonce": "Yt2bGn/k8xeAV4vQrQwRFC1PJi++UAmY2+Rlz33JkCU=", "workerSignature": "MEUCIQC+ZAxisjjNy6m0PyOEDCUiR
+cCw81wZZSF7vAhu+Oq3KwIgVS6t9xnqNi+9doy03kgkpgpnxbOxkAJETfxJT74Iz2o=", "outData": [{"index": 0, "dataHash": "E0113F4FAB50D8417C52C296C9999A
+949D5A180D6C48CCF82F4CD24844861922", "data": "WYK0zp0nsvGoVTDRCiiZOKIGH80DvaeRaG62uo0hBZ9lJNw=", "encryptedDataEncryptionKey": "", "iv": "
+"}]}, "id": 13, "jsonrpc": "2.0"}
+
+avalon-lmdb                   | 2020-04-23 19:27:16,728 - INFO - response[text/plain; charset=utf-8]: b'v\n{"workerType": 1, "o[1054/1303]
+Id": "aabbcc1234ddeeff", "applicationTypeId": "11aa22bb33cc44dd", "details": {"workOrderSyncUri": "http://localhost:8080", "workOrderAsync
+Uri": "http://localhost:8080", "workOrderPullUri": "http://localhost:8080", "workOrderNotifyUri": "http://localhost:8080", "receiptInvoca$
+ionUri": "http://localhost:8080", "workOrderInvocationAddress": "", "receiptInvocationAddress": "", "fromAddress": "", "hashingAlgorithm"$
+ "SHA-256", "signingAlgorithm": "SECP256K1", "keyEncryptionAlgorithm": "RSA-OAEP-3072", "dataEncryptionAlgorithm": "AES-GCM-256", "workOr$
+erPayloadFormats": "JSON-RPC", "workerTypeData": {"verificationKey": "-----BEGIN PUBLIC KEY-----\\\\nMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEsuvI$
+gGU6uhfmGpYgXYa3NP0Lts+DLa0\\\\nDgsx6bFmIc81zP74NOPUsxNrXZRrxj1rN3svfF6Sxd3uu1hPp8v6/A==\\\\n-----END PUBLIC KEY-----\\\\n", "extendedMea$
+urements": ["F8D5BD4E90E4121B34C2B2012BF9F3BF00000000000000000000000000000000", "0828031EEBACC5D5708EB0739875BC477429D43A59C73D6C1C7282D2$
+5213551"], "proofDataType": "TEE-SGX-IAS", "proofData": "{\\\\"verification_report\\\\": \\\\"{\\\\\\\\\\\\"nonce\\\\\\\\\\\\":\\\\\\\\\\$
+\"B3AFBA8487A4E971\\\\\\\\\\\\",\\\\\\\\\\\\"id\\\\\\\\\\\\":\\\\\\\\\\\\"337632410718193205931992760596379056765\\\\\\\\\\\\",\\\\\\\\\\$
+\"timestamp\\\\\\\\\\\\":\\\\\\\\\\\\"2020-04-23T18:39:01.054331\\\\\\\\\\\\",\\\\\\\\\\\\"version\\\\\\\\\\\\":3,\\\\\\\\\\\\"epidPseudo$
+ym\\\\\\\\\\\\":\\\\\\\\\\\\"PAQHbZR86uqn+ZAXqY5goeboXOv1X6YRj8KduqI5V67N+4D8mFBkBjeADY1TC0NNiQZE4XRuOHBQUzPFgZma6yvB7lX0Ng5cfyijiU4ZbVit$
+L5ggAmXO3nJJ1yHHqpNPMbvNBp5J6wb1YRpelqdRRTcJKnY/LcS2Fp0+jRoW44=\\\\\\\\\\\\",\\\\\\\\\\\\"isvEnclaveQuoteStatus\\\\\\\\\\\\":\\\\\\\\\\\\$
+GROUP_OUT_OF_DATE\\\\\\\\\\\\",\\\\\\\\\\\\"platformInfoBlob\\\\\\\\\\\\":\\\\\\\\\\\\"1502006504000600000E0E0204018007000000000000000000$
+B00000B000000020000000000000B7D725577DFFD52FD214441E1AC2E5AF82A45922C9AB1327DAEF483C949F1219037D7D71613C66C9F07896B0FA8DC6BE5F3CBF5B19A52$
+207BAB8676615C1F731DA\\\\\\\\\\\\",\\\\\\\\\\\\"isvEnclaveQuoteBody\\\\\\\\\\\\":\\\\\\\\\\\\"AgABAH0LAAAKAAkAAAAAAPjVvU6Q5BIbNMKyASv5878$
+AAAAAAAAAAAAAAAAAAAADw8CBf+ABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAAAAAAAAAHAAAAAAAAAAgoAx7rrMXVcI6wc5h1vEd0KdQ6Wcc9b$
+xygtIFITVRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7Ryaae5BWb3+/TCo9JWRRdAFNy7uMM/nLzOY8W74pNQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA$
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOeQAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA$
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACfynL5oB7LwTgsBytNUFr6vJ+zKmsQNLDykJJKg+miaQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\\\\\\\\\\\"}\\\\"$
+ \\\\"ias_report_signature\\\\": \\\\"ctbJi0/Y3UD4JUtePOT8zoyh8KBHCK9VH2dcKdRSzmLYaNr7aUT/C4dUZdn/QkSGxgm8gnDOK2LNb1MAsZ4Z296C6nt/0whQf+h$
+xlUFeu1/EVMeULmGIxafeE0GdNXOypj2hcOv+njK3F830C7SrQEysGxQnbPSc55hGylH1XI6H9uHJlOsIimva4h2ZMiUBMi1p16LIc5hG2WTcOpfhmEwOkEUW/H3q8O0W2MhFSorK$
+1uN63N4LmoG64tElyV2vhhW3ejJVX80PVXz49xMkaJuEVdkyY/Upob1CQzCH23nez0+wzWCCCIuheKh9vymjZ61qC4MjZHAWgSmvmc3A==\\\\", \\\\"ias_report_signing_$
+ertificate\\\\": \\\\"-----BEGIN CERTIFICATE-----\\\\\\\\nMIIEoTCCAwmgAwIBAgIJANEHdl0yo7CWMA0GCSqGSIb3DQEBCwUAMH4xCzAJBgNV\\\\\\\\nBAYTAl$
+TMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwLU2FudGEgQ2xhcmExGjAYBgNV\\\\\\\\nBAoMEUludGVsIENvcnBvcmF0aW9uMTAwLgYDVQQDDCdJbnRlbCBTR1ggQXR0ZXN0\\\\\\\$
+nYXRpb24gUmVwb3J0IFNpZ25pbmcgQ0EwHhcNMTYxMTIyMDkzNjU4WhcNMjYxMTIw\\\\\\\\nMDkzNjU4WjB7MQswCQYDVQQGEwJVUzELMAkGA1UECAwCQ0ExFDASBgNVBAcMC1N$
+\\\\\\\\nbnRhIENsYXJhMRowGAYDVQQKDBFJbnRlbCBDb3Jwb3JhdGlvbjEtMCsGA1UEAwwk\\\\\\\\nSW50ZWwgU0dYIEF0dGVzdGF0aW9uIFJlcG9ydCBTaWduaW5nMIIBIjA$
+BgkqhkiG\\\\\\\\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqXot4OZuphR8nudFrAFiaGxxkgma/Es/BA+t\\\\\\\\nbeCTUR106AL1ENcWA4FX3K+E9BBL0/7X5rj5nIgX/R/1ubh$
+KWw9gfqPG3KeAtId\\\\\\\\ncv/uTO1yXv50vqaPvE1CRChvzdS/ZEBqQ5oVvLTPZ3VEicQjlytKgN9cLnxbwtuv\\\\\\\\nLUK7eyRPfJW/ksddOzP8VBBniolYnRCD2jrMRZ8$
+BM2ZWYwnXnwYeOAHV+W9tOhA\\\\\\\\nImwRwKF/95yAsVwd21ryHMJBcGH70qLagZ7Ttyt++qO/6+KAXJuKwZqjRlEtSEz8\\\\\\\\ngZQeFfVYgcwSfo96oSMAzVr7V0L6HSD$
+Rnpb6xxmbPdqNol4tQIDAQABo4GkMIGh\\\\\\\\nMB8GA1UdIwQYMBaAFHhDe3amfrzQr35CN+s1fDuHAVE8MA4GA1UdDwEB/wQEAwIG\\\\\\\\nwDAMBgNVHRMBAf8EAjAAMGA$
+A1UdHwRZMFcwVaBToFGGT2h0dHA6Ly90cnVzdGVk\\\\\\\\nc2VydmljZXMuaW50ZWwuY29tL2NvbnRlbnQvQ1JML1NHWC9BdHRlc3RhdGlvblJl\\\\\\\\ncG9ydFNpZ25pbmd$
+QS5jcmwwDQYJKoZIhvcNAQELBQADggGBAGcIthtcK9IVRz4r\\\\\\\\nRq+ZKE+7k50/OxUsmW8aavOzKb0iCx07YQ9rzi5nU73tME2yGRLzhSViFs/LpFa9\\\\\\\\nlpQL6JL$
+aQwmDR74TxYGBAIi5f4I5TJoCCEqRHz91kpG6Uvyn2tLmnIdJbPE4vYv\\\\\\\\nWLrtXXfFBSSPD4Afn7+3/XUggAlc7oCTizOfbbtOFlYA4g5KcYgS1J2ZAeMQqbUd\\\\\\\\$
+ZseZCcaZZZn65tdqee8UXZlDvx0+NdO0LR+5pFy+juM0wWbu59MvzcmTXbjsi7HY\\\\\\\\n6zd53Yq5K244fwFHRQ8eOB0IWB+4PfM7FeAApZvlfqlKOlLcZL2uyVmzRkyR5yW7$
+\\\\\\\n2uo9mehX44CiPJ2fse9Y6eQtcfEhMPkmHXI01sN+KwPbpA39+xOsStjhP9N1Y1a2\\\\\\\\ntQAVo+yVgLgV2Hws73Fc0o3wC78qPEA+v2aRs/Be3ZFDgDyghc/1fgU+$
+C+P6kbq\\\\\\\\nd4poyb6IW8KCJbxfMJvkordNOgOUUxndPHEi/tb/U7uLjLOgPA==\\\\\\\\n-----END CERTIFICATE-----\\\\\\\\n-----BEGIN CERTIFICATE----$
+\\\\\\\\nMIIFSzCCA7OgAwIBAgIJANEHdl0yo7CUMA0GCSqGSIb3DQEBCwUAMH4xCzAJBgNV\\\\\\\\nBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwLU2FudGEgQ2xhcmE$
+GjAYBgNV\\\\\\\\nBAoMEUludGVsIENvcnBvcmF0aW9uMTAwLgYDVQQDDCdJbnRlbCBTR1ggQXR0ZXN0\\\\\\\\nYXRpb24gUmVwb3J0IFNpZ25pbmcgQ0EwIBcNMTYxMTE0MTU$
+NzMxWhgPMjA0OTEy\\\\\\\\nMzEyMzU5NTlaMH4xCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwL\\\\\\\\nU2FudGEgQ2xhcmExGjAYBgNVBAoMEUludGVsIEN$
+cnBvcmF0aW9uMTAwLgYDVQQD\\\\\\\\nDCdJbnRlbCBTR1ggQXR0ZXN0YXRpb24gUmVwb3J0IFNpZ25pbmcgQ0EwggGiMA0G\\\\\\\\nCSqGSIb3DQEBAQUAA4IBjwAwggGKAoI$
+gQCfPGR+tXc8u1EtJzLA10Feu1Wg+p7e\\\\\\\\nLmSRmeaCHbkQ1TF3Nwl3RmpqXkeGzNLd69QUnWovYyVSndEMyYc3sHecGgfinEeh\\\\\\\\nrgBJSEdsSJ9FpaFdesjsxqz$
+Ra20PYdnnfWcCTvFoulpbFR4VBuXnnVLVzkUvlXT\\\\\\\\nL/TAnd8nIZk0zZkFJ7P5LtePvykkar7LcSQO85wtcQe0R1Raf/sQ6wYKaKmFgCGe\\\\\\\\nNpEJUmg4ktal4qg$
+Axk+QHUxQE42sxViN5mqglB0QJdUot/o9a/V/mMeH8KvOAiQ\\\\\\\\nbyinkNndn+Bgk5sSV5DFgF0DffVqmVMblt5p3jPtImzBIH0QQrXJq39AT8cRwP5H\\\\\\\\nafuVeLH$
+DsRp6hol4P+ZFIhu8mmbI1u0hH3W/0C2BuYXB5PC+5izFFh/nP0lc2Lf\\\\\\\\n6rELO9LZdnOhpL1ExFOq9H/B8tPQ84T3Sgb4nAifDabNt/zu6MmCGo5U8lwEFtGM\\\\\\\\$
+RoOaX4AS+909x00lYnmtwsDVWv9vBiJCXRsCAwEAAaOByTCBxjBgBgNVHR8EWTBX\\\\\\\\nMFWgU6BRhk9odHRwOi8vdHJ1c3RlZHNlcnZpY2VzLmludGVsLmNvbS9jb250ZW50$
+\\\\\\\nL0NSTC9TR1gvQXR0ZXN0YXRpb25SZXBvcnRTaWduaW5nQ0EuY3JsMB0GA1UdDgQW\\\\\\\\nBBR4Q3t2pn680K9+QjfrNXw7hwFRPDAfBgNVHSMEGDAWgBR4Q3t2pn68$
+K9+Qjfr\\\\\\\\nNXw7hwFRPDAOBgNVHQ8BAf8EBAMCAQYwEgYDVR0TAQH/BAgwBgEB/wIBADANBgkq\\\\\\\\nhkiG9w0BAQsFAAOCAYEAeF8tYMXICvQqeXYQITkV2oLJsp6J$
+JAqJabHWxYJHGir\\\\\\\\nIEqucRiJSSx+HjIJEUVaj8E0QjEud6Y5lNmXlcjqRXaCPOqK0eGRz6hi+ripMtPZ\\\\\\\\nsFNaBwLQVV905SDjAzDzNIDnrcnXyB4gcDFCvwDF$
+KgLRjOB/WAqgscDUoGq5ZVi\\\\\\\\nzLUzTqiQPmULAQaB9c6Oti6snEFJiCQ67JLyW/E83/frzCmO5Ru6WjU4tmsmy8Ra\\\\\\\\nUd4APK0wZTGtfPXU7w+IBdG5Ez0kE1qz$
+GQaL4gINJ1zMyleDnbuS8UicjJijvqA\\\\\\\\n152Sq049ESDz+1rRGc2NVEqh1KaGXmtXvqxXcTB+Ljy5Bw2ke0v8iGngFBPqCTVB\\\\\\\\n3op5KBG3RjbF6RRSzwzuWfL7$
+ErNC8WEy5yDVARzTA5+xmBc388v9Dm21HGfcC8O\\\\\\\\nDD+gT9sSpssq0ascmvH49MOgjt1yoysLtdCtJW/9FZpoOypaHx0R+mJTLwPXVMrv\\\\\\\\nDaVzWh5aiEx+idkS$
+MnX\\\\\\\\n-----END CERTIFICATE-----\\\\\\\\n\\\\"}", "encryptionKey": "-----BEGIN RSA PUBLIC KEY-----\\\\nMIIBCgKCAQEAo8FVRyEjDjL17LSrX7
+8QGEWQGe01Q3xElQM0lybcvVVVvw71vhRZ\\\\nSraPU/uj4vdFgLFTUnhcX5oQZ4IJTbzj7Kr4EmM3DvLD1ojlVUyu6HmfA8bLHTeo\\\\noGuO/X2CzID0vVyw71DlVvjjh+GTnq
+ioXZ+PFA5vc1we3J0oBClfY+CramxCLUQo\\\\nvccLgDb4ZE9P7wmOsFSIoUZPlcDTHV2vRV6C9qMPf3EyTQjq7L6Q2TzHCpR/EFQf\\\\n2iPh1TkpC87yD+CASVFgWiuWrpiX2u
+bnle6rJEoSwsW1YfT9+9SajPBer5KUqFEj\\\\ntKLD/FSIRex6/U7ZsO2dF+EknLfMRoIJnQIDAQAB\\\\n-----END RSA PUBLIC KEY-----\\\\n", "encryptionKeySign
+ature": "MEQCIExeREYDfzvaKHa84QWJm94YlGMQ12gcep9HRG4ygGdHAiBM5j2Ff/FIZ8Ygm1jI2rgjsnR1S+lHLg1SAWyuBy7IJw=="}}, "status": 1}'
+
+
+avalon-lmdb                   | 2020-04-23 19:27:16,732 - INFO - b'S\nwo-requests\n0x33addc135c748df2\n{"jsonrpc": "2.0", "method": "WorkO
+rderSubmit", "id": 14, "params": {"responseTimeoutMSecs": 6000, "payloadFormat": "JSON-RPC", "resultUri": "resulturi", "notifyUri": "notif
+yuri", "workOrderId": "0x33addc135c748df2", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236", "workloadId":
+"68656172742d646973656173652d6576616c", "requesterId": "0x3456", "dataEncryptionAlgorithm": "AES-GCM-256", "encryptedSessionKey": "094a4db
+9d4e8e0c45d6dd6c75f62377a054ff4dadcca3eb87177cbb862706111146669a5b3b06df26361d48d7b12b9931c02f52898113d7e75fb1677e616627c89925a7771ced3e95
+b603f512111194333c737a56358107fca8245cf57cab7acc6781414d73579ac001109d6e195bc622f995673aaf5cfafa62aab3bf2353fd76d1ea307c1c32cb0203682adc01
+f611f88418eda896c7c0f11ed9062513ec8c2e7ed4d4df618c044392f293339477ad4b1e8d8d2ec5137328c64ba2afe781b96bd39f1b93c2df3fe1b2a6774820012ee6cb63
+9d26f3bbe5f31a6b20d226b3fc0e1072c5942326f2b96b851c5ce0c34184a3d3c61653e39313e12e83bbaeb5928", "sessionKeyIv": "18ea72a61e890e69dda367a9",
+"requesterNonce": "MPcem8Yeh3oXr9NrU/vnXbR4cAe3yml935d4a+ed1F4=", "encryptedRequestHash": "24b77f13e7e0031440a8bdd692e93326520f2002b6a2721
+bcbb769a49becab9a79dcb1a87004ef5e22fe5b925b225f37", "requesterSignature": "MEQCIFP4D/qiQ2zqKy5fgkaLVn1y+I8G6HbOkOpKjDXTMUS+AiAGCuKIJ4PAn4R
+SCPFlhTBuRG9Fr+Ya4MkQa+v5WHQjwA==", "inData": [{"index": 1, "data": "SGVhcnQgZGlzZWFzZSBldmFsdWF0aW9uIGRhdGE6IDMyIDEgMSAxNTYgIDEzMiAxMjUgM
+SA5NSAgMSAwIDEgMSAzIDE=", "encryptedDataEncryptionKey": "-", "iv": ""}], "verifyingKey": "-----BEGIN PUBLIC KEY-----\\\\nMFYwEAYHKoZIzj0CA
+QYFK4EEAAoDQgAEMEFFvxIjTmfn7zD57PZVMbnHIwYW9FbQ\\\\nD+XuI15nISTlJl9i0Ews0AGxD6WpBzWkxenZB2zvtpqGvyqYjj+F9g==\\\\n-----END PUBLIC KEY-----\
+\\\n"}}'
+avalon-lmdb                   | 2020-04-23 19:27:16,732 - INFO - ['S', 'wo-requests', '0x33addc135c748df2', '{"jsonrpc": "2.0", "method":
+"WorkOrderSubmit", "id": 14, "params": {"responseTimeoutMSecs": 6000, "payloadFormat": "JSON-RPC", "resultUri": "resulturi", "notifyUri":
+"notifyuri", "workOrderId": "0x33addc135c748df2", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236", "workloa
+dId": "68656172742d646973656173652d6576616c", "requesterId": "0x3456", "dataEncryptionAlgorithm": "AES-GCM-256", "encryptedSessionKey": "0
+94a4db9d4e8e0c45d6dd6c75f62377a054ff4dadcca3eb87177cbb862706111146669a5b3b06df26361d48d7b12b9931c02f52898113d7e75fb1677e616627c89925a7771c
+ed3e95b603f512111194333c737a56358107fca8245cf57cab7acc6781414d73579ac001109d6e195bc622f995673aaf5cfafa62aab3bf2353fd76d1ea307c1c32cb020368
+2adc01f611f88418eda896c7c0f11ed9062513ec8c2e7ed4d4df618c044392f293339477ad4b1e8d8d2ec5137328c64ba2afe781b96bd39f1b93c2df3fe1b2a6774820012e
+e6cb639d26f3bbe5f31a6b20d226b3fc0e1072c5942326f2b96b851c5ce0c34184a3d3c61653e39313e12e83bbaeb5928", "sessionKeyIv": "18ea72a61e890e69dda36
+7a9", "requesterNonce": "MPcem8Yeh3oXr9NrU/vnXbR4cAe3yml935d4a+ed1F4=", "encryptedRequestHash": "24b77f13e7e0031440a8bdd692e93326520f2002b
+6a2721bcbb769a49becab9a79dcb1a87004ef5e22fe5b925b225f37", "requesterSignature": "MEQCIFP4D/qiQ2zqKy5fgkaLVn1y+I8G6HbOkOpKjDXTMUS+AiAGCuKIJ
+4PAn4RSCPFlhTBuRG9Fr+Ya4MkQa+v5WHQjwA==", "inData": [{"index": 1, "data": "SGVhcnQgZGlzZWFzZSBldmFsdWF0aW9uIGRhdGE6IDMyIDEgMSAxNTYgIDEzMiA
+xMjUgMSA5NSAgMSAwIDEgMSAzIDE=", "encryptedDataEncryptionKey": "-", "iv": ""}], "verifyingKey": "-----BEGIN PUBLIC KEY-----\\nMFYwEAYHKoZIz
+j0CAQYFK4EEAAoDQgAEMEFFvxIjTmfn7zD57PZVMbnHIwYW9FbQ\\nD+XuI15nISTlJl9i0Ews0AGxD6WpBzWkxenZB2zvtpqGvyqYjj+F9g==\\n-----END PUBLIC KEY-----\
+\n"}}']
+avalon-lmdb                   | 2020-04-23 19:27:16,732 - INFO - response[text/plain; charset=utf-8]: b't'
+
+avalon-lmdb                   | 2020-04-23 19:27:16,733 - INFO - Received a new request from the client
+avalon-lmdb                   | 2020-04-23 19:27:16,733 - INFO - b'S\nwo-scheduled\n0x33addc135c748df2\n{"jsonrpc": "2.0", "method": "WorkOrderSubmit", "id": 14, "params": {"responseTimeoutMSecs": 6000, "payloadFormat": "JSON-RPC", "resultUri": "resulturi", "notifyUri": "no
+tifyuri", "workOrderId": "0x33addc135c748df2", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236", "workloadId": "68656172742d646973656173652d6576616c", "requesterId": "0x3456", "dataEncryptionAlgorithm": "AES-GCM-256", "encryptedSessionKey": "09
+4a4db9d4e8e0c45d6dd6c75f62377a054ff4dadcca3eb87177cbb862706111146669a5b3b06df26361d48d7b12b9931c02f52898113d7e75fb1677e616627c89925a7771ced3e95b603f512111194333c737a56358107fca8245cf57cab7acc6781414d73579ac001109d6e195bc622f995673aaf5cfafa62aab3bf2353fd76d1ea307c1c32cb02036
+82adc01f611f88418eda896c7c0f11ed9062513ec8c2e7ed4d4df618c044392f293339477ad4b1e8d8d2ec5137328c64ba2afe781b96bd39f1b93c2df3fe1b2a6774820012ee6cb639d26f3bbe5f31a6b20d226b3fc0e1072c5942326f2b96b851c5ce0c34184a3d3c61653e39313e12e83bbaeb5928", "sessionKeyIv": "18ea72a61e890e69dd
+a367a9", "requesterNonce": "MPcem8Yeh3oXr9NrU/vnXbR4cAe3yml935d4a+ed1F4=", "encryptedRequestHash": "24b77f13e7e0031440a8bdd692e93326520f2002b6a2721bcbb769a49becab9a79dcb1a87004ef5e22fe5b925b225f37", "requesterSignature": "MEQCIFP4D/qiQ2zqKy5fgkaLVn1y+I8G6HbOkOpKjDXTMUS+AiAG
+CuKIJ4PAn4RSCPFlhTBuRG9Fr+Ya4MkQa+v5WHQjwA==", "inData": [{"index": 1, "data": "SGVhcnQgZGlzZWFzZSBldmFsdWF0aW9uIGRhdGE6IDMyIDEgMSAxNTYgIDEzMiAxMjUgMSA5NSAgMSAwIDEgMSAzIDE=", "encryptedDataEncryptionKey": "-", "iv": ""}], "verifyingKey": "-----BEGIN PUBLIC KEY-----\\\\nMFYw
+EAYHKoZIzj0CAQYFK4EEAAoDQgAEMEFFvxIjTmfn7zD57PZVMbnHIwYW9FbQ\\\\nD+XuI15nISTlJl9i0Ews0AGxD6WpBzWkxenZB2zvtpqGvyqYjj+F9g==\\\\n-----END PUBLIC KEY-----\\\\n"}}'
+avalon-lmdb                   | 2020-04-23 19:27:16,733 - INFO - ['S', 'wo-scheduled', '0x33addc135c748df2', '{"jsonrpc": "2.0", "method": "WorkOrderSubmit", "id": 14, "params": {"responseTimeoutMSecs": 6000, "payloadFormat": "JSON-RPC", "resultUri": "resulturi", "notifyUri
+": "notifyuri", "workOrderId": "0x33addc135c748df2", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236", "workloadId": "68656172742d646973656173652d6576616c", "requesterId": "0x3456", "dataEncryptionAlgorithm": "AES-GCM-256", "encryptedSessionKey
+": "094a4db9d4e8e0c45d6dd6c75f62377a054ff4dadcca3eb87177cbb862706111146669a5b3b06df26361d48d7b12b9931c02f52898113d7e75fb1677e616627c89925a7771ced3e95b603f512111194333c737a56358107fca8245cf57cab7acc6781414d73579ac001109d6e195bc622f995673aaf5cfafa62aab3bf2353fd76d1ea307c1c32c
+b0203682adc01f611f88418eda896c7c0f11ed9062513ec8c2e7ed4d4df618c044392f293339477ad4b1e8d8d2ec5137328c64ba2afe781b96bd39f1b93c2df3fe1b2a6774820012ee6cb639d26f3bbe5f31a6b20d226b3fc0e1072c5942326f2b96b851c5ce0c34184a3d3c61653e39313e12e83bbaeb5928", "sessionKeyIv": "18ea72a61e89
+0e69dda367a9", "requesterNonce": "MPcem8Yeh3oXr9NrU/vnXbR4cAe3yml935d4a+ed1F4=", "encryptedRequestHash": "24b77f13e7e0031440a8bdd692e93326520f2002b6a2721bcbb769a49becab9a79dcb1a87004ef5e22fe5b925b225f37", "requesterSignature": "MEQCIFP4D/qiQ2zqKy5fgkaLVn1y+I8G6HbOkOpKjDXTMU
+S+AiAGCuKIJ4PAn4RSCPFlhTBuRG9Fr+Ya4MkQa+v5WHQjwA==", "inData": [{"index": 1, "data": "SGVhcnQgZGlzZWFzZSBldmFsdWF0aW9uIGRhdGE6IDMyIDEgMSAxNTYgIDEzMiAxMjUgMSA5NSAgMSAwIDEgMSAzIDE=", "encryptedDataEncryptionKey": "-", "iv": ""}], "verifyingKey": "-----BEGIN PUBLIC KEY-----\\n
+MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEMEFFvxIjTmfn7zD57PZVMbnHIwYW9FbQ\\nD+XuI15nISTlJl9i0Ews0AGxD6WpBzWkxenZB2zvtpqGvyqYjj+F9g==\\n-----END PU
+BLIC KEY-----\\n"}}']
+avalon-lmdb                   | 2020-04-23 19:27:16,733 - INFO - response[text/plain; charset=utf-8]: b't'
+avalon-listener               | [19:27:16 INFO    avalon_listener.tcs_listener] response[application/json]: {"error": {"code": 5, "messag
+e": "Work order is computing. Please query for WorkOrderGetResult                 to view the result", "data": {"workOrderId": "0x33addc135c748df2"}}, "id": 14, "jsonrpc": "2.0"}
+avalon-listener               | [19:27:16 INFO    avalon_listener.tcs_listener] Received a new request from the client
+avalon-listener               | [19:27:16 INFO    avalon_listener.tcs_listener] Received request: WorkOrderGetResult
+avalon-lmdb                   | 2020-04-23 19:27:16,737 - INFO - Received a new request from the client
+avalon-lmdb                   | 2020-04-23 19:27:16,737 - INFO - b'G\nwo-responses\n0x33addc135c748df2'
+
+avalon-lmdb                   | 2020-04-23 19:27:23,298 - INFO - ['G', 'wo-requests', '0x33addc135c748df2']
+avalon-lmdb                   | 2020-04-23 19:27:23,298 - INFO - response[text/plain; charset=utf-8]: b'v\n{"jsonrpc": "2.0", "method": "
+WorkOrderSubmit", "id": 14, "params": {"responseTimeoutMSecs": 6000, "payloadFormat": "JSON-RPC", "resultUri": "resulturi", "notifyUri":
+"notifyuri", "workOrderId": "0x33addc135c748df2", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236", "worklo
+adId": "68656172742d646973656173652d6576616c", "requesterId": "0x3456", "dataEncryptionAlgorithm": "AES-GCM-256", "encryptedSessionKey":
+"094a4db9d4e8e0c45d6dd6c75f62377a054ff4dadcca3eb87177cbb862706111146669a5b3b06df26361d48d7b12b9931c02f52898113d7e75fb1677e616627c89925a77
+71ced3e95b603f512111194333c737a56358107fca8245cf57cab7acc6781414d73579ac001109d6e195bc622f995673aaf5cfafa62aab3bf2353fd76d1ea307c1c32cb02
+03682adc01f611f88418eda896c7c0f11ed9062513ec8c2e7ed4d4df618c044392f293339477ad4b1e8d8d2ec5137328c64ba2afe781b96bd39f1b93c2df3fe1b2a677482
+0012ee6cb639d26f3bbe5f31a6b20d226b3fc0e1072c5942326f2b96b851c5ce0c34184a3d3c61653e39313e12e83bbaeb5928", "sessionKeyIv": "18ea72a61e890e6
+9dda367a9", "requesterNonce": "MPcem8Yeh3oXr9NrU/vnXbR4cAe3yml935d4a+ed1F4=", "encryptedRequestHash": "24b77f13e7e0031440a8bdd692e9332652
+0f2002b6a2721bcbb769a49becab9a79dcb1a87004ef5e22fe5b925b225f37", "requesterSignature": "MEQCIFP4D/qiQ2zqKy5fgkaLVn1y+I8G6HbOkOpKjDXTMUS+A
+iAGCuKIJ4PAn4RSCPFlhTBuRG9Fr+Ya4MkQa+v5WHQjwA==", "inData": [{"index": 1, "data": "SGVhcnQgZGlzZWFzZSBldmFsdWF0aW9uIGRhdGE6IDMyIDEgMSAxNT
+YgIDEzMiAxMjUgMSA5NSAgMSAwIDEgMSAzIDE=", "encryptedDataEncryptionKey": "-", "iv": ""}], "verifyingKey": "-----BEGIN PUBLIC KEY-----\\\\nM
+FYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEMEFFvxIjTmfn7zD57PZVMbnHIwYW9FbQ\\\\nD+XuI15nISTlJl9i0Ews0AGxD6WpBzWkxenZB2zvtpqGvyqYjj+F9g==\\\\n-----END
+ PUBLIC KEY-----\\\\n"}}'
+avalon-sgx-enclave-manager    | [19:27:23 INFO    avalon_enclave_manager.enclave_manager] Create workorder entry 0x33addc135c748df2 in wo
+-processing table
+avalon-sgx-enclave-manager    | [19:27:23 INFO    avalon_enclave_manager.enclave_manager] Delete workorder entry 0x33addc135c748df2 from
+wo-scheduled table
+
+avalon-lmdb                   | 2020-04-23 19:27:23,307 - INFO - Received a new request from the client
+avalon-lmdb                   | 2020-04-23 19:27:23,307 - INFO - b'S\nwo-responses\n0x33addc135c748df2\n{\\n    "jsonrpc": "2.0",\\n    "
+id": 14,\\n    "result": {\\n        "workOrderId": "0x33addc135c748df2",\\n        "workloadId": "68656172742d646973656173652d6576616c",
+\\n        "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236",\\n        "requesterId": "0x3456",\\n        "
+workerNonce": "ZB3zs/JEzxODxQ54q6iuv4mJ8LKgz1W0oILofjXZt3A=",\\n        "workerSignature": "MEUCIQCRdjb4GnAQ50dKOspsKKFpLGStsaTf17PsCCM/H
+obxZwIgFew75b54zhr2kpddEhGIKb5fVj969ZNwkUbg+WXWRyY=",\\n        "outData": [\\n            {\\n                "index": 0,\\n
+    "dataHash": "19251373195E8EFAF30287B5F1A8C9C683E8AF1784A2580FDB818B60D8FDAA7B",\\n                "data": "RXJyb3Igd2l0aCBtaXNzaW5nIG
+9yIGluY29ycmVjdCBpbnB1dCBmb3JtYXQ=",\\n                "encryptedDataEncryptionKey": "-",\\n                "iv": ""\\n            }\\n
+      ]\\n    }\\n}'
+avalon-lmdb                   | 2020-04-23 19:27:23,307 - INFO - ['S', 'wo-responses', '0x33addc135c748df2', '{\n    "jsonrpc": "2.0",\n
+   "id": 14,\n    "result": {\n        "workOrderId": "0x33addc135c748df2",\n        "workloadId": "68656172742d646973656173652d6576616c"
+,\n        "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236",\n        "requesterId": "0x3456",\n        "wo
+rkerNonce": "ZB3zs/JEzxODxQ54q6iuv4mJ8LKgz1W0oILofjXZt3A=",\n        "workerSignature": "MEUCIQCRdjb4GnAQ50dKOspsKKFpLGStsaTf17PsCCM/Hobx
+ZwIgFew75b54zhr2kpddEhGIKb5fVj969ZNwkUbg+WXWRyY=",\n        "outData": [\n            {\n                "index": 0,\n                "da
+taHash": "19251373195E8EFAF30287B5F1A8C9C683E8AF1784A2580FDB818B60D8FDAA7B",\n                "data": "RXJyb3Igd2l0aCBtaXNzaW5nIG9yIGluY2
+9ycmVjdCBpbnB1dCBmb3JtYXQ=",\n                "encryptedDataEncryptionKey": "-",\n                "iv": ""\n            }\n        ]\n
+ }\n}']
+avalon-lmdb                   | 2020-04-23 19:27:23,307 - INFO - response[text/plain; charset=utf-8]: b't'
+avalon-sgx-enclave-manager    | [19:27:23 INFO    avalon_enclave_manager.enclave_manager] Delete workorder entry 0x33addc135c748df2 from
+wo-processing table
+avalon-lmdb                   | 2020-04-23 19:27:23,308 - INFO - Received a new request from the client
+
+avalon-lmdb                   | 2020-04-23 19:27:25,766 - INFO - response[text/plain; charset=utf-8]: b'v\n{\\n    "jsonrpc": "2.0",\\n
+  "id": 14,\\n    "result": {\\n        "workOrderId": "0x33addc135c748df2",\\n        "workloadId": "68656172742d646973656173652d6576616
+c",\\n        "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236",\\n        "requesterId": "0x3456",\\n
+  "workerNonce": "ZB3zs/JEzxODxQ54q6iuv4mJ8LKgz1W0oILofjXZt3A=",\\n        "workerSignature": "MEUCIQCRdjb4GnAQ50dKOspsKKFpLGStsaTf17PsCC
+M/HobxZwIgFew75b54zhr2kpddEhGIKb5fVj969ZNwkUbg+WXWRyY=",\\n        "outData": [\\n            {\\n                "index": 0,\\n
+       "dataHash": "19251373195E8EFAF30287B5F1A8C9C683E8AF1784A2580FDB818B60D8FDAA7B",\\n                "data": "RXJyb3Igd2l0aCBtaXNzaW5
+nIG9yIGluY29ycmVjdCBpbnB1dCBmb3JtYXQ=",\\n                "encryptedDataEncryptionKey": "-",\\n                "iv": ""\\n            }\\
+n        ]\\n    }\\n}'
+avalon-listener               | [19:27:25 INFO    avalon_listener.tcs_listener] response[application/json]: {"result": {"workOrderId": "0
+x33addc135c748df2", "workloadId": "68656172742d646973656173652d6576616c", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1
+d8ec432681d236", "requesterId": "0x3456", "workerNonce": "ZB3zs/JEzxODxQ54q6iuv4mJ8LKgz1W0oILofjXZt3A=", "workerSignature": "MEUCIQCRdjb4
+GnAQ50dKOspsKKFpLGStsaTf17PsCCM/HobxZwIgFew75b54zhr2kpddEhGIKb5fVj969ZNwkUbg+WXWRyY=", "outData": [{"index": 0, "dataHash": "19251373195E
+8EFAF30287B5F1A8C9C683E8AF1784A2580FDB818B60D8FDAA7B", "data": "RXJyb3Igd2l0aCBtaXNzaW5nIG9yIGluY29ycmVjdCBpbnB1dCBmb3JtYXQ=", "encrypted
+DataEncryptionKey": "-", "iv": ""}]}, "id": 14, "jsonrpc": "2.0"}
+avalon-listener               | [19:27:28 INFO    avalon_listener.tcs_listener] Received a new request from the client
+avalon-listener               | [19:27:28 INFO    avalon_listener.tcs_listener] Received request: WorkOrderSubmit
+
+avalon-lmdb                   | 2020-04-23 19:27:28,775 - INFO - response[text/plain; charset=utf-8]: b'v\n{"workerType": 1, "o[770/1306]
+nId": "aabbcc1234ddeeff", "applicationTypeId": "11aa22bb33cc44dd", "details": {"workOrderSyncUri": "http://localhost:8080", "workOrderAsy
+ncUri": "http://localhost:8080", "workOrderPullUri": "http://localhost:8080", "workOrderNotifyUri": "http://localhost:8080", "receiptInvo
+cationUri": "http://localhost:8080", "workOrderInvocationAddress": "", "receiptInvocationAddress": "", "fromAddress": "", "hashingAlgorit
+hm": "SHA-256", "signingAlgorithm": "SECP256K1", "keyEncryptionAlgorithm": "RSA-OAEP-3072", "dataEncryptionAlgorithm": "AES-GCM-256", "wo
+rkOrderPayloadFormats": "JSON-RPC", "workerTypeData": {"verificationKey": "-----BEGIN PUBLIC KEY-----\\\\nMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgA
+EsuvIZgGU6uhfmGpYgXYa3NP0Lts+DLa0\\\\nDgsx6bFmIc81zP74NOPUsxNrXZRrxj1rN3svfF6Sxd3uu1hPp8v6/A==\\\\n-----END PUBLIC KEY-----\\\\n", "exten
+dedMeasurements": ["F8D5BD4E90E4121B34C2B2012BF9F3BF00000000000000000000000000000000", "0828031EEBACC5D5708EB0739875BC477429D43A59C73D6C1
+C7282D205213551"], "proofDataType": "TEE-SGX-IAS", "proofData": "{\\\\"verification_report\\\\": \\\\"{\\\\\\\\\\\\"nonce\\\\\\\\\\\\":\\
+\\\\\\\\\\"B3AFBA8487A4E971\\\\\\\\\\\\",\\\\\\\\\\\\"id\\\\\\\\\\\\":\\\\\\\\\\\\"337632410718193205931992760596379056765\\\\\\\\\\\\",\
+\\\\\\\\\\\"timestamp\\\\\\\\\\\\":\\\\\\\\\\\\"2020-04-23T18:39:01.054331\\\\\\\\\\\\",\\\\\\\\\\\\"version\\\\\\\\\\\\":3,\\\\\\\\\\\\"
+epidPseudonym\\\\\\\\\\\\":\\\\\\\\\\\\"PAQHbZR86uqn+ZAXqY5goeboXOv1X6YRj8KduqI5V67N+4D8mFBkBjeADY1TC0NNiQZE4XRuOHBQUzPFgZma6yvB7lX0Ng5cf
+yijiU4ZbVitKL5ggAmXO3nJJ1yHHqpNPMbvNBp5J6wb1YRpelqdRRTcJKnY/LcS2Fp0+jRoW44=\\\\\\\\\\\\",\\\\\\\\\\\\"isvEnclaveQuoteStatus\\\\\\\\\\\\":
+\\\\\\\\\\\\"GROUP_OUT_OF_DATE\\\\\\\\\\\\",\\\\\\\\\\\\"platformInfoBlob\\\\\\\\\\\\":\\\\\\\\\\\\"1502006504000600000E0E020401800700000
+00000000000000B00000B000000020000000000000B7D725577DFFD52FD214441E1AC2E5AF82A45922C9AB1327DAEF483C949F1219037D7D71613C66C9F07896B0FA8DC6B
+E5F3CBF5B19A52A207BAB8676615C1F731DA\\\\\\\\\\\\",\\\\\\\\\\\\"isvEnclaveQuoteBody\\\\\\\\\\\\":\\\\\\\\\\\\"AgABAH0LAAAKAAkAAAAAAPjVvU6Q
+5BIbNMKyASv5878AAAAAAAAAAAAAAAAAAAAADw8CBf+ABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAAAAAAAAAHAAAAAAAAAAgoAx7rrMXVcI6wc
+5h1vEd0KdQ6Wcc9bBxygtIFITVRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7Ryaae5BWb3+/TCo9JWRRdAFNy7uMM/nLzOY8W74pNQAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOeQAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACfynL5oB7LwTgsBytNUFr6vJ+zKmsQNLDykJJKg+miaQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+\\\\\\\\\\\\"}\\\\", \\\\"ias_report_signature\\\\": \\\\"ctbJi0/Y3UD4JUtePOT8zoyh8KBHCK9VH2dcKdRSzmLYaNr7aUT/C4dUZdn/QkSGxgm8gnDOK2LNb1M
+AsZ4Z296C6nt/0whQf+hzxlUFeu1/EVMeULmGIxafeE0GdNXOypj2hcOv+njK3F830C7SrQEysGxQnbPSc55hGylH1XI6H9uHJlOsIimva4h2ZMiUBMi1p16LIc5hG2WTcOpfhmEw
+OkEUW/H3q8O0W2MhFSorK61uN63N4LmoG64tElyV2vhhW3ejJVX80PVXz49xMkaJuEVdkyY/Upob1CQzCH23nez0+wzWCCCIuheKh9vymjZ61qC4MjZHAWgSmvmc3A==\\\\", \\
+\\"ias_report_signing_certificate\\\\": \\\\"-----BEGIN CERTIFICATE-----\\\\\\\\nMIIEoTCCAwmgAwIBAgIJANEHdl0yo7CWMA0GCSqGSIb3DQEBCwUAMH4x
+CzAJBgNV\\\\\\\\nBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwLU2FudGEgQ2xhcmExGjAYBgNV\\\\\\\\nBAoMEUludGVsIENvcnBvcmF0aW9uMTAwLgYDVQQDDCdJbnR
+lbCBTR1ggQXR0ZXN0\\\\\\\\nYXRpb24gUmVwb3J0IFNpZ25pbmcgQ0EwHhcNMTYxMTIyMDkzNjU4WhcNMjYxMTIw\\\\\\\\nMDkzNjU4WjB7MQswCQYDVQQGEwJVUzELMAkGA1
+UECAwCQ0ExFDASBgNVBAcMC1Nh\\\\\\\\nbnRhIENsYXJhMRowGAYDVQQKDBFJbnRlbCBDb3Jwb3JhdGlvbjEtMCsGA1UEAwwk\\\\\\\\nSW50ZWwgU0dYIEF0dGVzdGF0aW9uI
+FJlcG9ydCBTaWduaW5nMIIBIjANBgkqhkiG\\\\\\\\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqXot4OZuphR8nudFrAFiaGxxkgma/Es/BA+t\\\\\\\\nbeCTUR106AL1ENcWA4FX
+3K+E9BBL0/7X5rj5nIgX/R/1ubhkKWw9gfqPG3KeAtId\\\\\\\\ncv/uTO1yXv50vqaPvE1CRChvzdS/ZEBqQ5oVvLTPZ3VEicQjlytKgN9cLnxbwtuv\\\\\\\\nLUK7eyRPfJW
+/ksddOzP8VBBniolYnRCD2jrMRZ8nBM2ZWYwnXnwYeOAHV+W9tOhA\\\\\\\\nImwRwKF/95yAsVwd21ryHMJBcGH70qLagZ7Ttyt++qO/6+KAXJuKwZqjRlEtSEz8\\\\\\\\ngZ
+QeFfVYgcwSfo96oSMAzVr7V0L6HSDLRnpb6xxmbPdqNol4tQIDAQABo4GkMIGh\\\\\\\\nMB8GA1UdIwQYMBaAFHhDe3amfrzQr35CN+s1fDuHAVE8MA4GA1UdDwEB/wQEAwIG\\
+\\\\\\nwDAMBgNVHRMBAf8EAjAAMGAGA1UdHwRZMFcwVaBToFGGT2h0dHA6Ly90cnVzdGVk\\\\\\\\nc2VydmljZXMuaW50ZWwuY29tL2NvbnRlbnQvQ1JML1NHWC9BdHRlc3Rhd
+GlvblJl\\\\\\\\ncG9ydFNpZ25pbmdDQS5jcmwwDQYJKoZIhvcNAQELBQADggGBAGcIthtcK9IVRz4r\\\\\\\\nRq+ZKE+7k50/OxUsmW8aavOzKb0iCx07YQ9rzi5nU73tME2y
+GRLzhSViFs/LpFa9\\\\\\\\nlpQL6JL1aQwmDR74TxYGBAIi5f4I5TJoCCEqRHz91kpG6Uvyn2tLmnIdJbPE4vYv\\\\\\\\nWLrtXXfFBSSPD4Afn7+3/XUggAlc7oCTizOfbbt
+OFlYA4g5KcYgS1J2ZAeMQqbUd\\\\\\\\nZseZCcaZZZn65tdqee8UXZlDvx0+NdO0LR+5pFy+juM0wWbu59MvzcmTXbjsi7HY\\\\\\\\n6zd53Yq5K244fwFHRQ8eOB0IWB+4Pf
+M7FeAApZvlfqlKOlLcZL2uyVmzRkyR5yW7\\\\\\\\n2uo9mehX44CiPJ2fse9Y6eQtcfEhMPkmHXI01sN+KwPbpA39+xOsStjhP9N1Y1a2\\\\\\\\ntQAVo+yVgLgV2Hws73Fc0
+o3wC78qPEA+v2aRs/Be3ZFDgDyghc/1fgU+7C+P6kbq\\\\\\\\nd4poyb6IW8KCJbxfMJvkordNOgOUUxndPHEi/tb/U7uLjLOgPA==\\\\\\\\n-----END CERTIFICATE----
+-\\\\\\\\n-----BEGIN CERTIFICATE-----\\\\\\\\nMIIFSzCCA7OgAwIBAgIJANEHdl0yo7CUMA0GCSqGSIb3DQEBCwUAMH4xCzAJBgNV\\\\\\\\nBAYTAlVTMQswCQYDVQ
+QIDAJDQTEUMBIGA1UEBwwLU2FudGEgQ2xhcmExGjAYBgNV\\\\\\\\nBAoMEUludGVsIENvcnBvcmF0aW9uMTAwLgYDVQQDDCdJbnRlbCBTR1ggQXR0ZXN0\\\\\\\\nYXRpb24gU
+mVwb3J0IFNpZ25pbmcgQ0EwIBcNMTYxMTE0MTUzNzMxWhgPMjA0OTEy\\\\\\\\nMzEyMzU5NTlaMH4xCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwL\\\\\\\\n
+U2FudGEgQ2xhcmExGjAYBgNVBAoMEUludGVsIENvcnBvcmF0aW9uMTAwLgYDVQQD\\\\\\\\nDCdJbnRlbCBTR1ggQXR0ZXN0YXRpb24gUmVwb3J0IFNpZ25pbmcgQ0EwggGiMA0G
+\\\\\\\\nCSqGSIb3DQEBAQUAA4IBjwAwggGKAoIBgQCfPGR+tXc8u1EtJzLA10Feu1Wg+p7e\\\\\\\\nLmSRmeaCHbkQ1TF3Nwl3RmpqXkeGzNLd69QUnWovYyVSndEMyYc3sHe
+cGgfinEeh\\\\\\\\nrgBJSEdsSJ9FpaFdesjsxqzGRa20PYdnnfWcCTvFoulpbFR4VBuXnnVLVzkUvlXT\\\\\\\\nL/TAnd8nIZk0zZkFJ7P5LtePvykkar7LcSQO85wtcQe0R1
+Raf/sQ6wYKaKmFgCGe\\\\\\\\nNpEJUmg4ktal4qgIAxk+QHUxQE42sxViN5mqglB0QJdUot/o9a/V/mMeH8KvOAiQ\\\\\\\\nbyinkNndn+Bgk5sSV5DFgF0DffVqmVMblt5p3
+jPtImzBIH0QQrXJq39AT8cRwP5H\\\\\\\\nafuVeLHcDsRp6hol4P+ZFIhu8mmbI1u0hH3W/0C2BuYXB5PC+5izFFh/nP0lc2Lf\\\\\\\\n6rELO9LZdnOhpL1ExFOq9H/B8tPQ
+84T3Sgb4nAifDabNt/zu6MmCGo5U8lwEFtGM\\\\\\\\nRoOaX4AS+909x00lYnmtwsDVWv9vBiJCXRsCAwEAAaOByTCBxjBgBgNVHR8EWTBX\\\\\\\\nMFWgU6BRhk9odHRwOi8
+vdHJ1c3RlZHNlcnZpY2VzLmludGVsLmNvbS9jb250ZW50\\\\\\\\nL0NSTC9TR1gvQXR0ZXN0YXRpb25SZXBvcnRTaWduaW5nQ0EuY3JsMB0GA1UdDgQW\\\\\\\\nBBR4Q3t2pn
+680K9+QjfrNXw7hwFRPDAfBgNVHSMEGDAWgBR4Q3t2pn680K9+Qjfr\\\\\\\\nNXw7hwFRPDAOBgNVHQ8BAf8EBAMCAQYwEgYDVR0TAQH/BAgwBgEB/wIBADANBgkq\\\\\\\\nh
+kiG9w0BAQsFAAOCAYEAeF8tYMXICvQqeXYQITkV2oLJsp6J4JAqJabHWxYJHGir\\\\\\\\nIEqucRiJSSx+HjIJEUVaj8E0QjEud6Y5lNmXlcjqRXaCPOqK0eGRz6hi+ripMtPZ\
+\\\\\\\nsFNaBwLQVV905SDjAzDzNIDnrcnXyB4gcDFCvwDFKKgLRjOB/WAqgscDUoGq5ZVi\\\\\\\\nzLUzTqiQPmULAQaB9c6Oti6snEFJiCQ67JLyW/E83/frzCmO5Ru6WjU4
+tmsmy8Ra\\\\\\\\nUd4APK0wZTGtfPXU7w+IBdG5Ez0kE1qzxGQaL4gINJ1zMyleDnbuS8UicjJijvqA\\\\\\\\n152Sq049ESDz+1rRGc2NVEqh1KaGXmtXvqxXcTB+Ljy5Bw2
+ke0v8iGngFBPqCTVB\\\\\\\\n3op5KBG3RjbF6RRSzwzuWfL7QErNC8WEy5yDVARzTA5+xmBc388v9Dm21HGfcC8O\\\\\\\\nDD+gT9sSpssq0ascmvH49MOgjt1yoysLtdCtJW
+/9FZpoOypaHx0R+mJTLwPXVMrv\\\\\\\\nDaVzWh5aiEx+idkSGMnX\\\\\\\\n-----END CERTIFICATE-----\\\\\\\\n\\\\"}", "encryptionKey": "-----BEGIN R
+SA PUBLIC KEY-----\\\\nMIIBCgKCAQEAo8FVRyEjDjL17LSrX78QGEWQGe01Q3xElQM0lybcvVVVvw71vhRZ\\\\nSraPU/uj4vdFgLFTUnhcX5oQZ4IJTbzj7Kr4EmM3DvLD1
+ojlVUyu6HmfA8bLHTeo\\\\noGuO/X2CzID0vVyw71DlVvjjh+GTnqioXZ+PFA5vc1we3J0oBClfY+CramxCLUQo\\\\nvccLgDb4ZE9P7wmOsFSIoUZPlcDTHV2vRV6C9qMPf3Ey
+TQjq7L6Q2TzHCpR/EFQf\\\\n2iPh1TkpC87yD+CASVFgWiuWrpiX2ubnle6rJEoSwsW1YfT9+9SajPBer5KUqFEj\\\\ntKLD/FSIRex6/U7ZsO2dF+EknLfMRoIJnQIDAQAB\\\
+\n-----END RSA PUBLIC KEY-----\\\\n", "encryptionKeySignature": "MEQCIExeREYDfzvaKHa84QWJm94YlGMQ12gcep9HRG4ygGdHAiBM5j2Ff/FIZ8Ygm1jI2rgj
+snR1S+lHLg1SAWyuBy7IJw=="}}, "status": 1}'
+
+avalon-lmdb                   | 2020-04-23 19:27:28,779 - INFO - b'S\nwo-requests\n0xec18b851305cca4a\n{"jsonrpc": "2.0", "method": "Work
+OrderSubmit", "id": 15, "params": {"responseTimeoutMSecs": 6000, "payloadFormat": "JSON-RPC", "resultUri": "resulturi", "notifyUri": "not
+ifyuri", "workOrderId": "0xec18b851305cca4a", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236", "workloadId
+": "68656172742d646973656173652d6576616c", "requesterId": "0x3456", "workerEncryptionKey": "0xabcdef", "dataEncryptionAlgorithm": "AES-GC
+M-256", "encryptedSessionKey": "2703e650124df3cda1684927aaa1eaddc7f675c99c4b433a79688a8bc1b9b70efabd3645f2f3cbb682a54a58be776cabaea198b06
+9ee4c2cb59c1385564fdfe5a48fc67f79a2c2076264a4d244f3f0c9a065722fae406a4cfd76c7e9ea3d2f467e0bc5d480ea756134f75a7248b84ae14b7b3924d636de73dd
+c19d298a00d368ee8b01fd75ffff80577ba126625cbe6d9dc8c50e62d341483661292b46f9fc3ab7ab342a0ff33f7a95da975dcfe1829e437263ccb148aaa091fe54fe387
+a0ab5d01fe227d62ff41603c9f45cea6be9de3377c1e7555e18e4da0c4009c8b78f2fbd31f6e139dc97388315920076bbb88e0d18ccbeb5134bcb91644f80fd7e51a4", "
+sessionKeyIv": "25673b9b1b28c9ecac7b6c69", "requesterNonce": "jsMpqYrgxlTshMMxi67O3bW7W5Ps3/ThRQv4ELpmK7M=", "encryptedRequestHash": "6e3
+f14947ebadff4f0157f3ba10dec556fe30a2188115edb7b2923b5908354223409a53ccf49aae10ca1f7954411818f", "requesterSignature": "MEUCIQCL8ZvU2vcmPT
+/Xx5t0b5NsDjGoVSWSIIhUy8L/ybEYogIgbOEnrYwBHnDnSoA1iBAjDrU6iveumrl71FFlB8w/5wU=", "inData": [{"index": 1, "data": "W6kmmxHwbYwqiluhd4WEw7F
++V9T/DXbbdt6h2wl1+VQMuw4v4HFKVmckY6F4YNFg3PDd6A/S9O9vpav6zGM6kFo1Hte+aE4O9r/TNiZLcwKxx6CX", "encryptedDataEncryptionKey": "null", "iv": "
+"}], "verifyingKey": "-----BEGIN PUBLIC KEY-----\\\\nMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEMEFFvxIjTmfn7zD57PZVMbnHIwYW9FbQ\\\\nD+XuI15nISTlJl9
+i0Ews0AGxD6WpBzWkxenZB2zvtpqGvyqYjj+F9g==\\\\n-----END PUBLIC KEY-----\\\\n"}}'
+avalon-lmdb                   | 2020-04-23 19:27:28,779 - INFO - ['S', 'wo-requests', '0xec18b851305cca4a', '{"jsonrpc": "2.0", "method":
+ "WorkOrderSubmit", "id": 15, "params": {"responseTimeoutMSecs": 6000, "payloadFormat": "JSON-RPC", "resultUri": "resulturi", "notifyUri"
+: "notifyuri", "workOrderId": "0xec18b851305cca4a", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236", "work
+loadId": "68656172742d646973656173652d6576616c", "requesterId": "0x3456", "workerEncryptionKey": "0xabcdef", "dataEncryptionAlgorithm": "
+AES-GCM-256", "encryptedSessionKey": "2703e650124df3cda1684927aaa1eaddc7f675c99c4b433a79688a8bc1b9b70efabd3645f2f3cbb682a54a58be776cabaea
+198b069ee4c2cb59c1385564fdfe5a48fc67f79a2c2076264a4d244f3f0c9a065722fae406a4cfd76c7e9ea3d2f467e0bc5d480ea756134f75a7248b84ae14b7b3924d636
+de73ddc19d298a00d368ee8b01fd75ffff80577ba126625cbe6d9dc8c50e62d341483661292b46f9fc3ab7ab342a0ff33f7a95da975dcfe1829e437263ccb148aaa091fe5
+4fe387a0ab5d01fe227d62ff41603c9f45cea6be9de3377c1e7555e18e4da0c4009c8b78f2fbd31f6e139dc97388315920076bbb88e0d18ccbeb5134bcb91644f80fd7e51
+a4", "sessionKeyIv": "25673b9b1b28c9ecac7b6c69", "requesterNonce": "jsMpqYrgxlTshMMxi67O3bW7W5Ps3/ThRQv4ELpmK7M=", "encryptedRequestHash"
+: "6e3f14947ebadff4f0157f3ba10dec556fe30a2188115edb7b2923b5908354223409a53ccf49aae10ca1f7954411818f", "requesterSignature": "MEUCIQCL8ZvU
+2vcmPT/Xx5t0b5NsDjGoVSWSIIhUy8L/ybEYogIgbOEnrYwBHnDnSoA1iBAjDrU6iveumrl71FFlB8w/5wU=", "inData": [{"index": 1, "data": "W6kmmxHwbYwqiluhd
+4WEw7F+V9T/DXbbdt6h2wl1+VQMuw4v4HFKVmckY6F4YNFg3PDd6A/S9O9vpav6zGM6kFo1Hte+aE4O9r/TNiZLcwKxx6CX", "encryptedDataEncryptionKey": "null", "
+iv": ""}], "verifyingKey": "-----BEGIN PUBLIC KEY-----\\nMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEMEFFvxIjTmfn7zD57PZVMbnHIwYW9FbQ\\nD+XuI15nISTlJ
+l9i0Ews0AGxD6WpBzWkxenZB2zvtpqGvyqYjj+F9g==\\n-----END PUBLIC KEY-----\\n"}}']
+
+avalon-lmdb                   | 2020-04-23 19:27:33,313 - INFO - ['G', 'wo-requests', '0xec18b851305cca4a']
+avalon-lmdb                   | 2020-04-23 19:27:33,313 - INFO - response[text/plain; charset=utf-8]: b'v\n{"jsonrpc": "2.0", "method": "
+WorkOrderSubmit", "id": 15, "params": {"responseTimeoutMSecs": 6000, "payloadFormat": "JSON-RPC", "resultUri": "resulturi", "notifyUri":
+"notifyuri", "workOrderId": "0xec18b851305cca4a", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236", "worklo
+adId": "68656172742d646973656173652d6576616c", "requesterId": "0x3456", "workerEncryptionKey": "0xabcdef", "dataEncryptionAlgorithm": "AE
+S-GCM-256", "encryptedSessionKey": "2703e650124df3cda1684927aaa1eaddc7f675c99c4b433a79688a8bc1b9b70efabd3645f2f3cbb682a54a58be776cabaea19
+8b069ee4c2cb59c1385564fdfe5a48fc67f79a2c2076264a4d244f3f0c9a065722fae406a4cfd76c7e9ea3d2f467e0bc5d480ea756134f75a7248b84ae14b7b3924d636de
+73ddc19d298a00d368ee8b01fd75ffff80577ba126625cbe6d9dc8c50e62d341483661292b46f9fc3ab7ab342a0ff33f7a95da975dcfe1829e437263ccb148aaa091fe54f
+e387a0ab5d01fe227d62ff41603c9f45cea6be9de3377c1e7555e18e4da0c4009c8b78f2fbd31f6e139dc97388315920076bbb88e0d18ccbeb5134bcb91644f80fd7e51a4
+", "sessionKeyIv": "25673b9b1b28c9ecac7b6c69", "requesterNonce": "jsMpqYrgxlTshMMxi67O3bW7W5Ps3/ThRQv4ELpmK7M=", "encryptedRequestHash":
+"6e3f14947ebadff4f0157f3ba10dec556fe30a2188115edb7b2923b5908354223409a53ccf49aae10ca1f7954411818f", "requesterSignature": "MEUCIQCL8ZvU2v
+cmPT/Xx5t0b5NsDjGoVSWSIIhUy8L/ybEYogIgbOEnrYwBHnDnSoA1iBAjDrU6iveumrl71FFlB8w/5wU=", "inData": [{"index": 1, "data": "W6kmmxHwbYwqiluhd4W
+Ew7F+V9T/DXbbdt6h2wl1+VQMuw4v4HFKVmckY6F4YNFg3PDd6A/S9O9vpav6zGM6kFo1Hte+aE4O9r/TNiZLcwKxx6CX", "encryptedDataEncryptionKey": "null", "iv
+": ""}], "verifyingKey": "-----BEGIN PUBLIC KEY-----\\\\nMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEMEFFvxIjTmfn7zD57PZVMbnHIwYW9FbQ\\\\nD+XuI15nIST
+lJl9i0Ews0AGxD6WpBzWkxenZB2zvtpqGvyqYjj+F9g==\\\\n-----END PUBLIC KEY-----\\\\n"}}'
+avalon-sgx-enclave-manager    | [19:27:33 INFO    avalon_enclave_manager.enclave_manager] Create workorder entry 0xec18b851305cca4a in wo
+-processing table
+avalon-sgx-enclave-manager    | [19:27:33 INFO    avalon_enclave_manager.enclave_manager] Delete workorder entry 0xec18b851305cca4a from
+wo-scheduled table
+
+avalon-lmdb                   | 2020-04-23 19:27:33,321 - INFO - response[text/plain; charset=utf-8]: b't'
+avalon-sgx-enclave-manager    | [19:27:33 INFO    avalon_enclave_manager.enclave_manager] Create entry in wo-responses table for workorde
+r 0xec18b851305cca4a
+avalon-lmdb                   | 2020-04-23 19:27:33,324 - INFO - Received a new request from the client
+avalon-lmdb                   | 2020-04-23 19:27:33,324 - INFO - b'S\nwo-responses\n0xec18b851305cca4a\n{\\n    "jsonrpc": "2.0",\\n    "
+id": 15,\\n    "result": {\\n        "workOrderId": "0xec18b851305cca4a",\\n        "workloadId": "68656172742d646973656173652d6576616c",
+\\n        "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236",\\n        "requesterId": "0x3456",\\n        "
+workerNonce": "bUS36Q9iLmFc/VnrMTusgBuCaYDTXvlmKJ4z7hmHyRE=",\\n        "workerSignature": "MEQCICMtsLlOGRAa6ALjJVzFbMaqDCV6YQ9aQPtSqBZhn
+I3lAiAzHtwT28b63Y817IX0W9NyHGmIaIVW/G0OlXctpdTOAQ==",\\n        "outData": [\\n            {\\n                "index": 0,\\n
+    "dataHash": "19251373195E8EFAF30287B5F1A8C9C683E8AF1784A2580FDB818B60D8FDAA7B",\\n                "data": "Vr41hhfwfowthxq/e9aS3L51At
+r5RHDbNdWy3Q0srUdX9U96pXEdDCNpIuQr/N5MKovvbggrcGOiqbJJ",\\n                "encryptedDataEncryptionKey": "null",\\n                "iv":
+""\\n            }\\n        ]\\n    }\\n}'
+avalon-lmdb                   | 2020-04-23 19:27:33,324 - INFO - ['S', 'wo-responses', '0xec18b851305cca4a', '{\n    "jsonrpc": "2.0",\n
+   "id": 15,\n    "result": {\n        "workOrderId": "0xec18b851305cca4a",\n        "workloadId": "68656172742d646973656173652d6576616c"
+,\n        "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236",\n        "requesterId": "0x3456",\n        "wo
+rkerNonce": "bUS36Q9iLmFc/VnrMTusgBuCaYDTXvlmKJ4z7hmHyRE=",\n        "workerSignature": "MEQCICMtsLlOGRAa6ALjJVzFbMaqDCV6YQ9aQPtSqBZhnI3l
+AiAzHtwT28b63Y817IX0W9NyHGmIaIVW/G0OlXctpdTOAQ==",\n        "outData": [\n            {\n                "index": 0,\n                "da
+taHash": "19251373195E8EFAF30287B5F1A8C9C683E8AF1784A2580FDB818B60D8FDAA7B",\n                "data": "Vr41hhfwfowthxq/e9aS3L51Atr5RHDbNd
+Wy3Q0srUdX9U96pXEdDCNpIuQr/N5MKovvbggrcGOiqbJJ",\n                "encryptedDataEncryptionKey": "null",\n                "iv": ""\n
+      }\n        ]\n    }\n}']
+avalon-lmdb                   | 2020-04-23 19:27:33,324 - INFO - response[text/plain; charset=utf-8]: b't'
+avalon-sgx-enclave-manager    | [19:27:33 INFO    avalon_enclave_manager.enclave_manager] Delete workorder entry 0xec18b851305cca4a from
+wo-processing table
+avalon-lmdb                   | 2020-04-23 19:27:33,326 - INFO - Received a new request from the client
+
+avalon-lmdb                   | 2020-04-23 19:27:34,805 - INFO - ['G', 'wo-responses', '0xec18b851305cca4a']
+avalon-lmdb                   | 2020-04-23 19:27:34,805 - INFO - response[text/plain; charset=utf-8]: b'v\n{\\n    "jsonrpc": "2.0",\\n
+  "id": 15,\\n    "result": {\\n        "workOrderId": "0xec18b851305cca4a",\\n        "workloadId": "68656172742d646973656173652d6576616
+c",\\n        "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1d8ec432681d236",\\n        "requesterId": "0x3456",\\n
+  "workerNonce": "bUS36Q9iLmFc/VnrMTusgBuCaYDTXvlmKJ4z7hmHyRE=",\\n        "workerSignature": "MEQCICMtsLlOGRAa6ALjJVzFbMaqDCV6YQ9aQPtSqB
+ZhnI3lAiAzHtwT28b63Y817IX0W9NyHGmIaIVW/G0OlXctpdTOAQ==",\\n        "outData": [\\n            {\\n                "index": 0,\\n
+       "dataHash": "19251373195E8EFAF30287B5F1A8C9C683E8AF1784A2580FDB818B60D8FDAA7B",\\n                "data": "Vr41hhfwfowthxq/e9aS3L5
+1Atr5RHDbNdWy3Q0srUdX9U96pXEdDCNpIuQr/N5MKovvbggrcGOiqbJJ",\\n                "encryptedDataEncryptionKey": "null",\\n                "iv
+": ""\\n            }\\n        ]\\n    }\\n}'
+avalon-listener               | [19:27:34 INFO    avalon_listener.tcs_listener] response[application/json]: {"result": {"workOrderId": "0
+xec18b851305cca4a", "workloadId": "68656172742d646973656173652d6576616c", "workerId": "37d12efd6cf3442f96a609fe220a0c4f87d487a1c8e9d483d1
+d8ec432681d236", "requesterId": "0x3456", "workerNonce": "bUS36Q9iLmFc/VnrMTusgBuCaYDTXvlmKJ4z7hmHyRE=", "workerSignature": "MEQCICMtsLlO
+GRAa6ALjJVzFbMaqDCV6YQ9aQPtSqBZhnI3lAiAzHtwT28b63Y817IX0W9NyHGmIaIVW/G0OlXctpdTOAQ==", "outData": [{"index": 0, "dataHash": "19251373195E
+8EFAF30287B5F1A8C9C683E8AF1784A2580FDB818B60D8FDAA7B", "data": "Vr41hhfwfowthxq/e9aS3L51Atr5RHDbNdWy3Q0srUdX9U96pXEdDCNpIuQr/N5MKovvbggrc
+GOiqbJJ", "encryptedDataEncryptionKey": "null", "iv": ""}]}, "id": 15, "jsonrpc": "2.0"}
+avalon-sgx-enclave-manager    | [19:27:43 INFO    avalon_enclave_manager.enclave_manager] Processing work orders
+avalon-lmdb                   | 2020-04-23 19:27:43,328 - INFO - Received a new request from the client
+avalon-lmdb                   | 2020-04-23 19:27:43,328 - INFO - b'L\nwo-scheduled'
+
+
+
+
+
+
+
+
+
+
+
+
+
