@@ -355,7 +355,6 @@ func woSubmit(wr http.ResponseWriter, req *http.Request) {
 		return
 
 	}
-	fmt.Fprintln(wr, sessionkey)
 	iv, err := hex.DecodeString(rqj.Params.SessionKeyIv)
 	if err != nil {
 		fmt.Fprintln(wr, err)
@@ -377,11 +376,19 @@ func woSubmit(wr http.ResponseWriter, req *http.Request) {
 
 	}
 
+	b2, err := EncryptAES(sessionkey,string(ptdata))
+	if err != nil {
+		fmt.Fprintln(wr, err)
+		return
+
+	}
 	wosres := new (structs.WorkOrderSubmitResponse)
 	wosres.Result.OutData = []structs.OutData{structs.OutData{}}
-	wosres.Result.OutData[0].Data = string(ptdata)
-	
-	b, _ := json.MarshalIndent(wosres, "  ", "  ")
+	wosres.Result.OutData[0].Data = base64.StdEncoding.EncodeToString(b2)
+
+	b, _:= json.MarshalIndent(wosres, "  ", "  ")
+
+
 	wr.Write(b)
 
 }
