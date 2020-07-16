@@ -16,6 +16,7 @@ import (
 	"io/ioutil"
 	"encoding/json"
 	"crypto/sha256"
+	"encoding/base64"
 )
 
 var ServPrivRSA = `-----BEGIN RSA PRIVATE KEY-----
@@ -341,11 +342,47 @@ func woSubmit(wr http.ResponseWriter, req *http.Request) {
 		return
 
 	}
+	if err != nil {
+		fmt.Fprintln(wr, err)
+		return
 
-	sessionkey, err := rsa.DecryptOAEP(sha256.New(), rand.Reader, privrsa, []byte("  "), nil)
+	}
+	encskey, err := base64.StdEncoding.DecodeString(rqj.Params.EncryptedSessionKey)
 
-	fmt.Println(sessionkey)
+	sessionkey, err := rsa.DecryptOAEP(sha256.New(), rand.Reader, privrsa, encskey, nil)
+	if err != nil {
+		fmt.Fprintln(wr, err)
+		return
 
+	}
+	fmt.Fprintln(wr, sessionkey)
+	iv, err := hex.DecodeString(rqj.Params.SessionKeyIv)
+	if err != nil {
+		fmt.Fprintln(wr, err)
+		return
+
+	}
+	ctdata, err := base64.StdEncoding.DecodeString(rqj.Params.InData[0].Data)
+	if err != nil {
+		fmt.Fprintln(wr, err)
+		return
+
+	}
+	ctdata = append(iv,ctdata...)
+
+	ptdata, err := DecryptAES(sessionkey, ctdata)
+	if err != nil {
+		fmt.Fprintln(wr, err)
+		return
+
+	}
+
+	wosres := new (structs.WorkOrderSubmitResponse)
+	wosres.Result.OutData = []structs.OutData{structs.OutData{}}
+	wosres.Result.OutData[0].Data = string(ptdata)
+	
+	b, _ := json.MarshalIndent(wosres, "  ", "  ")
+	wr.Write(b)
 
 }
 

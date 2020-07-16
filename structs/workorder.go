@@ -90,18 +90,20 @@ type WorkOrderSubmitResponse struct {
 		RequesterID     string `json:"requesterId"`
 		WorkerNonce     string `json:"workerNonce"`
 		WorkerSignature string `json:"workerSignature"`
-		OutData         []struct {
-			Index                      int    `json:"index"`
-			DataHash                   string `json:"dataHash"`
-			Data                       string `json:"data"`
-			EncryptedDataEncryptionKey string `json:"encryptedDataEncryptionKey"`
-			Iv                         string `json:"iv"`
-		} `json:"outData"`
+		OutData         []OutData `json:"outData"`
 		ExtVerificationKey          string `json:"extVerificationKey"`
 		ExtVerificationKeySignature string `json:"extVerificationKeySignature"`
 	} `json:"result"`
 	ID      int    `json:"id"`
 	Jsonrpc string `json:"jsonrpc"`
+}
+
+type OutData struct {
+	Index                      int    `json:"index"`
+	DataHash                   string `json:"dataHash"`
+	Data                       string `json:"data"`
+	EncryptedDataEncryptionKey string `json:"encryptedDataEncryptionKey"`
+	Iv                         string `json:"iv"`
 }
 
 //------------------------------------------------
