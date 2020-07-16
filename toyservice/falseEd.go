@@ -2,11 +2,14 @@ package toyservice
 
 import (
 	"github.com/agl/ed25519/edwards25519"
+	"crypto/ed25519"
 	"crypto/sha256"
 	"crypto/rand"
 	"fmt"
 	"math/big"
 	"bytes"
+	"encoding/hex"
+	"crypto/sha512"
 )
 
 
@@ -82,5 +85,55 @@ func sVerify(pubkey *[32]byte, signature, message []byte) (bool, error) {
 
 	X := EdwardsScalarAddMult(mdneglitend,pubkey, s)
 	return bytes.Equal(R[:], X[:]),  nil
+}
+
+func genEd() {
+	seed := make([]byte,32)
+	seed[31] = 2
+	fmt.Println(hex.EncodeToString(seed))
+	h := sha512.New()
+	h.Write(seed)
+	priv := NewKeyFromSeed(seed)
+	sh := hex.EncodeToString(priv[:])
+	fmt.Println(sh)
+
+	fmt.Println("signature")
+	b := ed25519.Sign(priv, []byte("Avalon"))
+	fmt.Println("signing message 'Avalon'")
+
+	fmt.Println(hex.EncodeToString(b))
+
+
+
+}
+
+func NewKeyFromSeed(seed []byte) ed25519.PrivateKey {
+	digest := sha512.Sum512(seed)
+	digest[0] &= 248
+	digest[31] &= 127
+	digest[31] |= 64
+
+
+
+	var A edwards25519.ExtendedGroupElement
+	var hBytes [32]byte
+	copy(hBytes[:], digest[:])
+	fmt.Println(hex.EncodeToString(digest[:]))
+	i := Fli(&hBytes)
+	j := big.NewInt(0)
+	j.SetBytes(hBytes[:])
+
+	fmt.Println(i)
+	fmt.Println(j)
+
+	edwards25519.GeScalarMultBase(&A, &hBytes)
+	var publicKeyBytes [32]byte
+	A.ToBytes(&publicKeyBytes)
+
+	privateKey := make([]byte, 64)
+	copy(privateKey, seed)
+	copy(privateKey[32:], publicKeyBytes[:])
+
+	return privateKey
 }
 

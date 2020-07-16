@@ -342,3 +342,4 @@ func SignByEd3(cred *CredentialWLockVer3, prvIssuer string) {
 func collectSignString(cred *CredentialWLockVer3) string {
 	return  cred.Credential.Name+cred.Credential.DID+cred.Credential.Type + cred.Credential.Value + cred.IssuerDID
 }
+

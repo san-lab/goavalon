@@ -120,6 +120,13 @@ def signEd(privKey, message):
     return R_encoded + s_bytes
 
 
+#message as a string
+#pbkey as a point encoded as hexstring (32)
+#signature as hexstring
+def verifyEd25519Signature(message, pbkey, signature):
+
+
+
 
 #IssuerPublicKey = "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503"
 #IssuerSignature = "acd34a616765820fe6c57ff1ddcbcbed55667e141b99aa2e86f723e16060407a260bc1b4e61e0d763f025550ede2f65e2f87d348adfc9da9b81ded7d33f62008"

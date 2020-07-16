@@ -94,7 +94,7 @@ type WorkerRetrieveResponse struct {
 			KeyEncryptionAlgorithm     string `json:"keyEncryptionAlgorithm"`
 			DataEncryptionAlgorithm    string `json:"dataEncryptionAlgorithm"`
 			WorkOrderPayloadFormats    string `json:"workOrderPayloadFormats"`
-			WorkerTypeData             []struct {
+			WorkerTypeData             struct {
 				VerificationKey        string   `json:"verificationKey"`
 				ExtendedMeasurements   []string `json:"extendedMeasurements"`
 				ProofDataType          string   `json:"proofDataType"`
