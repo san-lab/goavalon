@@ -75,6 +75,7 @@ const ClaimTemplate = "gettemplate"
 func TheHandler(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
+	r.Header.Set("Content-type", "application/json")
 	path := r.URL.Path[1:]
 	r.ParseForm()
 

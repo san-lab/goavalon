@@ -15,6 +15,7 @@ import (
 	"github.com/san-lab/goavalon/structs"
 	"io/ioutil"
 	"encoding/json"
+	"crypto/sha256"
 )
 
 var ServPrivRSA = `-----BEGIN RSA PRIVATE KEY-----
@@ -333,7 +334,18 @@ func woSubmit(wr http.ResponseWriter, req *http.Request) {
 		return
 
 	}
-	fmt.Println(rqj)
+
+	privrsa , err := parseRSAPrivKeyPEM(ServPrivRSA)
+	if err != nil {
+		fmt.Fprintln(wr, err)
+		return
+
+	}
+
+	sessionkey, err := rsa.DecryptOAEP(sha256.New(), rand.Reader, privrsa, []byte("  "), nil)
+
+	fmt.Println(sessionkey)
+
 
 }
 
@@ -355,6 +367,7 @@ func workerDetails (wr http.ResponseWriter, req *http.Request) {
 
 	if id != "0042" {
 		fmt.Fprintf(wr,"{\"Error\",\"No such worker: %s\"}", id)
+		return
 	}
 	wdres := new(structs.WorkerRetrieveResponse)
 	wdres.Result.Details.WorkerTypeData.EncryptionKey=ServPubRSA
