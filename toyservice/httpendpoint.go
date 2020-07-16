@@ -94,6 +94,10 @@ func TheHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write(b)
 		w.WriteHeader(http.StatusOK)
 //---------------undocumented calls---------
+	case "workerdetails":
+		workerDetails(w,r)
+	case "workordersubmit":
+		woSubmit(w,r)
 	case "submit3":
 		encryptCredentialsSignature(w,r)
 	case "issue":
@@ -107,6 +111,7 @@ func TheHandler(w http.ResponseWriter, r *http.Request) {
 	case "pythoncode":
 		pythonCode(w,r)
 	case "test25519":
+		genEd()
 	case "decryptaes":
 		decryptAESreq(w,r)
 	case "striprsa":
