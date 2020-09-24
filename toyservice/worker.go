@@ -1,42 +1,102 @@
-package structs
+package toyservice
 
-var workerLookupResponseTest = `{
-"result": {
-"totalCount": 1,
-"lookupTag": "ad8ef7abd63076b74175d49e3db3087da1c6f46ff8912a87cb354c816a6ad26b",
-"ids": [
-"ad8ef7abd63076b74175d49e3db3087da1c6f46ff8912a87cb354c816a6ad26b"
-]
-},
-"id": 31,
-"jsonrpc": "2.0"
-}`
+import "encoding/json"
 
-type WorkerLookupResponse struct {
-	Result struct {
-		TotalCount int      `json:"totalCount"`
-		LookupTag  string   `json:"lookupTag"`
-		Ids        []string `json:"ids"`
-	} `json:"result"`
-	ID      int    `json:"id"`
-	Jsonrpc string `json:"jsonrpc"`
+type Worker struct {
+	ID [32]byte //32 bytes
+	Type    int
+	ApplicationType int
+	OrganizationID [32]byte //32 bytes
+	Process func(request *GenericAvalonRPCRequest, response *GenericResponse)
 }
 
-//------------------------------------
 
-var workerRetrieveRequestTest = `{"jsonrpc": "2.0", "method": "WorkerRetrieve", "id": 2, "params": {"workerId": "2dc07db09d0ccd1a69a262f02b32fd31886b2f4cdf208c8cdedc450f14a91dda", "workOrderId": null}}`
+
+type WorkerLookupParams struct {
+
+		WorkerType        int `json:"workerType"`
+		OrganizationID    string `json:"organizationId"`
+		ApplicationTypeID int `json:"applicationTypeId"`
+
+}
+
+
+type GenericAvalonRPCRequest struct {
+	Jsonrpc string          `json:"jsonrpc"`
+	Method  string          `json:"method"`
+	ID      int             `json:"id"`
+	Params  json.RawMessage `json:"params"`
+}
+
+type GenericResponse struct {
+	Result  json.RawMessage `json:"result"`
+	ID      int             `json:"id"`
+	Jsonrpc string          `json:"jsonrpc"`
+}
+
+
+
+type WorkerLookupResult struct {
+		TotalCount int      `json:"totalCount"`
+		LookupTag  string   `json:"lookupTag,omitempty"`
+		Ids        []string `json:"ids"`
+
+}
+
 
 type WorkerRetrieveRequest struct {
 	Jsonrpc string `json:"jsonrpc"`
 	Method  string `json:"method"`
 	ID      int    `json:"id"`
-	Params  struct {
-		WorkerID    string      `json:"workerId"`
-		WorkOrderID interface{} `json:"workOrderId"`
-	} `json:"params"`
+	Params  WorkerRetrieveParams `json:"params"`
 }
 
-//--------------------------------------
+type WorkerRetrieveParams struct {
+	WorkerID    string      `json:"workerId"`
+
+}
+
+
+
+type WorkerRetrieveResponse struct {
+	Result WorkerRetrieveResult `json:"result"`
+	ID      int    `json:"id"`
+	Jsonrpc string `json:"jsonrpc"`
+}
+
+type WorkerRetrieveResult struct {
+
+		WorkerType        int    `json:"workerType"`
+		OrganizationID    string `json:"organizationId"`
+		ApplicationTypeID string `json:"applicationTypeId"`
+		Details           struct {
+			WorkOrderSyncURI           string `json:"workOrderSyncUri"`
+			WorkOrderAsyncURI          string `json:"workOrderAsyncUri"`
+			WorkOrderPullURI           string `json:"workOrderPullUri"`
+			WorkOrderNotifyURI         string `json:"workOrderNotifyUri"`
+			ReceiptInvocationURI       string `json:"receiptInvocationUri"`
+			WorkOrderInvocationAddress string `json:"workOrderInvocationAddress"`
+			ReceiptInvocationAddress   string `json:"receiptInvocationAddress"`
+			FromAddress                string `json:"fromAddress"`
+			HashingAlgorithm           string `json:"hashingAlgorithm"`
+			SigningAlgorithm           string `json:"signingAlgorithm"`
+			KeyEncryptionAlgorithm     string `json:"keyEncryptionAlgorithm"`
+			DataEncryptionAlgorithm    string `json:"dataEncryptionAlgorithm"`
+			WorkOrderPayloadFormats    string `json:"workOrderPayloadFormats"`
+			WorkerTypeData             struct {
+				VerificationKey        string   `json:"verificationKey"`
+				ExtendedMeasurements   []string `json:"extendedMeasurements,omitempty"`
+				ProofDataType          string   `json:"proofDataType,omitempty"`
+				ProofData              string   `json:"proofData,omitempty"`
+				EncryptionKey          string   `json:"encryptionKey"`
+				EncryptionKeySignature string   `json:"encryptionKeySignature"`
+			} `json:"workerTypeData"`
+		} `json:"details"`
+		Status int `json:"status"`
+
+}
+
+//--- JSON test values--------------------------------------
 
 var workerRetrieveResponseTest = `{
     "result": {
@@ -75,36 +135,19 @@ var workerRetrieveResponseTest = `{
     "jsonrpc": "2.0"
 }`
 
-type WorkerRetrieveResponse struct {
-	Result struct {
-		WorkerType        int    `json:"workerType"`
-		OrganizationID    string `json:"organizationId"`
-		ApplicationTypeID string `json:"applicationTypeId"`
-		Details           struct {
-			WorkOrderSyncURI           string `json:"workOrderSyncUri"`
-			WorkOrderAsyncURI          string `json:"workOrderAsyncUri"`
-			WorkOrderPullURI           string `json:"workOrderPullUri"`
-			WorkOrderNotifyURI         string `json:"workOrderNotifyUri"`
-			ReceiptInvocationURI       string `json:"receiptInvocationUri"`
-			WorkOrderInvocationAddress string `json:"workOrderInvocationAddress"`
-			ReceiptInvocationAddress   string `json:"receiptInvocationAddress"`
-			FromAddress                string `json:"fromAddress"`
-			HashingAlgorithm           string `json:"hashingAlgorithm"`
-			SigningAlgorithm           string `json:"signingAlgorithm"`
-			KeyEncryptionAlgorithm     string `json:"keyEncryptionAlgorithm"`
-			DataEncryptionAlgorithm    string `json:"dataEncryptionAlgorithm"`
-			WorkOrderPayloadFormats    string `json:"workOrderPayloadFormats"`
-			WorkerTypeData             struct {
-				VerificationKey        string   `json:"verificationKey"`
-				ExtendedMeasurements   []string `json:"extendedMeasurements"`
-				ProofDataType          string   `json:"proofDataType"`
-				ProofData              string   `json:"proofData"`
-				EncryptionKey          string   `json:"encryptionKey"`
-				EncryptionKeySignature string   `json:"encryptionKeySignature"`
-			} `json:"workerTypeData"`
-		} `json:"details"`
-		Status int `json:"status"`
-	} `json:"result"`
-	ID      int    `json:"id"`
-	Jsonrpc string `json:"jsonrpc"`
-}
+
+var workerLookupResponseTest = `{
+"result": {
+"totalCount": 1,
+"lookupTag": "ad8ef7abd63076b74175d49e3db3087da1c6f46ff8912a87cb354c816a6ad26b",
+"ids": [
+"ad8ef7abd63076b74175d49e3db3087da1c6f46ff8912a87cb354c816a6ad26b"
+]
+},
+"id": 31,
+"jsonrpc": "2.0"
+}`
+
+
+
+var workerRetrieveRequestTest = `{"jsonrpc": "2.0", "method": "WorkerRetrieve", "id": 2, "params": {"workerId": "2dc07db09d0ccd1a69a262f02b32fd31886b2f4cdf208c8cdedc450f14a91dda"}}`

@@ -1,18 +1,18 @@
 package toyservice
 
 import (
+	"crypto/ed25519"
+	"crypto/rand"
 	"encoding/base64"
-	"net/http"
-	"fmt"
-	"encoding/json"
 	"encoding/hex"
+	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"math/big"
-	"crypto/rand"
-	"crypto/ed25519"
+	"net/http"
 )
 
-func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
+func encryptCredentials(wr http.ResponseWriter, req *http.Request) {
 
 	bbuf, err := ioutil.ReadAll(req.Body)
 	if err != nil {
@@ -23,10 +23,9 @@ func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 	cred := new(CredentialWLockVer2)
 	err = json.Unmarshal(bbuf, cred)
 	if err != nil {
-		fmt.Fprintln(wr,err)
+		fmt.Fprintln(wr, err)
 		return
 	}
-
 
 	//Parse Customers Public Key
 	rsapub, err := ParseRSAPublicKey(cred.SubjecSPublicKey)
@@ -37,7 +36,6 @@ func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-
 	hexkey := cred.IssuerPublicKey.IssuerPublicKey
 	becpub, err := ParseEd25519PublicKey(hexkey)
 	//fmt.Println(hex.EncodeToString(becpub[:]),err)
@@ -45,7 +43,7 @@ func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 	//TODO Use seed as Ed usually does
 	ephEd25519private := make([]byte, 32)
 	rand.Reader.Read(ephEd25519private)
-	ephEd25519private[0] &=127 //This should work instead of actual MOD
+	ephEd25519private[0] &= 127 //This should work instead of actual MOD
 	//fmt.Println(hex.EncodeToString(ephEd25519private[:]))
 
 	t := new(big.Int)
@@ -70,15 +68,14 @@ func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 	//fmt.Println("a",plaintext)
 	//fmt.Println("b", plaintext2)
 
-
 	ciphertext, _ := EncryptWithRSAKey(plaintext, rsapub)
 	b64ciphertext := base64.StdEncoding.EncodeToString(ciphertext)
 
-	cred.Credential.LockKey.Encrypted=true
-	cred.Credential.LockKey.Value=b64ciphertext
+	cred.Credential.LockKey.Encrypted = true
+	cred.Credential.LockKey.Value = b64ciphertext
 
 	//TODO: Handle different block types, do not assume len(ss)==32
-	scorebytes, err := EncryptAES(ss[:], cred.Credential.Score.Value)
+	scorebytes, err := EncryptAESString(ss[:], cred.Credential.Score.Value)
 	if err != nil {
 		wr.WriteHeader(http.StatusBadRequest)
 		fmt.Fprintln(wr, err)
@@ -87,10 +84,10 @@ func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 	}
 	score64base := base64.StdEncoding.EncodeToString(scorebytes)
 
-	cred.Credential.Score.Encrypted=true
+	cred.Credential.Score.Encrypted = true
 	cred.Credential.Score.Value = score64base
 
-	ncred, err := json.MarshalIndent(&cred, "  ", "  " )
+	ncred, err := json.MarshalIndent(&cred, "  ", "  ")
 	if err != nil {
 		wr.WriteHeader(http.StatusBadRequest)
 		fmt.Fprintln(wr, err)
@@ -98,9 +95,9 @@ func encryptCredentials (wr http.ResponseWriter, req *http.Request) {
 		return
 	}
 	wr.Header().Set("Content-type", "application/json")
-	wr.Header().Set("SymAlg", "AES-256-GCM" )
+	wr.Header().Set("SymAlg", "AES-256-GCM")
 	wr.Header().Add("SymKey", hex.EncodeToString(ss[:]))
-	wr.Header().Add("Enclave-Ed25519-private", fmt.Sprintf("%x", t) )
+	wr.Header().Add("Enclave-Ed25519-private", fmt.Sprintf("%x", t))
 	wr.Header().Add("IV", hex.EncodeToString(scorebytes[0:12]))
 	wr.Header().Add("ScoreBytes", hex.EncodeToString([]byte(cred.Credential.Score.Value)))
 	wr.WriteHeader(http.StatusOK)
@@ -117,7 +114,7 @@ func issueCredentials(w http.ResponseWriter, r *http.Request) {
 	clreq := new(ClaimRequestType)
 	err = json.Unmarshal(bbuf, clreq)
 	if err != nil {
-		fmt.Fprintln(w,err)
+		fmt.Fprintln(w, err)
 		return
 	}
 
@@ -151,20 +148,19 @@ func issueCredentials(w http.ResponseWriter, r *http.Request) {
 	w.Write(bytes)
 	fmt.Println(string(bytes))
 
-
 }
 
 //Sign the 'Credential' json
 //The private key is expected as a decimal string
 //TODO externalize string gathering
 func SignByEd(cred *CredentialWLockVer2, prvIssuer string) {
-	test := cred.Credential.Name +cred.Credential.DID+cred.Credential.Type + cred.Credential.Score.Value + cred.IssuerDID
+	test := cred.Credential.Name + cred.Credential.DID + cred.Credential.Type + cred.Credential.Score.Value + cred.IssuerDID
 
 	x := new(big.Int)
 	x.SetString(prvIssuer, 10)
 	bankEdPriv := Tli(x)
 	//Proper private key is 32 bytes privInt + 32 bytes public point
 	mockpriv := make([]byte, 64)
-	copy(mockpriv,bankEdPriv[:])
-	cred.IssuerSignature= hex.EncodeToString(ed25519.Sign(mockpriv, []byte(test)))
+	copy(mockpriv, bankEdPriv[:])
+	cred.IssuerSignature = hex.EncodeToString(ed25519.Sign(mockpriv, []byte(test)))
 }

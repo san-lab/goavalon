@@ -1,18 +1,16 @@
 package toyservice
 
 import (
-	"github.com/agl/ed25519/edwards25519"
-	"crypto/ed25519"
-	"crypto/sha256"
-	"crypto/rand"
-	"fmt"
-	"math/big"
 	"bytes"
-	"encoding/hex"
+	"crypto/ed25519"
+	"crypto/rand"
+	"crypto/sha256"
 	"crypto/sha512"
+	"encoding/hex"
+	"fmt"
+	"github.com/agl/ed25519/edwards25519"
+	"math/big"
 )
-
-
 
 //Verification
 //x := new(big.Int)
@@ -23,12 +21,10 @@ import (
 //fmt.Println("a",plaintext)
 //fmt.Println("b", plaintext2)
 
-
-
 func sSign(privateKey *[32]byte, message []byte) []byte {
 	r := new([32]byte)
 	rand.Reader.Read(r[:])
-	r[31] &=127 //This should work instead of actual MOD
+	r[31] &= 127 //This should work instead of actual MOD
 
 	R := EdwardsScalarMultB(r)
 	fmt.Println("R:", R)
@@ -36,7 +32,7 @@ func sSign(privateKey *[32]byte, message []byte) []byte {
 	h.Write(R[:])
 	h.Write(message)
 	mdt := h.Sum(nil)
-	md_long := new ([64]byte)
+	md_long := new([64]byte)
 	copy(md_long[:], mdt)
 	md := new([32]byte)
 	edwards25519.ScReduce(md, md_long)
@@ -47,8 +43,8 @@ func sSign(privateKey *[32]byte, message []byte) []byte {
 	copy(sign[32:], s[:])
 	return sign
 }
-//   where l = 2^252 + 27742317777372353535851937790883648493
 
+//   where l = 2^252 + 27742317777372353535851937790883648493
 
 func sVerify(pubkey *[32]byte, signature, message []byte) (bool, error) {
 	// sign = R + s
@@ -74,21 +70,20 @@ func sVerify(pubkey *[32]byte, signature, message []byte) (bool, error) {
 	h.Write(message)
 	mdt := h.Sum(nil)
 
-
-	md := new ([32]byte)
+	md := new([32]byte)
 	copy(md[:], mdt)
 
 	hneg := big.NewInt(0)
-	hneg.Sub(l,Fli(md))
-	hneg.Mod(hneg,l)
+	hneg.Sub(l, Fli(md))
+	hneg.Mod(hneg, l)
 	mdneglitend := Tli(hneg)
 
-	X := EdwardsScalarAddMult(mdneglitend,pubkey, s)
-	return bytes.Equal(R[:], X[:]),  nil
+	X := EdwardsScalarAddMult(mdneglitend, pubkey, s)
+	return bytes.Equal(R[:], X[:]), nil
 }
 
 func genEd() {
-	seed := make([]byte,32)
+	seed := make([]byte, 32)
 	seed[31] = 2
 	fmt.Println(hex.EncodeToString(seed))
 	h := sha512.New()
@@ -103,8 +98,6 @@ func genEd() {
 
 	fmt.Println(hex.EncodeToString(b))
 
-
-
 }
 
 func NewKeyFromSeed(seed []byte) ed25519.PrivateKey {
@@ -112,8 +105,6 @@ func NewKeyFromSeed(seed []byte) ed25519.PrivateKey {
 	digest[0] &= 248
 	digest[31] &= 127
 	digest[31] |= 64
-
-
 
 	var A edwards25519.ExtendedGroupElement
 	var hBytes [32]byte
@@ -136,4 +127,3 @@ func NewKeyFromSeed(seed []byte) ed25519.PrivateKey {
 
 	return privateKey
 }
-

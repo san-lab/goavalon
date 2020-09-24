@@ -1,5 +1,7 @@
-package structs
+package toyservice
 
+
+var GetResultTest = `{"jsonrpc": "2.0", "method": "WorkOrderGetResult", "id": 11, "params": {"workOrderId": "0x1c5093ef3d854768"}}`
 //-----------------------------------------------
 var workOrderSubmitTest = `{
     "jsonrpc": "2.0",
@@ -34,27 +36,29 @@ type WorkOrderSubmit struct {
 	Jsonrpc string `json:"jsonrpc"`
 	Method  string `json:"method"`
 	ID      int    `json:"id"`
-	Params  struct {
-		WorkOrderID             string `json:"workOrderId"`
-		ResponseTimeoutMSecs    int    `json:"responseTimeoutMSecs"`
-		PayloadFormat           string `json:"payloadFormat"`
-		ResultURI               string `json:"resultUri"`
-		NotifyURI               string `json:"notifyUri"`
-		WorkerID                string `json:"workerId"`
-		WorkloadID              string `json:"workloadId"`
-		RequesterID             string `json:"requesterId"`
-		WorkerEncryptionKey     string `json:"workerEncryptionKey"`
-		DataEncryptionAlgorithm string `json:"dataEncryptionAlgorithm"`
-		EncryptedSessionKey     string `json:"encryptedSessionKey"`
-		SessionKeyIv            string `json:"sessionKeyIv"`
-		RequesterNonce          string `json:"requesterNonce"`
-		EncryptedRequestHash    string `json:"encryptedRequestHash"`
-		RequesterSignature      string `json:"requesterSignature"`
-		InData                  []struct {
-			Index int    `json:"index"`
-			Data  string `json:"data"`
-		} `json:"inData"`
-	} `json:"params"`
+	Params  WOSubmitParams `json:"params"`
+}
+
+type WOSubmitParams  struct {
+	WorkOrderID             string `json:"workOrderId"`
+	ResponseTimeoutMSecs    int    `json:"responseTimeoutMSecs"`
+	PayloadFormat           string `json:"payloadFormat"`
+	ResultURI               string `json:"resultUri"`
+	NotifyURI               string `json:"notifyUri"`
+	WorkerID                string `json:"workerId"`
+	WorkloadID              string `json:"workloadId"`
+	RequesterID             string `json:"requesterId"`
+	WorkerEncryptionKey     string `json:"workerEncryptionKey"`
+	DataEncryptionAlgorithm string `json:"dataEncryptionAlgorithm"`
+	EncryptedSessionKey     string `json:"encryptedSessionKey"`
+	SessionKeyIv            string `json:"sessionKeyIv"`
+	RequesterNonce          string `json:"requesterNonce"`
+	EncryptedRequestHash    string `json:"encryptedRequestHash"`
+	RequesterSignature      string `json:"requesterSignature"`
+	InData                  []struct {
+		Index int    `json:"index"`
+		Data  string `json:"data"`
+	} `json:"inData"`
 }
 
 //----------------------------------------------------------
@@ -83,19 +87,23 @@ var workOrderSubmitResponseTest = `{
 }`
 
 type WorkOrderSubmitResponse struct {
-	Result struct {
-		WorkOrderID     string `json:"workOrderId"`
-		WorkloadID      string `json:"workloadId"`
-		WorkerID        string `json:"workerId"`
-		RequesterID     string `json:"requesterId"`
-		WorkerNonce     string `json:"workerNonce"`
-		WorkerSignature string `json:"workerSignature"`
-		OutData         []OutData `json:"outData"`
-		ExtVerificationKey          string `json:"extVerificationKey"`
-		ExtVerificationKeySignature string `json:"extVerificationKeySignature"`
-	} `json:"result"`
+	Result WorkOrderSubmitResult `json:"result"`
 	ID      int    `json:"id"`
 	Jsonrpc string `json:"jsonrpc"`
+}
+
+type WorkOrderSubmitResult struct {
+
+		WorkOrderID                 string    `json:"workOrderId"`
+		WorkloadID                  string    `json:"workloadId"`
+		WorkerID                    string    `json:"workerId"`
+		RequesterID                 string    `json:"requesterId"`
+		WorkerNonce                 string    `json:"workerNonce"`
+		WorkerSignature             string    `json:"workerSignature"`
+		OutData                     []OutData `json:"outData"`
+		//ExtVerificationKey          string    `json:"extVerificationKey"`
+		//Can you see thisExtVerificationKeySignature string    `json:"extVerificationKeySignature"`
+
 }
 
 type OutData struct {
@@ -133,23 +141,25 @@ var WorkOrderGetResultTest = `{
 }`
 
 type WorkOrderGetResult struct {
-	Result struct {
-		WorkOrderID     string `json:"workOrderId"`
-		WorkloadID      string `json:"workloadId"`
-		WorkerID        string `json:"workerId"`
-		RequesterID     string `json:"requesterId"`
-		WorkerNonce     string `json:"workerNonce"`
-		WorkerSignature string `json:"workerSignature"`
-		OutData         []struct {
-			Index                      int    `json:"index"`
-			DataHash                   string `json:"dataHash"`
-			Data                       string `json:"data"`
-			EncryptedDataEncryptionKey string `json:"encryptedDataEncryptionKey"`
-			Iv                         string `json:"iv"`
-		} `json:"outData"`
-		ExtVerificationKey          string `json:"extVerificationKey"`
-		ExtVerificationKeySignature string `json:"extVerificationKeySignature"`
-	} `json:"result"`
+	Result WOResult `json:"result"`
 	ID      int    `json:"id"`
 	Jsonrpc string `json:"jsonrpc"`
+}
+
+type WOResult struct {
+	WorkOrderID     string `json:"workOrderId"`
+	WorkloadID      string `json:"workloadId"`
+	WorkerID        string `json:"workerId"`
+	RequesterID     string `json:"requesterId"`
+	WorkerNonce     string `json:"workerNonce"`
+	WorkerSignature string `json:"workerSignature"`
+	OutData         []struct {
+		Index                      int    `json:"index"`
+		DataHash                   string `json:"dataHash"`
+		Data                       string `json:"data"`
+		EncryptedDataEncryptionKey string `json:"encryptedDataEncryptionKey"`
+		Iv                         string `json:"iv"`
+	} `json:"outData"`
+	ExtVerificationKey          string `json:"extVerificationKey"`
+	ExtVerificationKeySignature string `json:"extVerificationKeySignature"`
 }

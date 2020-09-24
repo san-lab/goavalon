@@ -2,22 +2,37 @@ package toyservice
 
 import (
 	"bytes"
+	"crypto/ed25519"
 	"crypto/rand"
 	"crypto/rsa"
+	"crypto/sha256"
 	"crypto/x509"
+	"encoding/base64"
 	"encoding/hex"
+	"encoding/json"
 	"encoding/pem"
 	"fmt"
 	"github.com/agl/ed25519/edwards25519"
-	"crypto/ed25519"
+	"io/ioutil"
 	"math/big"
 	"net/http"
-	"github.com/san-lab/goavalon/structs"
-	"io/ioutil"
-	"encoding/json"
-	"crypto/sha256"
-	"encoding/base64"
 )
+
+var ServPrivEC =`-----BEGIN EC PRIVATE KEY-----
+MHQCAQEEIKAJs7cuf72RtsDuceuC0RhOqlfCWLL4M6n7k2JdnxzZoAcGBSuBBAAK
+oUQDQgAE+1oZpzrhkYYS2cIN2Ys0gqlsIY+pIHABQS5vrSb9Cp3xuuDFYP9nMs6/
+ccfZoW71DcNQ9UlBARbiZ/Uo8CmunQ==
+-----END EC PRIVATE KEY-----`
+
+var TestECPub = `-----BEGIN PUBLIC KEY-----
+MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEAaWC2DjQ9l88wmlhy8zXK8CpXDSCLjaM
+U6JHBb5eiJPQpvj41THtZuGd4hsPZf6lUzNgzJWPR1z4QQ2IwGANTg==
+-----END PUBLIC KEY-----
+`
+var TestECPub2 =`-----BEGIN PUBLIC KEY-----
+MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEF+S9qL7fencVF1/zhMcMljTb6qL19nYZ
+mYby5kwoUfJXDxOli0APEWeTZkjI/58o87uiUESPORYv/h5Udbc6Ug==
+-----END PUBLIC KEY-----`
 
 var ServPrivRSA = `-----BEGIN RSA PRIVATE KEY-----
 MIIEpAIBAAKCAQEA2yqhreLQ+ZTobEffPysElNgOkiGnIBy+RfiCI98cvfE9cJ5a
@@ -106,13 +121,13 @@ od2kcLOU50zgCMaDOa9bssEU6ToXLDDCf9470i8TkN8=
 
 func TestRSA() {
 	pub, e := ParseRSAPublicKey(PubRSA)
-	priv, e := parseRSAPrivKeyPEM(PrivRSA)
+	priv, e := ParseRSAPrivKeyPEM(PrivRSA)
 	fmt.Println("error:", e)
 	fmt.Println(priv.PublicKey.N)
 	fmt.Println(pub.N)
 }
 
-func parseRSAPrivKeyPEM(privPEM string) (*rsa.PrivateKey, error) {
+func ParseRSAPrivKeyPEM(privPEM string) (*rsa.PrivateKey, error) {
 	block, _ := pem.Decode([]byte(privPEM))
 	if block == nil {
 		return nil, fmt.Errorf("Could not decode the key")
@@ -256,6 +271,7 @@ func TestPriv25519() {
 }
 
 var BankPrivateKeyString = "8922796882388619604127911146068705796569681654940873967836428543013949233636"
+
 func D() {
 	x := new(big.Int)
 	x.SetString(BankPrivateKeyString, 10)
@@ -282,11 +298,9 @@ func D() {
 
 }
 
-
-
 func G() {
-	pu,pr,er:= ed25519.GenerateKey(rand.Reader)
-	fmt.Println(pu,pr,er)
+	pu, pr, er := ed25519.GenerateKey(rand.Reader)
+	fmt.Println(pu, pr, er)
 }
 
 //s[31] ^= FeIsNegative(&x) << 7
@@ -322,7 +336,7 @@ var newJson = `{
 }`
 
 func woSubmit(wr http.ResponseWriter, req *http.Request) {
-	rqj := new (structs.WorkOrderSubmit)
+	rqj := new(WorkOrderSubmit)
 	bbuf, err := ioutil.ReadAll(req.Body)
 	if err != nil {
 		fmt.Fprintln(wr, err)
@@ -336,7 +350,7 @@ func woSubmit(wr http.ResponseWriter, req *http.Request) {
 
 	}
 
-	privrsa , err := parseRSAPrivKeyPEM(ServPrivRSA)
+	privrsa, err := ParseRSAPrivKeyPEM(ServPrivRSA)
 	if err != nil {
 		fmt.Fprintln(wr, err)
 		return
@@ -367,7 +381,7 @@ func woSubmit(wr http.ResponseWriter, req *http.Request) {
 		return
 
 	}
-	ctdata = append(iv,ctdata...)
+	ctdata = append(iv, ctdata...)
 
 	ptdata, err := DecryptAES(sessionkey, ctdata)
 	if err != nil {
@@ -375,26 +389,29 @@ func woSubmit(wr http.ResponseWriter, req *http.Request) {
 		return
 
 	}
+	cred := new(CredentialWLockVer3)
+	err = json.Unmarshal(ptdata, cred)
+	fmt.Println("ptdata", cred)
+	encryptJsonCredPayload(cred)
 
-	b2, err := EncryptAES(sessionkey,string(ptdata))
+	b2, err := EncryptAESString(sessionkey, string(ptdata))
 	if err != nil {
 		fmt.Fprintln(wr, err)
 		return
 
 	}
-	wosres := new (structs.WorkOrderSubmitResponse)
-	wosres.Result.OutData = []structs.OutData{structs.OutData{}}
+	wosres := new(WorkOrderSubmitResponse)
+	wosres.Result.OutData = []OutData{OutData{}}
 	wosres.Result.OutData[0].Data = base64.StdEncoding.EncodeToString(b2)
 
-	b, _:= json.MarshalIndent(wosres, "  ", "  ")
-
+	b, _ := json.MarshalIndent(wosres, "  ", "  ")
 
 	wr.Write(b)
 
 }
 
-func workerDetails (wr http.ResponseWriter, req *http.Request) {
-	wrr := new (structs.WorkerRetrieveRequest)
+func workerDetails(wr http.ResponseWriter, req *http.Request) {
+	wrr := new(WorkerRetrieveRequest)
 	bbuf, err := ioutil.ReadAll(req.Body)
 	if err != nil {
 		fmt.Fprintln(wr, err)
@@ -410,14 +427,13 @@ func workerDetails (wr http.ResponseWriter, req *http.Request) {
 	id := wrr.Params.WorkerID
 
 	if id != "0042" {
-		fmt.Fprintf(wr,"{\"Error\",\"No such worker: %s\"}", id)
+		fmt.Fprintf(wr, "{\"Error\",\"No such worker: %s\"}", id)
 		return
 	}
-	wdres := new(structs.WorkerRetrieveResponse)
-	wdres.Result.Details.WorkerTypeData.EncryptionKey=ServPubRSA
+	wdres := new(WorkerRetrieveResponse)
+	wdres.Result.Details.WorkerTypeData.EncryptionKey = ServPubRSA
 
-
-	b,_ := json.MarshalIndent(wdres,"  ","  ")
+	b, _ := json.MarshalIndent(wdres, "  ", "  ")
 	wr.Write(b)
 
 }
