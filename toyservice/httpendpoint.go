@@ -122,6 +122,8 @@ func TheRestHandler(w http.ResponseWriter, r *http.Request) {
 		decryptUnlockKey(w, r)
 	case "decryptsignature":
 		decryptSignature(w, r)
+	case "decryptsignaturebn256":
+		decryptSignatureBn256(w, r)
 	case "verifysignature":
 		verifySignature(w, r)
 	default:
@@ -162,6 +164,56 @@ func decryptSignature(wr http.ResponseWriter, req *http.Request) {
 			return
 		}
 		hexplainsign, e := DecryptAES(ss[:], ciflock)
+		if e != nil {
+			fmt.Fprintln(wr, e)
+			return
+		}
+		cred.IssuerSignature = string(hexplainsign)
+		cred.IssuerSignatureEncrytpted = false
+		b, _ := json.MarshalIndent(cred, "  ", "  ")
+		wr.Write(b)
+
+	} else {
+		fmt.Fprintln(wr, "Signature not encrypted")
+	}
+}
+
+func decryptSignatureBn256(wr http.ResponseWriter, req *http.Request) {
+	cred, e := readCerd3(req)
+	if e != nil {
+		fmt.Fprintln(wr, e)
+		return
+	}
+	if cred.Credential.LockKey.Encrypted == true {
+		fmt.Fprintln(wr, "Strip RSA encryption from the lock key first")
+		return
+	}
+
+	if cred.IssuerSignatureEncrytpted {
+		//decrypt the signature
+		h, e := hex.DecodeString(cred.Credential.LockKey.Value)
+		if e != nil {
+			fmt.Fprintln(wr, e)
+			return
+		}
+		ephPub := new(bn256.G1)
+		_, e = ephPub.Unmarshal(h)
+
+		if e != nil {
+			fmt.Fprintln(wr, e)
+			return
+		}
+
+		blindPriv := big.NewInt(0)
+		blindPriv.SetString(BnPrivateLockKey, 10)
+		symKeyBase := ephPub.ScalarMult(ephPub, blindPriv)
+
+		ciflock, e := base64.StdEncoding.DecodeString(cred.IssuerSignature)
+		if e != nil {
+			fmt.Fprintln(wr, e)
+			return
+		}
+		hexplainsign, e := DecryptAES(symKeyBase.Marshal()[:32], ciflock)
 		if e != nil {
 			fmt.Fprintln(wr, e)
 			return
@@ -371,8 +423,9 @@ func issueCredentials3(w http.ResponseWriter, r *http.Request) {
 	} else {
 		cred.IssuerDID = "00042"
 	}
-
+    // TODO derive these keys
 	cred.IssuerPublicKey = "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503"
+	cred.PublicBlindingKey = "031b55be15240db85f8fe84661c44311dff353ba160973dcec280e31d434728f023e79c3cfe7f0f752db60e5f542d8a2865a58b2568bf087751e85e00e5baf84"
 	cred.IssuerSignatureEncrytpted = false
 
 	cred.SubjecSPublicKey = PubRSA
@@ -498,7 +551,6 @@ func encryptJsonCredPayloadEdwards(cred *CredentialWLockVer3) error {
 }
 
 func ParseBn256PublicKey(bn256pbkey string ) (*bn256.G1 , error) {
-	bn256pbkey = "031b55be15240db85f8fe84661c44311dff353ba160973dcec280e31d434728f023e79c3cfe7f0f752db60e5f542d8a2865a58b2568bf087751e85e00e5baf84"
 	h, e := hex.DecodeString(bn256pbkey)
 	if e!= nil {
 		return nil, e
@@ -522,12 +574,14 @@ func encryptJsonCredPayloadBn256(cred *CredentialWLockVer3) error {
 		return err
 	}
 
-	becpub, err := ParseBn256PublicKey(cred.IssuerPublicKey)
+	becpub, err := ParseBn256PublicKey(cred.PublicBlindingKey)
+	if err != nil {
+		return err
+	}
 	ephPriv, ephPub, err  := bn256.RandomG1(rand.Reader)
 	if err != nil {
 		return err
 	}
-
 
 	symKeySeed := becpub.ScalarMult(becpub, ephPriv)
 

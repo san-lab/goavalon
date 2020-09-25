@@ -144,6 +144,7 @@ type CredentialWLockVer3 struct {
 	IssuerDID                 string `Json:"Issuer DID'"`
 	IssuerPublicKey           string `json:"Issuer public key"`
 	IssuerSignature           string `ison:"Issuer signature"`
+	PublicBlindingKey		  string `json: "Blinding key"`
 	IssuerSignatureEncrytpted bool   `json:"signature encrypted"`
 	SubjecSPublicKey          string `json:"Subject Public key"`
 }
