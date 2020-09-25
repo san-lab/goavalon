@@ -392,7 +392,7 @@ func woSubmit(wr http.ResponseWriter, req *http.Request) {
 	cred := new(CredentialWLockVer3)
 	err = json.Unmarshal(ptdata, cred)
 	fmt.Println("ptdata", cred)
-	encryptJsonCredPayload(cred)
+	encryptJsonCredPayloadEdwards(cred)
 
 	b2, err := EncryptAESString(sessionkey, string(ptdata))
 	if err != nil {
