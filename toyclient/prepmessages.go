@@ -1,11 +1,11 @@
-package toyclient
+package main
 
 import (
-	"github.com/san-lab/goavalon/toyservice"
 	"crypto/rand"
+	"github.com/san-lab/goavalon/avalonjson"
 )
 
-func EncryptSubmit(req *toyservice.WOSubmitParams) {
+func EncryptSubmit(req *avalonjson.WOSubmitParams) {
 
 	sessionkey := make([]byte, 32)
 	rand.Read(sessionkey)
@@ -19,6 +19,5 @@ func EncryptSubmit(req *toyservice.WOSubmitParams) {
 		//toyservice.EncryptAESString()
 
 	}
-
 
 }

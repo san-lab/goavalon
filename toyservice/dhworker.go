@@ -1,44 +1,47 @@
 package toyservice
 
 import (
-
-	"encoding/json"
+	"crypto/rand"
 	"crypto/sha256"
 	"encoding/hex"
-	"crypto/rand"
+	"encoding/json"
+	"github.com/san-lab/goavalon/avalonjson"
 )
 
-
-
-
-func (wrk *Worker) EncryptDalionStyle(request *GenericAvalonRPCRequest, response *GenericResponse) {
+func (wrk *Worker) EncryptDalionStyle(request *avalonjson.GenericAvalonRPCRequest, response *avalonjson.GenericResponse) {
 	switch request.Method {
 	case WorkerRetrieve:
-		wrk.handleDetails(request,response)
+		wrk.handleDetails(request, response)
 	case WorkOrderSubmitMethod:
 		wrk.handleSubmit(request, response)
 	default:
 		rm := request.Params
-		params := new(WOSubmitParams)
+		params := new(avalonjson.WOSubmitParams)
 		json.Unmarshal(rm, params)
-		locRes := new (WorkOrderSubmitResult)
-		locRes.OutData = make([]OutData, 1)
+		locRes := new(avalonjson.WorkOrderSubmitResult)
+		locRes.OutData = make([]*avalonjson.OutDataItem, 1)
 		locRes.OutData[0].Data = "Got here!"
-
 
 		b, _ := json.Marshal(locRes)
 		response.Result = b
 	}
 
-
 }
 
-func (wrk *Worker) handleDetails (request *GenericAvalonRPCRequest, response *GenericResponse) {
-	locRes := WorkerRetrieveResult{}
+type Worker struct {
+	ID              [32]byte //32 bytes
+	Type            int
+	ApplicationType int
+	OrganizationID  [32]byte //32 bytes
+	Process         func(request *avalonjson.GenericAvalonRPCRequest, response *avalonjson.GenericResponse)
+}
+
+func (wrk *Worker) handleDetails(request *avalonjson.GenericAvalonRPCRequest, response *avalonjson.GenericResponse) {
+	locRes := avalonjson.WorkerRetrieveResult{}
 	locRes.OrganizationID = hex.EncodeToString(wrk.OrganizationID[:])
 	locRes.WorkerType = Type1
 	locRes.Status = 1
-	locRes.Details.HashingAlgorithm =  "SHA-256"
+	locRes.Details.HashingAlgorithm = "SHA-256"
 	locRes.Details.SigningAlgorithm = "SECP256K1"
 	locRes.Details.KeyEncryptionAlgorithm = "RSA-OAEP-3072"
 	locRes.Details.DataEncryptionAlgorithm = "AES-GCM-256"
@@ -48,7 +51,6 @@ func (wrk *Worker) handleDetails (request *GenericAvalonRPCRequest, response *Ge
 	privkey, _ := ParseKoblitzPrivPem(ServPrivEC)
 	pb := EcPubKeyBytesToPem(privkey.PubKey().SerializeUncompressed())
 
-
 	locRes.Details.WorkerTypeData.VerificationKey = pb
 	locRes.Details.WorkerTypeData.EncryptionKeySignature = "z"
 
@@ -56,24 +58,22 @@ func (wrk *Worker) handleDetails (request *GenericAvalonRPCRequest, response *Ge
 	response.Result = b
 }
 
-func (wrk *Worker) handleSubmit (request *GenericAvalonRPCRequest, response *GenericResponse) {
-	subPar := new(WOSubmitParams)
+func (wrk *Worker) handleSubmit(request *avalonjson.GenericAvalonRPCRequest, response *avalonjson.GenericResponse) {
+	subPar := new(avalonjson.WOSubmitParams)
 	json.Unmarshal(request.Params, subPar)
 
-	locRes := WorkOrderSubmitResult{}
+	locRes := avalonjson.WorkOrderSubmitResult{}
 	locRes.WorkOrderID = subPar.WorkOrderID
 	locRes.RequesterID = subPar.RequesterID
 	locRes.WorkloadID = subPar.WorkloadID
 	locRes.WorkerID = hex.EncodeToString(wrk.ID[:])
 	locRes.WorkerNonce = getNonce()
 
-	locRes.OutData = []OutData{}
-
+	locRes.OutData = []*avalonjson.OutDataItem{}
 
 	b, _ := json.Marshal(locRes)
 	response.Result = b
 }
-
 
 func getNonce() string {
 	buf := make([]byte, 32)

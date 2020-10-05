@@ -12,13 +12,16 @@ import (
 	"encoding/json"
 	"encoding/pem"
 	"fmt"
-	"github.com/agl/ed25519/edwards25519"
 	"io/ioutil"
 	"math/big"
 	"net/http"
+
+	"github.com/agl/ed25519/edwards25519"
+	"github.com/san-lab/goavalon/avalonjson"
+	"github.com/san-lab/goavalon/crypto"
 )
 
-var ServPrivEC =`-----BEGIN EC PRIVATE KEY-----
+var ServPrivEC = `-----BEGIN EC PRIVATE KEY-----
 MHQCAQEEIKAJs7cuf72RtsDuceuC0RhOqlfCWLL4M6n7k2JdnxzZoAcGBSuBBAAK
 oUQDQgAE+1oZpzrhkYYS2cIN2Ys0gqlsIY+pIHABQS5vrSb9Cp3xuuDFYP9nMs6/
 ccfZoW71DcNQ9UlBARbiZ/Uo8CmunQ==
@@ -29,7 +32,7 @@ MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEAaWC2DjQ9l88wmlhy8zXK8CpXDSCLjaM
 U6JHBb5eiJPQpvj41THtZuGd4hsPZf6lUzNgzJWPR1z4QQ2IwGANTg==
 -----END PUBLIC KEY-----
 `
-var TestECPub2 =`-----BEGIN PUBLIC KEY-----
+var TestECPub2 = `-----BEGIN PUBLIC KEY-----
 MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEF+S9qL7fencVF1/zhMcMljTb6qL19nYZ
 mYby5kwoUfJXDxOli0APEWeTZkjI/58o87uiUESPORYv/h5Udbc6Ug==
 -----END PUBLIC KEY-----`
@@ -120,7 +123,7 @@ od2kcLOU50zgCMaDOa9bssEU6ToXLDDCf9470i8TkN8=
 -----END Ed25519 PUBLIC KEY-----`
 
 func TestRSA() {
-	pub, e := ParseRSAPublicKey(PubRSA)
+	pub, e := crypto.ParseRSAPublicKey(PubRSA)
 	priv, e := ParseRSAPrivKeyPEM(PrivRSA)
 	fmt.Println("error:", e)
 	fmt.Println(priv.PublicKey.N)
@@ -138,27 +141,6 @@ func ParseRSAPrivKeyPEM(privPEM string) (*rsa.PrivateKey, error) {
 		return nil, err
 	}
 	return priv, nil
-
-}
-
-func ParseRSAPublicKey(pubPEM string) (*rsa.PublicKey, error) {
-
-	block, _ := pem.Decode([]byte(pubPEM))
-	if block == nil {
-		return nil, fmt.Errorf("Could not decode the key")
-	}
-
-	pub, err := x509.ParsePKIXPublicKey(block.Bytes)
-	if err != nil {
-		return nil, err
-	}
-
-	switch pub := pub.(type) {
-	case *rsa.PublicKey:
-		return pub, nil
-	default:
-		return nil, fmt.Errorf("unknown type of public key")
-	}
 
 }
 
@@ -336,7 +318,7 @@ var newJson = `{
 }`
 
 func woSubmit(wr http.ResponseWriter, req *http.Request) {
-	rqj := new(WorkOrderSubmit)
+	rqj := new(avalonjson.WorkOrderSubmit)
 	bbuf, err := ioutil.ReadAll(req.Body)
 	if err != nil {
 		fmt.Fprintln(wr, err)
@@ -400,8 +382,8 @@ func woSubmit(wr http.ResponseWriter, req *http.Request) {
 		return
 
 	}
-	wosres := new(WorkOrderSubmitResponse)
-	wosres.Result.OutData = []OutData{OutData{}}
+	wosres := new(avalonjson.WorkOrderSubmitResponse)
+	wosres.Result.OutData = []*avalonjson.OutDataItem{new(avalonjson.OutDataItem)}
 	wosres.Result.OutData[0].Data = base64.StdEncoding.EncodeToString(b2)
 
 	b, _ := json.MarshalIndent(wosres, "  ", "  ")
@@ -411,7 +393,7 @@ func woSubmit(wr http.ResponseWriter, req *http.Request) {
 }
 
 func workerDetails(wr http.ResponseWriter, req *http.Request) {
-	wrr := new(WorkerRetrieveRequest)
+	wrr := new(avalonjson.WorkerRetrieveRequest)
 	bbuf, err := ioutil.ReadAll(req.Body)
 	if err != nil {
 		fmt.Fprintln(wr, err)
@@ -430,10 +412,12 @@ func workerDetails(wr http.ResponseWriter, req *http.Request) {
 		fmt.Fprintf(wr, "{\"Error\",\"No such worker: %s\"}", id)
 		return
 	}
-	wdres := new(WorkerRetrieveResponse)
+	wdres := new(avalonjson.WorkerRetrieveResponse)
 	wdres.Result.Details.WorkerTypeData.EncryptionKey = ServPubRSA
 
 	b, _ := json.MarshalIndent(wdres, "  ", "  ")
 	wr.Write(b)
 
 }
+
+

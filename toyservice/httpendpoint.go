@@ -10,6 +10,8 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"github.com/clearmatics/bn256"
+	"github.com/san-lab/goavalon/crypto"
 	"io/ioutil"
 	"log"
 	"math/big"
@@ -18,7 +20,6 @@ import (
 	"os/signal"
 	"strconv"
 	"sync"
-	"github.com/clearmatics/bn256"
 )
 
 func StartServer() {
@@ -103,7 +104,7 @@ func TheRestHandler(w http.ResponseWriter, r *http.Request) {
 	case "submit3":
 		encryptCredentialsSignatureEdwards(w, r)
 	case "encryptbn256":
-		encryptCredentialsSignatureBn256(w,r)
+		encryptCredentialsSignatureBn256(w, r)
 	case "issue":
 		issueCredentials(w, r)
 	case "issue3":
@@ -423,7 +424,7 @@ func issueCredentials3(w http.ResponseWriter, r *http.Request) {
 	} else {
 		cred.IssuerDID = "00042"
 	}
-    // TODO derive these keys
+	// TODO derive these keys
 	cred.IssuerPublicKey = "6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503"
 	cred.PublicBlindingKey = "031b55be15240db85f8fe84661c44311dff353ba160973dcec280e31d434728f023e79c3cfe7f0f752db60e5f542d8a2865a58b2568bf087751e85e00e5baf84"
 	cred.IssuerSignatureEncrytpted = false
@@ -493,12 +494,12 @@ func stripRSA(cred *CredentialWLockVer3, privrsa *rsa.PrivateKey) error {
 	return nil
 }
 
-func encryptJsonCredPayloadEdwards(cred *CredentialWLockVer3) error {
+func encryptJsonCredPayloadEdwards(cred *CredentialWLockVer3) (symkey string, err error ) {
 
 	//Parse Customers Public Key
-	rsapub, err := ParseRSAPublicKey(cred.SubjecSPublicKey)
+	rsapub, err := crypto.ParseRSAPublicKey(cred.SubjecSPublicKey)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	becpub, err := ParseEd25519PublicKey(cred.IssuerPublicKey)
@@ -541,27 +542,26 @@ func encryptJsonCredPayloadEdwards(cred *CredentialWLockVer3) error {
 	//TODO: Handle different block types, do not assume len(ss)==32
 	signaturebytes, err := EncryptAESString(ss[:], cred.IssuerSignature)
 	if err != nil {
-		return err
+		return "", err
 	}
 	sig64base := base64.StdEncoding.EncodeToString(signaturebytes)
 
 	cred.IssuerSignatureEncrytpted = true
 	cred.IssuerSignature = sig64base
-	return nil
+	return hex.EncodeToString(ss[:]),nil
 }
 
-func ParseBn256PublicKey(bn256pbkey string ) (*bn256.G1 , error) {
+func ParseBn256PublicKey(bn256pbkey string) (*bn256.G1, error) {
 	h, e := hex.DecodeString(bn256pbkey)
-	if e!= nil {
+	if e != nil {
 		return nil, e
 	}
 
 	gp := new(bn256.G1)
 	_, e = gp.Unmarshal(h)
-	if e!= nil {
+	if e != nil {
 		return nil, e
 	}
-
 
 	return gp, nil
 }
@@ -569,7 +569,7 @@ func ParseBn256PublicKey(bn256pbkey string ) (*bn256.G1 , error) {
 func encryptJsonCredPayloadBn256(cred *CredentialWLockVer3) error {
 
 	//Parse Customers Public Key
-	rsapub, err := ParseRSAPublicKey(cred.SubjecSPublicKey)
+	rsapub, err := crypto.ParseRSAPublicKey(cred.SubjecSPublicKey)
 	if err != nil {
 		return err
 	}
@@ -578,7 +578,7 @@ func encryptJsonCredPayloadBn256(cred *CredentialWLockVer3) error {
 	if err != nil {
 		return err
 	}
-	ephPriv, ephPub, err  := bn256.RandomG1(rand.Reader)
+	ephPriv, ephPub, err := bn256.RandomG1(rand.Reader)
 	if err != nil {
 		return err
 	}
@@ -636,10 +636,7 @@ func encryptCredentialsSignatureBn256(wr http.ResponseWriter, req *http.Request)
 	wr.Write(ncred)
 }
 
-
-
-
-	func encryptCredentialsSignatureEdwards(wr http.ResponseWriter, req *http.Request) {
+func encryptCredentialsSignatureEdwards(wr http.ResponseWriter, req *http.Request) {
 
 	cred, err := readCerd3(req)
 	if err != nil {
@@ -647,7 +644,7 @@ func encryptCredentialsSignatureBn256(wr http.ResponseWriter, req *http.Request)
 		return
 	}
 
-	err = encryptJsonCredPayloadEdwards(cred)
+	symkey, err := encryptJsonCredPayloadEdwards(cred)
 	if err != nil {
 		wr.WriteHeader(http.StatusBadRequest)
 		fmt.Fprintln(wr, err)
@@ -663,8 +660,8 @@ func encryptCredentialsSignatureBn256(wr http.ResponseWriter, req *http.Request)
 		return
 	}
 	wr.Header().Set("Content-type", "application/json")
-	//wr.Header().Set("SymAlg", "AES-256-GCM" )
-	//wr.Header().Add("SymKey", hex.EncodeToString(ss[:]))
+	wr.Header().Set("SymAlg", "AES-256-GCM" )
+	wr.Header().Add("SymKey", symkey)
 	//wr.Header().Add("Enclave-Ed25519-private", fmt.Sprintf("%x", t) )
 	//wr.Header().Add("IV", hex.EncodeToString(signaturebytes[0:12]))
 	wr.WriteHeader(http.StatusOK)

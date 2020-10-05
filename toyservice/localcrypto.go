@@ -10,16 +10,16 @@ import (
 	"crypto/sha256"
 	"encoding/base64"
 	"encoding/hex"
+	"encoding/pem"
 	"fmt"
 	"github.com/agl/ed25519/edwards25519"
+	"github.com/btcsuite/btcd/btcec"
 	"math/big"
 	"strings"
-	"github.com/btcsuite/btcd/btcec"
-	"encoding/pem"
 
 	"crypto/ecdsa"
-	"encoding/asn1"
 	"crypto/elliptic"
+	"encoding/asn1"
 )
 
 const RSA_ENCR_LABEL = "Encrypted with Public RSA key"
@@ -336,8 +336,6 @@ func EncryptAESBytes(skey []byte, nonce []byte, plaintext []byte) (ciphertext []
 	return ct.Bytes(), nil
 }
 
-
-
 func SignByEd3(cred *CredentialWLockVer3, prvIssuer string) {
 	test := collectSignString(cred)
 
@@ -362,9 +360,10 @@ func ParseKoblitzPrivPem(pemstring string) (*btcec.PrivateKey, error) {
 		return nil, fmt.Errorf("Block too short")
 	}
 	keybytes := blk.Bytes[7:39]
-	pk, _ :=  btcec.PrivKeyFromBytes(btcec.S256(),keybytes)
+	pk, _ := btcec.PrivKeyFromBytes(btcec.S256(), keybytes)
 	return pk, nil
 }
+
 var ecPubKeyPreamble = []byte{48, 86, 48, 16, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 5, 43, 129, 4, 0, 10, 3, 66, 0}
 
 // Now I need to hijack this code from x509 because they do not know the Koblitz OID :-(
@@ -373,7 +372,7 @@ func MarshalECPrivateKey(key *ecdsa.PrivateKey) ([]byte, error) {
 	//if !ok {
 	//	return nil, errors.New("x509: unknown elliptic curve")
 	//}
-	oid := asn1.ObjectIdentifier{1,3,132,0,10}
+	oid := asn1.ObjectIdentifier{1, 3, 132, 0, 10}
 	privateKeyBytes := key.D.Bytes()
 	paddedPrivateKey := make([]byte, (key.Curve.Params().N.BitLen()+7)/8)
 	copy(paddedPrivateKey[len(paddedPrivateKey)-len(privateKeyBytes):], privateKeyBytes)
@@ -385,6 +384,7 @@ func MarshalECPrivateKey(key *ecdsa.PrivateKey) ([]byte, error) {
 		PublicKey:     asn1.BitString{Bytes: elliptic.Marshal(key.Curve, key.X, key.Y)},
 	})
 }
+
 type ecPrivateKey struct {
 	Version       int
 	PrivateKey    []byte
@@ -414,7 +414,7 @@ func insertNewLineEvery64(in []byte) (out []byte) {
 	return
 }
 
-func ParseKoblitzPubPem(pemstring string ) (*btcec.PublicKey, error){
+func ParseKoblitzPubPem(pemstring string) (*btcec.PublicKey, error) {
 	blk, r := pem.Decode([]byte(pemstring))
 	fmt.Println(r)
 	if blk == nil {

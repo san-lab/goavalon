@@ -41,8 +41,8 @@ type ClaimRequestType struct {
 	Type      string
 	Value     string
 	//TODO
-	IssuerName string `json:"Issuer name"`
-	IssuerDID  string `json:"Issuer DID"`
+	IssuerName string  `json:"Issuer name"`
+	IssuerDID  string  `json:"Issuer DID"`
 	SignKey    *string `json:"signing key,omitempty"`
 	Signature  *string `json:"signature,omitempty"`
 }
@@ -144,7 +144,7 @@ type CredentialWLockVer3 struct {
 	IssuerDID                 string `Json:"Issuer DID'"`
 	IssuerPublicKey           string `json:"Issuer public key"`
 	IssuerSignature           string `ison:"Issuer signature"`
-	PublicBlindingKey		  string `json: "Blinding key"`
+	PublicBlindingKey         string `json: "Blinding key"`
 	IssuerSignatureEncrytpted bool   `json:"signature encrypted"`
 	SubjecSPublicKey          string `json:"Subject Public key"`
 }

@@ -1,18 +1,19 @@
 package toyservice
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"net/http"
-	"encoding/hex"
 	"bytes"
-	"encoding/base64"
+	"context"
+	"crypto/rand"
 	"crypto/rsa"
 	"crypto/sha256"
-	"crypto/rand"
+	"encoding/base64"
+	"encoding/hex"
+	"encoding/json"
+	"fmt"
 	"github.com/btcsuite/btcd/btcec"
+	"github.com/san-lab/goavalon/avalonjson"
+	"io/ioutil"
+	"net/http"
 )
 
 const Type1 = 1 // indicates "TEE-SGX": an Intel SGX Trusted Execution Environment
@@ -21,17 +22,17 @@ const Type3 = 3 // indicates "ZK": Zero-Knowledge
 
 const GoAvalonPath = "goavalon"
 const Lookup = "WorkerLookUp"
-const WorkerRetrieve  = "WorkerRetrieve"
+const WorkerRetrieve = "WorkerRetrieve"
 const WorkOrderSubmitMethod = "WorkOrderSubmit"
 const WorkOrderGetResultMethod = "WorkOrderGetResult"
 
-var ACMEID = [32]byte{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42}
+var ACMEID = [32]byte{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 42}
 
 type GoAvalon struct {
 	Ctx     context.Context
 	workers map[string]*Worker
-	rsaKey *rsa.PrivateKey
-	ecKey  *btcec.PrivateKey
+	rsaKey  *rsa.PrivateKey
+	ecKey   *btcec.PrivateKey
 }
 
 func NewService(ctx context.Context) *GoAvalon {
@@ -50,14 +51,12 @@ func (gav *GoAvalon) init() {
 	gav.ecKey, err = ParseKoblitzPrivPem(ServPrivEC)
 	fmt.Println(err)
 
-	gav.addWorker( NewEncryptorWorker() )
+	gav.addWorker(NewEncryptorWorker())
 }
 
 func (gav *GoAvalon) addWorker(w *Worker) {
 	gav.workers[hex.EncodeToString(w.ID[:])] = w
 }
-
-
 
 func (gav *GoAvalon) TheHandler(w http.ResponseWriter, r *http.Request) {
 	//TODO? Verify app/json content type
@@ -66,7 +65,7 @@ func (gav *GoAvalon) TheHandler(w http.ResponseWriter, r *http.Request) {
 
 	//We do it once here for all methods, so in-lining
 	bbuf, err := ioutil.ReadAll(r.Body)
-	greq := new(GenericAvalonRPCRequest)
+	greq := new(avalonjson.GenericAvalonRPCRequest)
 	err = json.Unmarshal(bbuf, greq)
 	if err != nil {
 		fmt.Fprintln(w, err)
@@ -74,7 +73,7 @@ func (gav *GoAvalon) TheHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	gres := new(GenericResponse)
+	gres := new(avalonjson.GenericResponse)
 	gres.ID = greq.ID
 	//TODO? Verify these
 	gres.Jsonrpc = greq.Jsonrpc
@@ -85,12 +84,12 @@ func (gav *GoAvalon) TheHandler(w http.ResponseWriter, r *http.Request) {
 	case Lookup:
 		gav.WorkerLookup(greq, gres)
 	case WorkerRetrieve, WorkOrderSubmitMethod:
-		wrp := new(WorkerRetrieveParams)
+		wrp := new(avalonjson.WorkerRetrieveParams)
 		json.Unmarshal(greq.Params, wrp)
 		wrk, is := gav.workers[wrp.WorkerID]
-		if ! is {
+		if !is {
 			w.WriteHeader(http.StatusBadRequest)
-			fmt.Fprintln(w,"No such worker:", wrp.WorkerID)
+			fmt.Fprintln(w, "No such worker:", wrp.WorkerID)
 			return
 		}
 		wrk.Process(greq, gres)
@@ -99,36 +98,33 @@ func (gav *GoAvalon) TheHandler(w http.ResponseWriter, r *http.Request) {
 	b, _ := json.Marshal(gres)
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-type", "application/json")
-	fmt.Fprintln(w,string(b))
+	fmt.Fprintln(w, string(b))
 }
 
-
-func (gav *GoAvalon) WorkerLookup(request *GenericAvalonRPCRequest, response *GenericResponse) {
-	woloopar := new(WorkerLookupParams)
-	json.Unmarshal(request.Params,woloopar)
-	woloor := new (WorkerLookupResult)
+func (gav *GoAvalon) WorkerLookup(request *avalonjson.GenericAvalonRPCRequest, response *avalonjson.GenericResponse) {
+	woloopar := new(avalonjson.WorkerLookupParams)
+	json.Unmarshal(request.Params, woloopar)
+	woloor := new(avalonjson.WorkerLookupResult)
 	found := make([]string, 0, len(gav.workers))
 	var oid []byte
 	if len(woloopar.OrganizationID) > 0 {
 		oid, _ = hex.DecodeString(woloopar.OrganizationID)
 	}
 	for id, wrk := range gav.workers {
-		if woloopar.ApplicationTypeID ==0 || wrk.ApplicationType == woloopar.ApplicationTypeID {
-			if len(woloopar.OrganizationID) ==0 || bytes.Equal( wrk.OrganizationID[:] , oid) {
+		if woloopar.ApplicationTypeID == 0 || wrk.ApplicationType == woloopar.ApplicationTypeID {
+			if len(woloopar.OrganizationID) == 0 || bytes.Equal(wrk.OrganizationID[:], oid) {
 				found = append(found, id)
 			}
 		}
 	}
-	woloor.Ids=found
+	woloor.Ids = found
 	woloor.TotalCount = len(found)
-	b,_ := json.Marshal(woloor)
+	b, _ := json.Marshal(woloor)
 	response.Result = b
 
 }
 
-func (gav *GoAvalon) DecryptInData(subDat *WOSubmitParams) error {
-
-
+func (gav *GoAvalon) DecryptInData(subDat *avalonjson.WOSubmitParams) error {
 
 	encskey, err := base64.StdEncoding.DecodeString(subDat.EncryptedSessionKey)
 
@@ -138,7 +134,7 @@ func (gav *GoAvalon) DecryptInData(subDat *WOSubmitParams) error {
 	}
 	iv, err := hex.DecodeString(subDat.SessionKeyIv)
 	if err != nil {
-				return err
+		return err
 	}
 	for i, _ := range subDat.InData {
 		ctdata, err := base64.StdEncoding.DecodeString(subDat.InData[i].Data)
@@ -152,7 +148,7 @@ func (gav *GoAvalon) DecryptInData(subDat *WOSubmitParams) error {
 			return err
 		}
 
-		subDat.InData[i].Data =  hex.EncodeToString(ptdata)
+		subDat.InData[i].Data = hex.EncodeToString(ptdata)
 	}
 	return nil
 

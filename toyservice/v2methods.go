@@ -7,6 +7,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"github.com/san-lab/goavalon/crypto"
 	"io/ioutil"
 	"math/big"
 	"net/http"
@@ -28,7 +29,7 @@ func encryptCredentials(wr http.ResponseWriter, req *http.Request) {
 	}
 
 	//Parse Customers Public Key
-	rsapub, err := ParseRSAPublicKey(cred.SubjecSPublicKey)
+	rsapub, err := crypto.ParseRSAPublicKey(cred.SubjecSPublicKey)
 	if err != nil {
 		wr.WriteHeader(http.StatusBadRequest)
 		fmt.Fprintln(wr, err)
