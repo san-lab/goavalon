@@ -566,21 +566,21 @@ func ParseBn256PublicKey(bn256pbkey string) (*bn256.G1, error) {
 	return gp, nil
 }
 
-func encryptJsonCredPayloadBn256(cred *CredentialWLockVer3) error {
+func encryptJsonCredPayloadBn256(cred *CredentialWLockVer3) (ss []byte, err error) {
 
 	//Parse Customers Public Key
 	rsapub, err := crypto.ParseRSAPublicKey(cred.SubjecSPublicKey)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	becpub, err := ParseBn256PublicKey(cred.PublicBlindingKey)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	ephPriv, ephPub, err := bn256.RandomG1(rand.Reader)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	symKeySeed := becpub.ScalarMult(becpub, ephPriv)
@@ -592,16 +592,16 @@ func encryptJsonCredPayloadBn256(cred *CredentialWLockVer3) error {
 
 	cred.Credential.LockKey.Encrypted = true
 	cred.Credential.LockKey.Value = b64ciphertext
-
-	signaturebytes, err := EncryptAESString(symKeySeed.Marshal()[:32], cred.IssuerSignature)
+	ss = symKeySeed.Marshal()[:32]
+	signaturebytes, err := EncryptAESString(ss, cred.IssuerSignature)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	sig64base := base64.StdEncoding.EncodeToString(signaturebytes)
 
 	cred.IssuerSignatureEncrytpted = true
 	cred.IssuerSignature = sig64base
-	return nil
+	return ss, nil
 }
 
 func encryptCredentialsSignatureBn256(wr http.ResponseWriter, req *http.Request) {
@@ -612,7 +612,7 @@ func encryptCredentialsSignatureBn256(wr http.ResponseWriter, req *http.Request)
 		return
 	}
 
-	err = encryptJsonCredPayloadBn256(cred)
+	ss, err := encryptJsonCredPayloadBn256(cred)
 	if err != nil {
 		wr.WriteHeader(http.StatusBadRequest)
 		fmt.Fprintln(wr, err)
@@ -629,7 +629,7 @@ func encryptCredentialsSignatureBn256(wr http.ResponseWriter, req *http.Request)
 	}
 	wr.Header().Set("Content-type", "application/json")
 	//wr.Header().Set("SymAlg", "AES-256-GCM" )
-	//wr.Header().Add("SymKey", hex.EncodeToString(ss[:]))
+	wr.Header().Add("SymKey", hex.EncodeToString(ss))
 	//wr.Header().Add("Enclave-Ed25519-private", fmt.Sprintf("%x", t) )
 	//wr.Header().Add("IV", hex.EncodeToString(signaturebytes[0:12]))
 	wr.WriteHeader(http.StatusOK)
