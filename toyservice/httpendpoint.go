@@ -10,8 +10,8 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"github.com/clearmatics/bn256"
-	"github.com/san-lab/goavalon/crypto"
+
+	//"github.com/clearmatics/bn256"
 	"io/ioutil"
 	"log"
 	"math/big"
@@ -20,6 +20,8 @@ import (
 	"os/signal"
 	"strconv"
 	"sync"
+
+	"github.com/san-lab/goavalon/crypto"
 )
 
 func StartServer() {
@@ -103,8 +105,8 @@ func TheRestHandler(w http.ResponseWriter, r *http.Request) {
 		woSubmit(w, r)
 	case "submit3":
 		encryptCredentialsSignatureEdwards(w, r)
-	case "encryptbn256":
-		encryptCredentialsSignatureBn256(w, r)
+	//case "encryptbn256":
+	//	encryptCredentialsSignatureBn256(w, r)
 	case "issue":
 		issueCredentials(w, r)
 	case "issue3":
@@ -123,8 +125,8 @@ func TheRestHandler(w http.ResponseWriter, r *http.Request) {
 		decryptUnlockKey(w, r)
 	case "decryptsignature":
 		decryptSignature(w, r)
-	case "decryptsignaturebn256":
-		decryptSignatureBn256(w, r)
+	//case "decryptsignaturebn256":
+	//	decryptSignatureBn256(w, r)
 	case "verifysignature":
 		verifySignature(w, r)
 	default:
@@ -179,6 +181,7 @@ func decryptSignature(wr http.ResponseWriter, req *http.Request) {
 	}
 }
 
+/*
 func decryptSignatureBn256(wr http.ResponseWriter, req *http.Request) {
 	cred, e := readCerd3(req)
 	if e != nil {
@@ -228,6 +231,7 @@ func decryptSignatureBn256(wr http.ResponseWriter, req *http.Request) {
 		fmt.Fprintln(wr, "Signature not encrypted")
 	}
 }
+*/
 
 func verifySignature(wr http.ResponseWriter, req *http.Request) {
 	cred, e := readCerd3(req)
@@ -494,7 +498,7 @@ func stripRSA(cred *CredentialWLockVer3, privrsa *rsa.PrivateKey) error {
 	return nil
 }
 
-func encryptJsonCredPayloadEdwards(cred *CredentialWLockVer3) (symkey string, err error ) {
+func encryptJsonCredPayloadEdwards(cred *CredentialWLockVer3) (symkey string, err error) {
 
 	//Parse Customers Public Key
 	rsapub, err := crypto.ParseRSAPublicKey(cred.SubjecSPublicKey)
@@ -548,9 +552,10 @@ func encryptJsonCredPayloadEdwards(cred *CredentialWLockVer3) (symkey string, er
 
 	cred.IssuerSignatureEncrytpted = true
 	cred.IssuerSignature = sig64base
-	return hex.EncodeToString(ss[:]),nil
+	return hex.EncodeToString(ss[:]), nil
 }
 
+/*
 func ParseBn256PublicKey(bn256pbkey string) (*bn256.G1, error) {
 	h, e := hex.DecodeString(bn256pbkey)
 	if e != nil {
@@ -565,8 +570,15 @@ func ParseBn256PublicKey(bn256pbkey string) (*bn256.G1, error) {
 
 	return gp, nil
 }
+*/
 
-func encryptJsonCredPayloadBn256(cred *CredentialWLockVer3) (ss []byte, err error) {
+type debuginfo struct {
+	symkey  string
+	ethPriv string
+}
+
+/*
+func encryptJsonCredPayloadBn256(cred *CredentialWLockVer3) (di *debuginfo, err error) {
 
 	//Parse Customers Public Key
 	rsapub, err := crypto.ParseRSAPublicKey(cred.SubjecSPublicKey)
@@ -583,6 +595,8 @@ func encryptJsonCredPayloadBn256(cred *CredentialWLockVer3) (ss []byte, err erro
 		return nil, err
 	}
 
+	di = new (debuginfo)
+
 	symKeySeed := becpub.ScalarMult(becpub, ephPriv)
 
 	plaintext := hex.EncodeToString(ephPub.Marshal())
@@ -592,16 +606,18 @@ func encryptJsonCredPayloadBn256(cred *CredentialWLockVer3) (ss []byte, err erro
 
 	cred.Credential.LockKey.Encrypted = true
 	cred.Credential.LockKey.Value = b64ciphertext
-	ss = symKeySeed.Marshal()[:32]
+	ss := symKeySeed.Marshal()[:32]
 	signaturebytes, err := EncryptAESString(ss, cred.IssuerSignature)
 	if err != nil {
 		return nil, err
 	}
+	di.symkey = hex.EncodeToString(ss)
+	di.ethPriv = ephPriv.String()
 	sig64base := base64.StdEncoding.EncodeToString(signaturebytes)
 
 	cred.IssuerSignatureEncrytpted = true
 	cred.IssuerSignature = sig64base
-	return ss, nil
+	return
 }
 
 func encryptCredentialsSignatureBn256(wr http.ResponseWriter, req *http.Request) {
@@ -612,7 +628,7 @@ func encryptCredentialsSignatureBn256(wr http.ResponseWriter, req *http.Request)
 		return
 	}
 
-	ss, err := encryptJsonCredPayloadBn256(cred)
+	di, err := encryptJsonCredPayloadBn256(cred)
 	if err != nil {
 		wr.WriteHeader(http.StatusBadRequest)
 		fmt.Fprintln(wr, err)
@@ -629,13 +645,13 @@ func encryptCredentialsSignatureBn256(wr http.ResponseWriter, req *http.Request)
 	}
 	wr.Header().Set("Content-type", "application/json")
 	//wr.Header().Set("SymAlg", "AES-256-GCM" )
-	wr.Header().Add("SymKey", hex.EncodeToString(ss))
+	wr.Header().Add("SymKey", di.symkey)
 	//wr.Header().Add("Enclave-Ed25519-private", fmt.Sprintf("%x", t) )
 	//wr.Header().Add("IV", hex.EncodeToString(signaturebytes[0:12]))
 	wr.WriteHeader(http.StatusOK)
 	wr.Write(ncred)
 }
-
+*/
 func encryptCredentialsSignatureEdwards(wr http.ResponseWriter, req *http.Request) {
 
 	cred, err := readCerd3(req)
@@ -660,7 +676,7 @@ func encryptCredentialsSignatureEdwards(wr http.ResponseWriter, req *http.Reques
 		return
 	}
 	wr.Header().Set("Content-type", "application/json")
-	wr.Header().Set("SymAlg", "AES-256-GCM" )
+	wr.Header().Set("SymAlg", "AES-256-GCM")
 	wr.Header().Add("SymKey", symkey)
 	//wr.Header().Add("Enclave-Ed25519-private", fmt.Sprintf("%x", t) )
 	//wr.Header().Add("IV", hex.EncodeToString(signaturebytes[0:12]))

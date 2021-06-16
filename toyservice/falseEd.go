@@ -8,8 +8,9 @@ import (
 	"crypto/sha512"
 	"encoding/hex"
 	"fmt"
-	"github.com/agl/ed25519/edwards25519"
 	"math/big"
+
+	"github.com/agl/ed25519/edwards25519"
 )
 
 //Verification
