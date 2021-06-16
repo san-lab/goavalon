@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "6ba35d53-0daa-46bf-a287-7c38c05645f0",
+		"name": "blindedCred",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8100/issue3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request id\": \"7\",\n    \"DID\": \"42\",\n    \"Name\": \"Nancy\",\n    \"Type\": \"Average account balance cert\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8100/issue3",
+					"host": [
+						"localhost"
+					],
+					"port": "8100",
+					"path": [
+						"issue3"
+					]
+				},
+				"description": "The First Call - cred issuance"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8100/submit3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Credential\": {\n        \"Type\": \"Average account balance cert\",\n        \"Name\": \"Nancy\",\n        \"DID\": \"42\",\n        \"value\": \"25000 EUR\",\n        \"lock key\": {\n            \"encrypted\": false,\n            \"value\": \"\"\n        }\n    },\n    \"Issuer name\": \"Santander\",\n    \"IssuerDID\": \"00042\",\n    \"Issuer public key\": \"6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503\",\n    \"IssuerSignature\": \"0113e01821bc162369e6a833a3397ad263da4388f82705ffbe8f03f1ca0dfcf73978ff8cebe5b9a9845d189ecf29c21e17e13f457c7f6f3d25f71d2ee22a1705\",\n    \"PublicBlindingKey\": \"031b55be15240db85f8fe84661c44311dff353ba160973dcec280e31d434728f023e79c3cfe7f0f752db60e5f542d8a2865a58b2568bf087751e85e00e5baf84\",\n    \"signature encrypted\": false,\n    \"Subject Public key\": \"-----BEGIN RSA PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs+ZGv20suqeVy+LrA+tr\\nhYdov0IQvWLavVw5v383d8rRbnjXxB0UroX+61/9olL0KnYpgCKr+UC+1uf3FuFs\\n008DMkKSg8umWrV+8etHPZa31qSBgYWgrlygScAoPU5yQY3x/7NFFaIAs89bCw2J\\n5kKcQh/NHk+dRAYuQ4qmo6OKp0TW065MEprpfWZHgc9uynk7fRG+DHyLtGxkjb2J\\n6nSPSm7wK8Sb75YZV7orU1R80Brn1zbVxBKheLGfKgc7QK/6SuASlssR4pe58zIi\\n/KJtO8CqzpzmJShaxnPlxaUr7GRs3mCnMOL0bUYTkQsqUEfx/imh8PM7eXWuBAOF\\nLQIDAQAB\\n-----END RSA PUBLIC KEY-----\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8100/submit3",
+					"host": [
+						"localhost"
+					],
+					"port": "8100",
+					"path": [
+						"submit3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8100/striprsa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Credential\": {\n        \"Type\": \"Average account balance cert\",\n        \"Name\": \"Nancy\",\n        \"DID\": \"42\",\n        \"value\": \"25000 EUR\",\n        \"lock key\": {\n            \"encrypted\": true,\n            \"value\": \"fUs2EXn/znMeKd4iUc/xf5pxOeOY4l0bgQ/PU5pAQI4Dc3AZAfl586HI5y0hBu6Yv7sIYaYxBBWZE9ZneNlSjzFVG21OwrXyFR0lpN6gwTI2yhJdTLrHU/uKInqGZdn3LKZYH8S05JyO5V1rMHT7i+vb248Cmi2pPFyl3YchfIoPuoPukchNWr8hhlWWd3dKnJVDzrflPpOkDLUEMFTFNg+hbEvikshk41sWzuPZcqE7XKgxdCBEnOQFQDBSvunN4pxDOJofrRCfMCWtgjnJMv7kCkmGYT2bNbpzrvpTTqb6Ff1UEMkWctQYJZT6PvUwliiHjpNw44OWg/ZuByXCIw==\"\n        }\n    },\n    \"Issuer name\": \"Santander\",\n    \"IssuerDID\": \"00042\",\n    \"Issuer public key\": \"6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503\",\n    \"IssuerSignature\": \"+kelFl9xyymf53uxNUbrXgokEKxZbXSU94KRX9XkZFSBZPGRaB6LsiwmYuz4XRC3Syiw2yDB/aUUkvpWNpUA+6RexXoPgYLXAn0yFLmVzNM79KcQAzm/rlj0wzyiqfen7QWpXPyZu6QyFiDdIFVtJrmiR9B9kEJmSDhaaqLTmQKcgrDlPBuULCA/eYm+lStPea+Ckg5XTmLoO6MY\",\n    \"PublicBlindingKey\": \"031b55be15240db85f8fe84661c44311dff353ba160973dcec280e31d434728f023e79c3cfe7f0f752db60e5f542d8a2865a58b2568bf087751e85e00e5baf84\",\n    \"signature encrypted\": true,\n    \"Subject Public key\": \"-----BEGIN RSA PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs+ZGv20suqeVy+LrA+tr\\nhYdov0IQvWLavVw5v383d8rRbnjXxB0UroX+61/9olL0KnYpgCKr+UC+1uf3FuFs\\n008DMkKSg8umWrV+8etHPZa31qSBgYWgrlygScAoPU5yQY3x/7NFFaIAs89bCw2J\\n5kKcQh/NHk+dRAYuQ4qmo6OKp0TW065MEprpfWZHgc9uynk7fRG+DHyLtGxkjb2J\\n6nSPSm7wK8Sb75YZV7orU1R80Brn1zbVxBKheLGfKgc7QK/6SuASlssR4pe58zIi\\n/KJtO8CqzpzmJShaxnPlxaUr7GRs3mCnMOL0bUYTkQsqUEfx/imh8PM7eXWuBAOF\\nLQIDAQAB\\n-----END RSA PUBLIC KEY-----\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8100/striprsa",
+					"host": [
+						"localhost"
+					],
+					"port": "8100",
+					"path": [
+						"striprsa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8100/verifysignature",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Credential\": {\n        \"Type\": \"Average account balance cert\",\n        \"Name\": \"Nancy\",\n        \"DID\": \"42\",\n        \"value\": \"25000 EUR\",\n        \"lock key\": {\n            \"encrypted\": false,\n            \"value\": \"322e75ccfd59044188ce89b7fa06a684530d304fdd95901190ff0a5bfe46a28e\"\n        }\n    },\n    \"Issuer name\": \"Santander\",\n    \"IssuerDID\": \"00042\",\n    \"Issuer public key\": \"6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503\",\n    \"IssuerSignature\": \"+kelFl9xyymf53uxNUbrXgokEKxZbXSU94KRX9XkZFSBZPGRaB6LsiwmYuz4XRC3Syiw2yDB/aUUkvpWNpUA+6RexXoPgYLXAn0yFLmVzNM79KcQAzm/rlj0wzyiqfen7QWpXPyZu6QyFiDdIFVtJrmiR9B9kEJmSDhaaqLTmQKcgrDlPBuULCA/eYm+lStPea+Ckg5XTmLoO6MY\",\n    \"PublicBlindingKey\": \"031b55be15240db85f8fe84661c44311dff353ba160973dcec280e31d434728f023e79c3cfe7f0f752db60e5f542d8a2865a58b2568bf087751e85e00e5baf84\",\n    \"signature encrypted\": true,\n    \"Subject Public key\": \"-----BEGIN RSA PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs+ZGv20suqeVy+LrA+tr\\nhYdov0IQvWLavVw5v383d8rRbnjXxB0UroX+61/9olL0KnYpgCKr+UC+1uf3FuFs\\n008DMkKSg8umWrV+8etHPZa31qSBgYWgrlygScAoPU5yQY3x/7NFFaIAs89bCw2J\\n5kKcQh/NHk+dRAYuQ4qmo6OKp0TW065MEprpfWZHgc9uynk7fRG+DHyLtGxkjb2J\\n6nSPSm7wK8Sb75YZV7orU1R80Brn1zbVxBKheLGfKgc7QK/6SuASlssR4pe58zIi\\n/KJtO8CqzpzmJShaxnPlxaUr7GRs3mCnMOL0bUYTkQsqUEfx/imh8PM7eXWuBAOF\\nLQIDAQAB\\n-----END RSA PUBLIC KEY-----\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8100/verifysignature",
+					"host": [
+						"localhost"
+					],
+					"port": "8100",
+					"path": [
+						"verifysignature"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8100/decryptsignature",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Credential\": {\n        \"Type\": \"Average account balance cert\",\n        \"Name\": \"Nancy\",\n        \"DID\": \"42\",\n        \"value\": \"25000 EUR\",\n        \"lock key\": {\n            \"encrypted\": false,\n            \"value\": \"26e6454b96f3de33cefa8bc0e65bb7499bbe402ad817686ce4f86e8c10a9b483\"\n        }\n    },\n    \"Issuer name\": \"Santander\",\n    \"IssuerDID\": \"00042\",\n    \"Issuer public key\": \"6cc0580343356515c288897c68dad03a2063d1ea9c03c14af40174bef52d1503\",\n    \"IssuerSignature\": \"pH+D6UhbPXbewIdY0Sn8uda6Vvhg1dDazQ98/UX+jQOOkb8vBBKRbONSOO41n2qnhpJYnnj4xLVGF8VKv9xP5g6DhYzoo9K47tgBaW+JelFEYdNFLkKP5fXRJhz/VdSxm4y9dVzEtMdxZtz77kwTJZ+PYGDU2vJMjqd+T0oKSUipCc0q163UuJMjNmwpi9nLwkoKowmZsrXs6Sif\",\n    \"signature encrypted\": true,\n    \"Subject Public key\": \"-----BEGIN RSA PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs+ZGv20suqeVy+LrA+tr\\nhYdov0IQvWLavVw5v383d8rRbnjXxB0UroX+61/9olL0KnYpgCKr+UC+1uf3FuFs\\n008DMkKSg8umWrV+8etHPZa31qSBgYWgrlygScAoPU5yQY3x/7NFFaIAs89bCw2J\\n5kKcQh/NHk+dRAYuQ4qmo6OKp0TW065MEprpfWZHgc9uynk7fRG+DHyLtGxkjb2J\\n6nSPSm7wK8Sb75YZV7orU1R80Brn1zbVxBKheLGfKgc7QK/6SuASlssR4pe58zIi\\n/KJtO8CqzpzmJShaxnPlxaUr7GRs3mCnMOL0bUYTkQsqUEfx/imh8PM7eXWuBAOF\\nLQIDAQAB\\n-----END RSA PUBLIC KEY-----\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8100/decryptsignature",
+					"host": [
+						"localhost"
+					],
+					"port": "8100",
+					"path": [
+						"decryptsignature"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
