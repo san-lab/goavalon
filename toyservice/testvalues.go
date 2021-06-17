@@ -16,7 +16,6 @@ import (
 	"math/big"
 	"net/http"
 
-	"github.com/agl/ed25519/edwards25519"
 	"github.com/san-lab/goavalon/avalonjson"
 	"github.com/san-lab/goavalon/crypto"
 )
@@ -267,8 +266,8 @@ func D() {
 		hBytes[32-i] = x.Bytes()[i-1]
 	}
 	fmt.Println(hBytes)
-	A := new(edwards25519.ExtendedGroupElement)
-	edwards25519.GeScalarMultBase(A, hBytes)
+	A := new(ExtendedGroupElement)
+	GeScalarMultBase(A, hBytes)
 
 	var publicKeyBytes [32]byte
 	A.ToBytes(&publicKeyBytes)
@@ -419,5 +418,3 @@ func workerDetails(wr http.ResponseWriter, req *http.Request) {
 	wr.Write(b)
 
 }
-
-

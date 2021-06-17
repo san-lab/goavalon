@@ -12,10 +12,10 @@ import (
 	"encoding/hex"
 	"encoding/pem"
 	"fmt"
-	"github.com/agl/ed25519/edwards25519"
-	"github.com/btcsuite/btcd/btcec"
 	"math/big"
 	"strings"
+
+	"github.com/btcsuite/btcd/btcec"
 
 	"crypto/ecdsa"
 	"crypto/elliptic"
@@ -91,23 +91,23 @@ vwIDAQAB
 -----END RSA PUBLIC KEY-----`
 
 func EdwardsScalarAddMult(a, pointbytes, b *[32]byte) *[32]byte {
-	r := edwards25519.ProjectiveGroupElement{}
-	A := edwards25519.ExtendedGroupElement{}
+	r := ProjectiveGroupElement{}
+	A := ExtendedGroupElement{}
 	if ok := A.FromBytes(pointbytes); !ok {
 		fmt.Println("failed .FromBytes:", *pointbytes)
 		return nil
 	}
 	// GeDoubleScalarMultVartime sets r = a*A + b*B
-	edwards25519.GeDoubleScalarMultVartime(&r, a, &A, b)
+	GeDoubleScalarMultVartime(&r, a, &A, b)
 	fb := new([32]byte)
 	r.ToBytes(fb)
 	return fb
 }
 
 func EdwardsScalarMultB(scalar *[32]byte) *[32]byte {
-	A := new(edwards25519.ExtendedGroupElement)
+	A := new(ExtendedGroupElement)
 	x := new([32]byte)
-	edwards25519.GeScalarMultBase(A, scalar)
+	GeScalarMultBase(A, scalar)
 	A.ToBytes(x)
 	return x
 }
@@ -170,15 +170,15 @@ func TestEdX() {
 	ks1 := new([32]byte)
 	ks2 := new([32]byte)
 	ks3 := new([32]byte)
-	edwards25519.ScReduce(ks1, &k1)
-	edwards25519.ScReduce(ks2, &k2)
-	edwards25519.ScReduce(ks3, &k3)
+	ScReduce(ks1, &k1)
+	ScReduce(ks2, &k2)
+	ScReduce(ks3, &k3)
 
 	//ks3 = Tli(big.NewInt(0))
 
 	lix := new([32]byte)
 
-	edwards25519.ScMulAdd(lix, ks1, ks2, ks3)
+	ScMulAdd(lix, ks1, ks2, ks3)
 	A := EdwardsScalarMultB(ks1)
 	B := EdwardsScalarMultB(ks2)
 	Y1 := EdwardsScalarAddMult(ks1, B, ks3)
@@ -190,7 +190,7 @@ func TestEdX() {
 
 	ks1 = Tli(big.NewInt(0))
 	ks3 = Tli(big.NewInt(1))
-	edwards25519.ScMulAdd(lix, ks1, ks2, ks3)
+	ScMulAdd(lix, ks1, ks2, ks3)
 	A = EdwardsScalarMultB(ks1)
 	B = EdwardsScalarMultB(ks2)
 	Y1 = EdwardsScalarAddMult(ks1, B, ks3)
@@ -259,7 +259,7 @@ func ParseEd25519PublicKey(pk string) (*[32]byte, error) {
 		return nil, err
 	}
 
-	A := new(edwards25519.ExtendedGroupElement)
+	A := new(ExtendedGroupElement)
 	if ok := A.FromBytes(pkb); !ok {
 		return nil, fmt.Errorf("Invalid value for Ed25519 point")
 	}
